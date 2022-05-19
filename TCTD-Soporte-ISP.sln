@@ -12,6 +12,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE", "BE\BE.csproj", "{5FAA2A49-86AE-4DEA-B084-436D9A45F66A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SERV", "SERV\SERV.csproj", "{38939B82-ECC6-4B6E-91E9-C2F75397595A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5FAA2A49-86AE-4DEA-B084-436D9A45F66A} = {5FAA2A49-86AE-4DEA-B084-436D9A45F66A}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{764BD443-1A64-449E-91FA-C0267C7CF93A}"
 	ProjectSection(SolutionItems) = preProject
