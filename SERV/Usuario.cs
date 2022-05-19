@@ -15,7 +15,7 @@ namespace SERV
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public IEmpleado empleado { get; set; }
+        public Empleado empleado { get; set; }
 
         private IList<IPermiso> _permisos;
 
