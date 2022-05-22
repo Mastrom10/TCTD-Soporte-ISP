@@ -1,2 +1,6 @@
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\BE\obj\Debug\BE.csproj.AssemblyReference.cache
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\BE\bin\Debug\BE.dll
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\BE\bin\Debug\BE.pdb
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\BE\obj\Debug\BE.dll
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\BE\obj\Debug\BE.pdb

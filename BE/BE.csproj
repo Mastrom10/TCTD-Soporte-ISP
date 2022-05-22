@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Empleado.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="IEntity.cs" />
+    <Compile Include="Abstracciones_Interfaces\Entity.cs" />
+    <Compile Include="Abstracciones_Interfaces\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoEmpleado.cs" />
   </ItemGroup>

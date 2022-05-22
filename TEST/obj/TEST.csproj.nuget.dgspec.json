@@ -1,0 +1,202 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\TEST\\TEST.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj",
+        "projectName": "BE",
+        "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BLL\\BLL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BLL\\BLL.csproj",
+        "projectName": "BLL",
+        "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BLL\\BLL.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\DAL\\DAL.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\DAL\\DAL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\DAL\\DAL.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\GUI\\GUI.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\GUI\\GUI.csproj",
+        "projectName": "GUI",
+        "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\GUI\\GUI.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BLL\\BLL.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BLL\\BLL.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj",
+        "projectName": "SERV",
+        "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\TEST\\TEST.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\TEST\\TEST.csproj",
+        "projectName": "TEST",
+        "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\TEST\\TEST.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\TEST\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BE\\BE.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BLL\\BLL.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\BLL\\BLL.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\DAL\\DAL.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\GUI\\GUI.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\GUI\\GUI.csproj"
+              },
+              "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj": {
+                "projectPath": "C:\\Users\\nicol\\OneDrive\\Escritorio\\CAMPO\\Carpeta\\CODIGO\\TCTD-Soporte-ISP\\SERV\\SERV.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.11.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.2, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

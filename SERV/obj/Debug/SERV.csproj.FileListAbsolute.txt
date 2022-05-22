@@ -1,2 +1,9 @@
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\obj\Debug\SERV.csproj.AssemblyReference.cache
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\obj\Debug\SERV.csproj.CoreCompileInputs.cache
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\bin\Debug\SERV.dll
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\bin\Debug\SERV.pdb
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\bin\Debug\BE.dll
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\bin\Debug\BE.pdb
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\obj\Debug\SERV.csproj.CopyComplete
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\obj\Debug\SERV.dll
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\SERV\obj\Debug\SERV.pdb

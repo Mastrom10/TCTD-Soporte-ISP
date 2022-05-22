@@ -9,7 +9,7 @@ namespace DAL
 {
     public abstract class GenericDAL<T> : ICrud<T> where T : IEntity
     {
-
+        
         private List<T> _DatosEnMemoria;
 
         public GenericDAL()
@@ -17,7 +17,8 @@ namespace DAL
             _DatosEnMemoria = new List<T>();
         }
 
-        public void Create(T entity)
+        
+        public virtual void Create(T entity)
         {
             if (entity.Id == 0)
             {
@@ -26,27 +27,27 @@ namespace DAL
             _DatosEnMemoria.Add(entity);
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             _DatosEnMemoria.Remove(entity);
         }
 
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return _DatosEnMemoria;
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             return _DatosEnMemoria.FirstOrDefault(x => x.Id == id);
         }
 
-        public int GetNextId()
+        public virtual int GetNextId()
         {
             return _DatosEnMemoria.Count == 0 ? 1 : _DatosEnMemoria.Max(x => x.Id) + 1;
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             var index = _DatosEnMemoria.FindIndex(x => x.Id == entity.Id);
             _DatosEnMemoria[index] = entity;
