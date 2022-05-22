@@ -8,10 +8,10 @@ namespace BE
 {
     public enum TipoEmpleado
     {
-        Administrador,
-        RepresentanteDeSoporte,
-        RepresentanteDeBackOffice,
-        CoordinadorBaseTecnica,
-        TecnicoDomiciliario
+        Administrador = 1,
+        RepresentanteDeSoporte = 2,
+        RepresentanteDeBackOffice = 3,
+        CoordinadorBaseTecnica = 4,
+        TecnicoDomiciliario = 5
     }
 }

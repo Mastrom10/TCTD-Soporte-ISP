@@ -18,7 +18,7 @@ namespace TEST
             unEmpleado.Nombre = "Juan";
             unEmpleado.Apellido = "Perez";
             unEmpleado.NumeroRepresentante = 4483;
-            unEmpleado.Rol = TipoEmpleado.TecnicoDomiciliario;
+            unEmpleado.TipoEmpleado = TipoEmpleado.TecnicoDomiciliario;
 
             empleadoDAL = new EmpleadoDAL();
         }
@@ -26,11 +26,13 @@ namespace TEST
         [Test]
         public void TestEmpleadoDAL()
         {
+            int nextID = empleadoDAL.GetNextId();
+
             empleadoDAL.Create(unEmpleado);
+            
+            Assert.AreEqual(nextID, unEmpleado.Id);
 
-            Assert.AreEqual(unEmpleado.Id, 1);
-
-            Empleado empleadoRecuperado = empleadoDAL.GetById(1);
+            Empleado empleadoRecuperado = empleadoDAL.GetById(nextID);
 
             Assert.AreEqual(unEmpleado.Nombre, empleadoRecuperado.Nombre);
 
@@ -38,16 +40,15 @@ namespace TEST
 
             empleadoDAL.Update(unEmpleado);
 
-            Empleado empleadoRecuperado2 = empleadoDAL.GetById(1);
+            Empleado empleadoRecuperado2 = empleadoDAL.GetById(nextID);
 
             Assert.AreEqual(unEmpleado.Nombre, empleadoRecuperado2.Nombre);
 
-            Assert.AreEqual(empleadoDAL.GetAll().Count, 1);
-
             empleadoDAL.Delete(unEmpleado);
 
-            Assert.AreEqual(0, empleadoDAL.GetAll().Count);
+            Empleado empleadoBorrado = empleadoDAL.GetById(nextID);
 
+            Assert.IsNull(empleadoBorrado.Nombre);
         }
     }
 }

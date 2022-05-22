@@ -11,6 +11,6 @@ namespace BE
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public int NumeroRepresentante { get; set; }
-        public TipoEmpleado Rol { get; set; }
+        public TipoEmpleado TipoEmpleado { get; set; }
     }
 }

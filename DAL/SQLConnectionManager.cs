@@ -8,7 +8,7 @@ using System.Data;
 
 namespace DAL
 {
-    internal class SQLConnectionManager
+    public class SQLConnectionManager
     {
         SqlConnection connection;
         SqlConnectionStringBuilder connectionStringBuilder;
@@ -20,7 +20,18 @@ namespace DAL
             connectionStringBuilder.InitialCatalog = "SoporteISP";
             connectionStringBuilder.IntegratedSecurity = true;
         }
-        
+
+        //singleton getInstance()
+        static SQLConnectionManager instance;
+        public static SQLConnectionManager getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new SQLConnectionManager();
+            }
+            return instance;
+        }
+
         //open connection to database
         void Open()
         {
@@ -147,14 +158,5 @@ namespace DAL
             string query = System.IO.File.ReadAllText(fileName);
             return ExecuteQuery(query);
         }
-        
-
-
-
-
-
-
-
-
     }
 }

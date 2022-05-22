@@ -9,3 +9,5 @@ C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\DAL\bin
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\DAL\obj\Debug\DAL.dll
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\DAL\obj\Debug\DAL.pdb
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\DAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\DAL\bin\Debug\System.Data.SqlClient.xml
