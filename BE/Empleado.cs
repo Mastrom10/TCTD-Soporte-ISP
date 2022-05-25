@@ -12,5 +12,7 @@ namespace BE
         public string Apellido { get; set; }
         public int NumeroRepresentante { get; set; }
         public TipoEmpleado TipoEmpleado { get; set; }
+
+        public string NombreCompleto { get { return Nombre + " " + Apellido; } }
     }
 }

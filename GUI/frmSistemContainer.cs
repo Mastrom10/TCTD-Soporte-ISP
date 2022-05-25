@@ -58,7 +58,19 @@ namespace GUI
 
         private void itemMenuLogIn_Click(object sender, EventArgs e)
         {
+            frmLogin login = new frmLogin();
+            login.MdiParent = this;
+            login.Show();
+        }
 
+        private void itemMenuLogOut_Click(object sender, EventArgs e)
+        {
+            //Confirmacion ¿Seguro desea cerrar sesion?
+            if (MessageBox.Show("¿Seguro desea cerrar sesion?", "Cerrar Sesion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Session.GetSession().Logout();
+                ValidarSession();
+            }
         }
     }   
 }

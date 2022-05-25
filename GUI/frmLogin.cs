@@ -23,10 +23,38 @@ namespace GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            LoginResult loginResult = LoginResult.UnknownError;
             try {
-                LoginResult loginResult = usuarioBLL.Login(txtEmail.Text, txtPassword.Text);
-                
+                loginResult = usuarioBLL.Login(txtEmail.Text, txtPassword.Text);
             }
+            catch (LoginException ex)
+            {
+                if (ex.Result == LoginResult.InvalidUsername)
+                {
+                    MessageBox.Show("Usuario no encontrado");
+                }
+                else if (ex.Result == LoginResult.InvalidPassword)
+                {
+                    MessageBox.Show("Contraseña incorrecta");
+                }
+                else
+                {
+                    MessageBox.Show("Error desconocido");
+                }
+            }
+            if (loginResult == LoginResult.LoginOK || loginResult == LoginResult.AlreadyLogged )
+            {
+                MessageBox.Show("Bienvenido " + Session.GetSession().usuario.empleado.NombreCompleto);
+                this.Hide();
+                frmSistemConteiner frmPrincipal = (frmSistemConteiner)this.MdiParent;
+                frmPrincipal.ValidarSession();
+                frmPrincipal.Show();
+            }
+        }
+
+        private void btnSalirLogin_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

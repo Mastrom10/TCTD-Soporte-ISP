@@ -12,32 +12,32 @@ namespace BLL
     {
         protected ICrud<T> dal;
 
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             dal.Create(entity);
         }
 
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             dal.Delete(entity);
         }
 
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return dal.GetAll();
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             return dal.GetById(id);
         }
 
-        public int GetNextId()
+        public virtual int GetNextId()
         {
             return dal.GetNextId();
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             dal.Update(entity);
         }

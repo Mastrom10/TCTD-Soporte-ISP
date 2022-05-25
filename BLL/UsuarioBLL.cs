@@ -15,6 +15,12 @@ namespace BLL
             dal = new UsuarioDAL();
         }
 
+        public override void Create(Usuario usuario) {
+            usuario.Password = Cryptography.CalculateHash(usuario.Password);
+            base.Create(usuario);
+        }
+
+
         public LoginResult Login(string email, string password)
         {
             if (Session.GetSession().IsLogged()) {
