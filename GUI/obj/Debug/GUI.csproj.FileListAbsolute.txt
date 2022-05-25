@@ -15,3 +15,7 @@ C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\GUI\bin
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\GUI\obj\Debug\GUI.exe
 C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\GUI\obj\Debug\GUI.pdb
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\GUI\obj\Debug\GUI.frmSistemConteiner.resources
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\GUI\bin\Debug\DAL.dll
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\GUI\bin\Debug\DAL.pdb
+C:\Users\nicol\OneDrive\Escritorio\CAMPO\Carpeta\CODIGO\TCTD-Soporte-ISP\GUI\obj\Debug\GUI.frmLogin.resources
