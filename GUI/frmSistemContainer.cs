@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using SERV;
+
+namespace GUI
+{
+    public partial class frmSistemConteiner : Form
+    {
+        
+        public frmSistemConteiner()
+        {
+            InitializeComponent();
+            ValidarSession();
+        }
+
+
+        internal void ValidarSession() {
+
+            Session session = Session.GetSession();
+            
+            this.itemMenuLogIn.Enabled = !session.IsLogged();
+            this.itemMenuLogOut.Enabled = session.IsLogged();
+
+            if (session.IsLogged()) {
+                this.StatusSession.Text = "Sesion Iniciada. Nro Empleado: " +
+                    session.usuario.empleado.NumeroRepresentante.ToString() +
+                    " - " + session.usuario.empleado.Nombre + ", "
+                    + session.usuario.empleado.Apellido;
+            }
+            else
+            {
+                this.StatusSession.Text = "Sesion no iniciada";
+            }
+            
+
+        }
+
+        private void itemMenuExit_Click(object sender, EventArgs e)
+        {
+            //Confirmacion ¿Desea Salir?
+            if (MessageBox.Show("¿Desea Salir Realmente?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                //cerrar session
+                if (Session.GetSession().IsLogged())
+                {
+                    Session.GetSession().Logout();
+                }
+                Application.Exit();
+            }
+        }
+
+        private void itemMenuLogIn_Click(object sender, EventArgs e)
+        {
+
+        }
+    }   
+}

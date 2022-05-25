@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmpleadoDAL.cs" />
     <Compile Include="SQLConnectionManager.cs" />
+    <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
@@ -61,7 +62,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataBaseCreation.sql" />
+    <Content Include="SQLs\DataBaseCreation.sql" />
+    <Content Include="SQLs\ProceduresCreation.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
