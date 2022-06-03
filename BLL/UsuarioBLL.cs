@@ -27,6 +27,7 @@ namespace BLL
                 return LoginResult.AlreadyLogged;
             }
 
+            //TODO buscar solo el usuario ingresado. 
             Usuario usuario = dal.GetAll().Where(u => u.Email == email).FirstOrDefault();
             if (usuario == null)
             {

@@ -9,7 +9,7 @@ namespace DAL
     public class EmpleadoDAL : GenericDAL<Empleado>
     {
 
-        SqlParameter[] sqlParametersEmpleado(Empleado empleado)
+        public override SqlParameter[] sqlParameters(Empleado empleado)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
             SqlParameter paramNombre = new SqlParameter("@Nombre", empleado.Nombre);
@@ -44,12 +44,12 @@ namespace DAL
             {
                 entity.Id = GetNextId();
             }
-            SQLConnectionManager.getInstance().ExecuteProcedure("CREAR_EMPLEADO", sqlParametersEmpleado(entity));
+            SQLConnectionManager.getInstance().ExecuteProcedure("CREAR_EMPLEADO", sqlParameters(entity));
         }
 
         public override void Delete(Empleado entity)
         {
-            SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_EMPLEADO", sqlParametersEmpleado(entity));
+            SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_EMPLEADO", sqlParameters(entity));
         }
 
         public override List<Empleado> GetAll()
@@ -110,7 +110,7 @@ namespace DAL
 
         public override void Update(Empleado entity)
         {
-            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_EMPLEADO", sqlParametersEmpleado(entity));
+            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_EMPLEADO", sqlParameters(entity));
         }
     }
 }

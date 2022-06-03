@@ -18,7 +18,7 @@ namespace DAL
             this.empleadoDAL = new EmpleadoDAL();
         }
 
-        SqlParameter[] sqlParametersUsuario(Usuario usuario)
+        public override SqlParameter[] sqlParameters(Usuario usuario)
         {
             SqlParameter[] parametros = new SqlParameter[4];
             parametros[0] = new SqlParameter("@id", usuario.Id);
@@ -39,14 +39,14 @@ namespace DAL
             {
                 entity.Id = this.GetNextId();
             }
-            SqlParameter[] parametros = sqlParametersUsuario(entity);
+            SqlParameter[] parametros = sqlParameters(entity);
             SQLConnectionManager.getInstance().ExecuteProcedure("CREAR_USUARIO", parametros);
         }
 
         public override void Delete(Usuario entity)
         {
             //BORRAR_USUARIO
-            SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_USUARIO", sqlParametersUsuario(entity));
+            SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_USUARIO", sqlParameters(entity));
         }
 
         public override List<Usuario> GetAll()
@@ -108,7 +108,7 @@ namespace DAL
         public override void Update(Usuario entity)
         {
             //ACTUALIZAR_USUARIO
-            SqlParameter[] parametros = sqlParametersUsuario(entity);
+            SqlParameter[] parametros = sqlParameters(entity);
             SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_USUARIO", parametros);
             
         }
