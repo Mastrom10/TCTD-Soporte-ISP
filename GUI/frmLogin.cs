@@ -56,5 +56,16 @@ namespace GUI
         {
             this.Close();
         }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            //si se presiona enter
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
+
+
     }
 }
