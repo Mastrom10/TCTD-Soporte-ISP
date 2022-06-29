@@ -37,6 +37,10 @@ namespace TEST
             unUsuario.empleado = unEmpleado;
 
             usuarioDAL = new UsuarioDAL();
+
+
+            usuarioDAL.Delete(unUsuario);
+            empleadoDAL.Delete(unEmpleado);
         }
 
         [Test]

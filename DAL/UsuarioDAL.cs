@@ -66,6 +66,45 @@ namespace DAL
             return usuarios;
         }
 
+
+        
+        public override Usuario GetByField(string field, string value)
+        {
+            switch (field)
+            {
+                case "id":
+                    return this.GetById(int.Parse(value));
+                case "email":
+                    return this.GetByEmail(value);
+                default:
+                    return base.GetByField(field, value);
+            }
+           
+        }
+
+        //GetByEmail
+        private Usuario GetByEmail(string email)
+        {
+            //OBTENER_USUARIO_POR_EMAIL
+            SqlParameter paramemail = new SqlParameter("@email", email);
+            paramemail.DbType = System.Data.DbType.String;
+            SqlParameter[] parametros = new SqlParameter[] { paramemail };
+            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_USUARIO_POR_EMAIL", parametros);
+            Usuario usuario = new Usuario();
+            if (dt.Rows.Count > 0)
+            {
+                usuario.Id = int.Parse(dt.Rows[0]["id"].ToString());
+                usuario.Email = dt.Rows[0]["email"].ToString();
+                usuario.Password = dt.Rows[0]["HashPassword"].ToString();
+                usuario.empleado = this.empleadoDAL.GetById(int.Parse(dt.Rows[0]["FK_id_Empleado"].ToString()));
+                return usuario;
+            }
+            else {
+                return null;
+            }
+           
+        }
+
         public override Usuario GetById(int id)
         {
             //OBTENER_USUARIO_POR_ID
@@ -112,5 +151,9 @@ namespace DAL
             SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_USUARIO", parametros);
             
         }
+
+        
     }
+
+    
 }

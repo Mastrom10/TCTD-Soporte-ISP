@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace SERV.Composite
 {
-    internal class Patente : ServiceEntity, IPermiso
+    public class Patente : Permiso
     {
 
         public Enum Tipo { get; set; }
         
-        public string Nombre { get; set; }
-
-        public void AgregarHijo(IPermiso hijo)
+        public override void AgregarHijo(Permiso hijo)
         {    
         }
 
-        public IList<IPermiso> ObtenerHijos()
+        public override IList<Permiso> ObtenerHijos()
         {
-            return new List<IPermiso>();
+            return new List<Permiso>();
         }
-        public void QuitarHijo(IPermiso hijo)
+        public override void QuitarHijo(Permiso hijo)
         {
         }
     }

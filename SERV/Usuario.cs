@@ -16,16 +16,17 @@ namespace SERV
 
         public Empleado empleado { get; set; }
 
-        private IList<IPermiso> _permisos;
+        private List<Permiso> _permisos;
 
-        public IList<IPermiso> Permisos {
+        public List<Permiso> Permisos {
             //Singleton inline Por las dudas, aunque  _permisos deberia existir siempre
-            get { return _permisos ?? (_permisos = new List<IPermiso>()); }
+            get { return _permisos ?? (_permisos = new List<Permiso>());}
+            set { _permisos = value; }
         }
 
         public Usuario()
         {
-            _permisos = new List<IPermiso>();
+            _permisos = new List<Permiso>();
         }
 
 

@@ -72,5 +72,13 @@ namespace GUI
                 ValidarSession();
             }
         }
+
+        private void permisosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestorPermisos gestorPermisos = new frmGestorPermisos();
+            gestorPermisos.MdiParent = this;
+            gestorPermisos.Show();
+            
+        }
     }   
 }

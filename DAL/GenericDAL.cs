@@ -13,16 +13,19 @@ namespace DAL
 
         public abstract SqlParameter[] sqlParameters(T entity);
         public abstract void Create(T entity);
-        
+
         public abstract void Delete(T entity);
 
         public abstract List<T> GetAll();
-        
+
         public abstract T GetById(int id);
-        
+
         public abstract int GetNextId();
-        
+
         public abstract void Update(T entity);
-        
+
+        public virtual T GetByField(string field, string value){
+            throw new Exception("El campo " + field + " no existe para " + typeof(T).Name);
+        }
     }
 }

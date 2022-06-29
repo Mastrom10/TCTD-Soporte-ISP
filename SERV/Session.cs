@@ -52,7 +52,7 @@ namespace SERV
 
             bool tienePermiso = false;
 
-            foreach (IPermiso permiso in this.usuario.Permisos)
+            foreach (Permiso permiso in this.usuario.Permisos)
             {
                 if (permiso is Patente && ((Patente)permiso).Tipo == tipoPermiso)
                 {
@@ -66,9 +66,9 @@ namespace SERV
             return tienePermiso;
         }
 
-        private bool TienePermisoRecursivo(IPermiso permiso, Enum tipoPermiso, bool tienePermiso)
+        private bool TienePermisoRecursivo(Permiso permiso, Enum tipoPermiso, bool tienePermiso)
         {
-            foreach (IPermiso permisoHijo in permiso.ObtenerHijos())
+            foreach (Permiso permisoHijo in permiso.ObtenerHijos())
             {
                 if (permisoHijo is Patente && ((Patente)permisoHijo).Tipo.Equals(tipoPermiso)) {
                     tienePermiso = true;

@@ -27,6 +27,11 @@ namespace BLL
             return dal.GetAll();
         }
 
+        public T GetByField(string field, string value)
+        {
+            return dal.GetByField(field, value);
+        }
+
         public virtual T GetById(int id)
         {
             return dal.GetById(id);

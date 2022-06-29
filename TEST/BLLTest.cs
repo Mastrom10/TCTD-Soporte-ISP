@@ -44,7 +44,9 @@ namespace TEST
             usuarioDAL = new UsuarioDAL();
             usuarioBLL = new UsuarioBLL();
 
-            
+            usuarioDAL.Delete(unUsuario);
+            empleadoDAL.Delete(unEmpleado);
+
         }
 
         [Test]

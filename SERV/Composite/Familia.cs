@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace SERV.Composite
 {
-    internal class Familia : ServiceEntity, IPermiso
+    public class Familia : Permiso
 
     {
-        public string Nombre { get; set; }
-
-        private IList<IPermiso> hijos;
+        private IList<Permiso> hijos;
 
         public Familia()
         {
-            this.hijos = new List<IPermiso>();
+            this.hijos = new List<Permiso>();
         }
 
-        public void AgregarHijo(IPermiso hijo)
+        public override void AgregarHijo(Permiso hijo)
         {
             if (!hijos.Contains(hijo))
             {
@@ -26,12 +24,12 @@ namespace SERV.Composite
             }
         }
 
-        public IList<IPermiso> ObtenerHijos()
+        public override IList<Permiso> ObtenerHijos()
         {
             return hijos;
         }
 
-        public void QuitarHijo(IPermiso hijo)
+        public override void QuitarHijo(Permiso hijo)
         {
             if (hijos.Contains(hijo))
             {

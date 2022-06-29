@@ -13,6 +13,8 @@ namespace DAL
         void Update(T entity);
         void Delete(T entity);
         T GetById(int id);
+
+        T GetByField(string field, string value);
         List<T> GetAll();
         int GetNextId();
     }

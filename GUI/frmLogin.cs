@@ -15,10 +15,11 @@ namespace GUI
     public partial class frmLogin : Form
     {
 
-        UsuarioBLL usuarioBLL = new UsuarioBLL();
+        UsuarioBLL usuarioBLL;
         public frmLogin()
         {
             InitializeComponent();
+            usuarioBLL = new UsuarioBLL();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

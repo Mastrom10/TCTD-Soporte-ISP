@@ -46,6 +46,7 @@
     <Compile Include="Abstracciones_Interfaces\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoEmpleado.cs" />
+    <Compile Include="TipoPermiso.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

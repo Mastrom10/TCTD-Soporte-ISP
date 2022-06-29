@@ -36,6 +36,8 @@
             this.itemMenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
+            this.gestoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -43,7 +45,8 @@
             // topMenu
             // 
             this.topMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inicioToolStripMenuItem});
+            this.inicioToolStripMenuItem,
+            this.gestoresToolStripMenuItem});
             this.topMenu.Location = new System.Drawing.Point(0, 0);
             this.topMenu.Name = "topMenu";
             this.topMenu.Size = new System.Drawing.Size(800, 24);
@@ -63,21 +66,21 @@
             // itemMenuLogIn
             // 
             this.itemMenuLogIn.Name = "itemMenuLogIn";
-            this.itemMenuLogIn.Size = new System.Drawing.Size(180, 22);
+            this.itemMenuLogIn.Size = new System.Drawing.Size(143, 22);
             this.itemMenuLogIn.Text = "Iniciar Sesion";
             this.itemMenuLogIn.Click += new System.EventHandler(this.itemMenuLogIn_Click);
             // 
             // itemMenuLogOut
             // 
             this.itemMenuLogOut.Name = "itemMenuLogOut";
-            this.itemMenuLogOut.Size = new System.Drawing.Size(180, 22);
+            this.itemMenuLogOut.Size = new System.Drawing.Size(143, 22);
             this.itemMenuLogOut.Text = "Cerrar Sesion";
             this.itemMenuLogOut.Click += new System.EventHandler(this.itemMenuLogOut_Click);
             // 
             // itemMenuExit
             // 
             this.itemMenuExit.Name = "itemMenuExit";
-            this.itemMenuExit.Size = new System.Drawing.Size(180, 22);
+            this.itemMenuExit.Size = new System.Drawing.Size(143, 22);
             this.itemMenuExit.Text = "Salir";
             this.itemMenuExit.Click += new System.EventHandler(this.itemMenuExit_Click);
             // 
@@ -96,6 +99,21 @@
             this.StatusSession.Name = "StatusSession";
             this.StatusSession.Size = new System.Drawing.Size(100, 17);
             this.StatusSession.Text = "¿Session Iniciada?";
+            // 
+            // gestoresToolStripMenuItem
+            // 
+            this.gestoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.permisosToolStripMenuItem});
+            this.gestoresToolStripMenuItem.Name = "gestoresToolStripMenuItem";
+            this.gestoresToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.gestoresToolStripMenuItem.Text = "Gestores";
+            // 
+            // permisosToolStripMenuItem
+            // 
+            this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
+            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.permisosToolStripMenuItem.Text = "Gestor de Permisos";
+            this.permisosToolStripMenuItem.Click += new System.EventHandler(this.permisosToolStripMenuItem_Click);
             // 
             // frmSistemConteiner
             // 
@@ -127,6 +145,8 @@
         private System.Windows.Forms.ToolStripMenuItem itemMenuExit;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel StatusSession;
+        private System.Windows.Forms.ToolStripMenuItem gestoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem permisosToolStripMenuItem;
     }
 }
 

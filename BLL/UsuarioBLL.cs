@@ -28,7 +28,7 @@ namespace BLL
             }
 
             //TODO buscar solo el usuario ingresado. 
-            Usuario usuario = dal.GetAll().Where(u => u.Email == email).FirstOrDefault();
+            Usuario usuario = dal.GetByField("email", email);
             if (usuario == null)
             {
                 throw new LoginException(LoginResult.InvalidUsername);
@@ -60,7 +60,7 @@ namespace BLL
             }
         }
 
-
+        
 
 
     }
