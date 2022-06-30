@@ -84,7 +84,17 @@ namespace DAL
             SqlCommand command = new SqlCommand(procedure, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddRange(parameters);
-            int result = command.ExecuteNonQuery();
+            int result = 0;
+            try
+            {
+                result = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                result = -1;
+                throw ex;
+            }
+            
             Close();
             return result;
         }

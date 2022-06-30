@@ -8,6 +8,7 @@ namespace BE
 {
     public enum TipoPermiso
     {
+        Group,
         UserProfile,
         UserRead,
         UserWrite,

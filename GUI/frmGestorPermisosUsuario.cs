@@ -13,13 +13,13 @@ using SERV;
 
 namespace GUI
 {
-    public partial class frmGestorPermisos : Form
+    public partial class frmGestorPermisosUsuario : Form
     {
         PermisoBLL permisoBLL = new PermisoBLL();
         UsuarioBLL usuarioBLL = new UsuarioBLL();
 
         Usuario selectedUser = null;
-        public frmGestorPermisos()
+        public frmGestorPermisosUsuario()
         {
             InitializeComponent();
         }
@@ -51,6 +51,7 @@ namespace GUI
         private void CompletarLista(TreeView tv, List<Permiso> listaDePermisos, bool validarPadre = true) {
             tv.Nodes.Clear();
             TreeNode raiz = new TreeNode("Permisos");
+            raiz.ForeColor = Color.Blue;
             tv.Nodes.Add(raiz);
 
             foreach (Permiso permiso in listaDePermisos)
@@ -58,6 +59,7 @@ namespace GUI
                 if (permiso is Familia)
                 {
                     TreeNode nodo = CrearNodo(permiso);
+                    nodo.ForeColor = Color.Blue;
                     raiz.Nodes.Add(nodo);
                     CargarPermisosRecursivo(permiso, nodo);
                 }
@@ -79,6 +81,7 @@ namespace GUI
 
                 if (p is Familia)
                 {
+                    nodoNuevo.ForeColor = Color.Blue;
                     CargarPermisosRecursivo(p, nodoNuevo);
                 }
             }
@@ -134,7 +137,16 @@ namespace GUI
             if (treeViewTodosLosPermisos.SelectedNode != null)
             {
                 Permiso permiso = (Permiso)treeViewTodosLosPermisos.SelectedNode.Tag;
-                permisoBLL.AgregarPermisoAUsuario(selectedUser, permiso);
+                try
+                {
+                    permisoBLL.AgregarPermisoAUsuario(selectedUser, permiso);
+
+                }
+                catch (Exception ex)
+                {
+                    //show error
+                    MessageBox.Show(ex.Message);
+                }
                 CargarPermisosUsuario(selectedUser);
             }
         }

@@ -19,6 +19,23 @@ namespace BLL
             permisoDAL = (PermisoDAL)dal;
         }
 
+        public void CrearPatente(string Nombre, TipoPermiso tipoPermiso)
+        {
+            Patente patente = new Patente(Nombre, tipoPermiso);
+            permisoDAL.Create(patente);
+        }
+
+        public void CrearFamilia(string Nombre)
+        {
+            Familia familia = new Familia(Nombre);
+            
+            permisoDAL.Create(familia);
+        }
+
+        public void EliminarPermiso(Permiso permiso) {
+            permisoDAL.Delete(permiso);
+        }
+
         public bool TienePadre(Permiso permiso)
         {
             return permisoDAL.TienePadre(permiso);
@@ -38,6 +55,31 @@ namespace BLL
         public void QuitarPermisoAUsuario(Usuario user, Permiso permiso)
         {
             permisoDAL.QuitarPermisoAUsuario(user, permiso);
+        }
+
+        public void VincularPadreHijo(Permiso padre, Permiso hijo)
+        {
+            if (padre is Familia)
+            {
+                permisoDAL.VincularPadreHijo((Familia)padre, hijo);
+            }
+            else {
+                throw new Exception("El padre debe ser una familia");
+            }
+            
+        }
+
+        //DesvincularPadreHijo
+        public void DesvincularPadreHijo(Permiso padre, Permiso hijo)
+        {
+            if (padre is Familia)
+            {
+                permisoDAL.DesvincularPadreHijo((Familia)padre, hijo);
+            }
+            else
+            {
+                throw new Exception("El padre debe ser una familia");
+            }
         }
 
 

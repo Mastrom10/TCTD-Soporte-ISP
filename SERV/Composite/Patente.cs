@@ -10,7 +10,13 @@ namespace SERV.Composite
     {
 
         public Enum Tipo { get; set; }
-        
+
+        public Patente(string nombre, Enum tipo) : base(nombre)
+        {
+            Tipo = tipo;
+        }
+        public Patente() { }
+
         public override void AgregarHijo(Permiso hijo)
         {    
         }

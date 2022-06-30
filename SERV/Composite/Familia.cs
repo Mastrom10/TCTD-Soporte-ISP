@@ -11,6 +11,10 @@ namespace SERV.Composite
     {
         private IList<Permiso> hijos;
 
+        public Familia(string nombre) :base(nombre)
+        {
+            this.hijos = new List<Permiso>();
+        }
         public Familia()
         {
             this.hijos = new List<Permiso>();

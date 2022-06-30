@@ -28,7 +28,7 @@ namespace DAL
             }
             else if (permiso is Familia)
             {
-                parametros[2] = new SqlParameter("@Tipo", permiso.Nombre + "Group");
+                parametros[2] = new SqlParameter("@Tipo", "Group");
                 parametros[2].DbType = System.Data.DbType.String;
             }
 
@@ -95,12 +95,34 @@ namespace DAL
 
         public void VincularPadreHijo(Familia padre, Permiso hijo)
         {
-            SQLConnectionManager.getInstance().ExecuteProcedure("GUARDAR_PERMISO_HIJO", sqlParameters(padre, hijo));
+            try
+            {
+                SQLConnectionManager.getInstance().ExecuteProcedure("GUARDAR_PERMISO_HIJO", sqlParameters(padre, hijo));
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("Violation of PRIMARY KEY constraint"))
+                {
+                    throw new Exception("El permiso ya se encuentra asignado al grupo", ex);
+                }
+
+                throw ex;
+            }
         }
 
         public void DesvincularPadreHijo(Familia padre, Permiso hijo)
         {
-            SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_PERMISO_HIJO", sqlParameters(padre, hijo));
+            try
+            {
+                SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_PERMISO_HIJO", sqlParameters(padre, hijo));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+           
         }
 
         public override List<Permiso> GetAll()
@@ -119,7 +141,7 @@ namespace DAL
             DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISO_POR_ID", sqlParametersUnID(id));
             if (dt.Rows.Count > 0)
             {
-                if (TieneHijos(id))
+                if (TieneHijos(id) || dt.Rows[0]["Tipo"].ToString() == "Group")
                 {
                     Familia familia = new Familia();
                     familia.Id = id;
@@ -195,7 +217,22 @@ namespace DAL
         //AgregarPermisoAUsuario(user, permiso)
         public void AgregarPermisoAUsuario(Usuario usuario, Permiso permiso)
         {
-            SQLConnectionManager.getInstance().ExecuteProcedure("AGREGAR_PERMISO_A_USUARIO", sqlParameters(usuario, permiso));
+            try
+            {
+                SQLConnectionManager.getInstance().ExecuteProcedure("AGREGAR_PERMISO_A_USUARIO", sqlParameters(usuario, permiso));
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("Violation of PRIMARY KEY constraint"))
+                {
+                    throw new Exception("El permiso ya esta asignado al usuario", ex);
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
+            
         }
 
         //QuitarPermisoAUsuario(user, permiso)

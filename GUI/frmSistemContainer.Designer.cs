@@ -34,10 +34,11 @@
             this.itemMenuLogIn = new System.Windows.Forms.ToolStripMenuItem();
             this.itemMenuLogOut = new System.Windows.Forms.ToolStripMenuItem();
             this.itemMenuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
             this.gestoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
+            this.gestorGruposDePermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             this.gestoresToolStripMenuItem});
             this.topMenu.Location = new System.Drawing.Point(0, 0);
             this.topMenu.Name = "topMenu";
-            this.topMenu.Size = new System.Drawing.Size(800, 24);
+            this.topMenu.Size = new System.Drawing.Size(1081, 24);
             this.topMenu.TabIndex = 1;
             this.topMenu.Text = "Menu";
             // 
@@ -84,13 +85,29 @@
             this.itemMenuExit.Text = "Salir";
             this.itemMenuExit.Click += new System.EventHandler(this.itemMenuExit_Click);
             // 
+            // gestoresToolStripMenuItem
+            // 
+            this.gestoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.permisosToolStripMenuItem,
+            this.gestorGruposDePermisosToolStripMenuItem});
+            this.gestoresToolStripMenuItem.Name = "gestoresToolStripMenuItem";
+            this.gestoresToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.gestoresToolStripMenuItem.Text = "Gestores";
+            // 
+            // permisosToolStripMenuItem
+            // 
+            this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
+            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.permisosToolStripMenuItem.Text = "Gestor Permisos de Usuario";
+            this.permisosToolStripMenuItem.Click += new System.EventHandler(this.permisosToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusSession});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 601);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1081, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -100,26 +117,18 @@
             this.StatusSession.Size = new System.Drawing.Size(100, 17);
             this.StatusSession.Text = "¿Session Iniciada?";
             // 
-            // gestoresToolStripMenuItem
+            // gestorGruposDePermisosToolStripMenuItem
             // 
-            this.gestoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.permisosToolStripMenuItem});
-            this.gestoresToolStripMenuItem.Name = "gestoresToolStripMenuItem";
-            this.gestoresToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.gestoresToolStripMenuItem.Text = "Gestores";
-            // 
-            // permisosToolStripMenuItem
-            // 
-            this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
-            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.permisosToolStripMenuItem.Text = "Gestor de Permisos";
-            this.permisosToolStripMenuItem.Click += new System.EventHandler(this.permisosToolStripMenuItem_Click);
+            this.gestorGruposDePermisosToolStripMenuItem.Name = "gestorGruposDePermisosToolStripMenuItem";
+            this.gestorGruposDePermisosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.gestorGruposDePermisosToolStripMenuItem.Text = "Gestor Grupos de Permisos";
+            this.gestorGruposDePermisosToolStripMenuItem.Click += new System.EventHandler(this.gestorGruposDePermisosToolStripMenuItem_Click);
             // 
             // frmSistemConteiner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1081, 623);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.topMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -147,6 +156,7 @@
         private System.Windows.Forms.ToolStripStatusLabel StatusSession;
         private System.Windows.Forms.ToolStripMenuItem gestoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem permisosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestorGruposDePermisosToolStripMenuItem;
     }
 }
 

@@ -75,9 +75,17 @@ namespace GUI
 
         private void permisosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGestorPermisos gestorPermisos = new frmGestorPermisos();
+            frmGestorPermisosUsuario gestorPermisos = new frmGestorPermisosUsuario();
             gestorPermisos.MdiParent = this;
             gestorPermisos.Show();
+            
+        }
+
+        private void gestorGruposDePermisosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestorPermisosGrupos gestorPermisosGrupos = new frmGestorPermisosGrupos();
+            gestorPermisosGrupos.MdiParent = this;
+            gestorPermisosGrupos.Show();
             
         }
     }   
