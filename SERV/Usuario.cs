@@ -29,8 +29,19 @@ namespace SERV
             _permisos = new List<Permiso>();
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is Usuario)
+            {
+                return ((Usuario)obj).Email.Equals(Email);
+            }
+            else {
+                return false;
+            }
+        }
 
-       
+
+
 
 
     }

@@ -6,16 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SERV;
+using SERV.Composite;
 
 namespace DAL
 {
     public class UsuarioDAL : GenericDAL<Usuario>
     {
-
+        PermisoDAL permisoDAL;
         EmpleadoDAL empleadoDAL;
         public UsuarioDAL()
         {
             this.empleadoDAL = new EmpleadoDAL();
+            this.permisoDAL = new PermisoDAL();
         }
 
         public override SqlParameter[] sqlParameters(Usuario usuario)
@@ -31,7 +33,6 @@ namespace DAL
             parametros[3].DbType = System.Data.DbType.Int32;
             return parametros;
         }
-
 
         public override void Create(Usuario entity)
         {
@@ -61,13 +62,12 @@ namespace DAL
                 usuario.Email = row["email"].ToString();
                 usuario.Password = row["HashPassword"].ToString();
                 usuario.empleado = this.empleadoDAL.GetById(int.Parse(row["FK_id_Empleado"].ToString()));
+                usuario.Permisos = this.permisoDAL.GetByUser(usuario);
                 usuarios.Add(usuario);
             }
             return usuarios;
         }
 
-
-        
         public override Usuario GetByField(string field, string value)
         {
             switch (field)
@@ -97,6 +97,7 @@ namespace DAL
                 usuario.Email = dt.Rows[0]["email"].ToString();
                 usuario.Password = dt.Rows[0]["HashPassword"].ToString();
                 usuario.empleado = this.empleadoDAL.GetById(int.Parse(dt.Rows[0]["FK_id_Empleado"].ToString()));
+                usuario.Permisos = this.permisoDAL.GetByUser(usuario);
                 return usuario;
             }
             else {
@@ -119,6 +120,7 @@ namespace DAL
                 usuario.Email = row["email"].ToString();
                 usuario.Password = row["HashPassword"].ToString();
                 usuario.empleado = this.empleadoDAL.GetById(int.Parse(row["FK_id_Empleado"].ToString()));
+                usuario.Permisos = this.permisoDAL.GetByUser(usuario);
             }
             return usuario;
             
@@ -152,7 +154,9 @@ namespace DAL
             
         }
 
-        
+
+
+
     }
 
     

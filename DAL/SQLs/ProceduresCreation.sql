@@ -100,21 +100,25 @@ AS
 
 CREATE PROCEDURE CREAR_PERMISO @Nombre VARCHAR(50),
                                @Tipo   VARCHAR(50),
-                               @Id     INT
+                               @Id     INT,
+							   @esFamilia INT
 AS
     INSERT INTO Permiso
                 (Nombre,
                  Tipo,
-                 Id)
+                 Id,
+				 esFamilia)
     VALUES      (@Nombre,
                  @Tipo,
-                 @Id)
+                 @Id,
+				 @esFamilia)
 
 go
 
 CREATE PROCEDURE BORRAR_PERMISO @Id     INT,
                                 @Nombre VARCHAR(50) = NULL,
-                                @Tipo   VARCHAR(50) = NULL
+                                @Tipo   VARCHAR(50) = NULL,
+								@esFamilia INT = NULL
 AS
     DELETE FROM Permiso
     WHERE  Id = @Id
@@ -130,7 +134,8 @@ go
 
 CREATE PROCEDURE OBTENER_PERMISO_POR_ID @Id     INT,
                                         @Nombre VARCHAR(50) = NULL,
-                                        @Tipo   VARCHAR(50) = NULL
+                                        @Tipo   VARCHAR(50) = NULL,
+										@esFamilia INT = NULL
 AS
     SELECT *
     FROM   Permiso
@@ -147,11 +152,13 @@ go
 
 CREATE PROCEDURE ACTUALIZAR_PERMISO @Id     INT,
                                     @Nombre VARCHAR(50),
-                                    @Tipo   VARCHAR(50)
+                                    @Tipo   VARCHAR(50),
+									@esFamilia INT
 AS
     UPDATE Permiso
     SET    Nombre = @Nombre,
-           Tipo = @Tipo
+           Tipo = @Tipo,
+		   esFamilia = @esFamilia
     WHERE  Id = @Id
 
 go
@@ -189,17 +196,17 @@ CREATE PROCEDURE OBTENER_PERMISOS_POR_ID_USUARIO
 @Id INT, @Email VARCHAR(50) = NULL, @HashPassword VARCHAR(50) = NULL, @FK_id_Empleado INT = NULL
 
 AS
-    SELECT p.id, p.Nombre, p.Tipo FROM Permiso p
+    SELECT p.id, p.Nombre, p.Tipo, p.esFamilia FROM Permiso p
     INNER JOIN Usuario_x_Permiso up ON up.FK_id_Permiso = p.id
     WHERE up.FK_id_Usuario = @Id
 GO
 
 
 CREATE PROCEDURE OBTENER_PERMISOS_HIJOS
-@Id INT, @Nombre VARCHAR(50) = NULL, @Tipo VARCHAR(50) = NULL
+@Id INT, @Nombre VARCHAR(50) = NULL, @Tipo VARCHAR(50) = NULL, @esFamilia INT = NULL
 
 AS
-    SELECT p.id, p.Nombre, p.Tipo FROM Permiso p
+    SELECT p.id, p.Nombre, p.Tipo, p.esFamilia FROM Permiso p
     INNER JOIN Permiso_x_Permiso pp ON pp.FK_Id_Permiso_Hijo = p.id
     WHERE pp.FK_Id_Permiso_Padre = @Id
 GO
@@ -229,7 +236,7 @@ AS
 GO
 
 CREATE PROCEDURE OBTENER_PERMISOS_PADRE
-@Id INT, @Nombre VARCHAR(50) = NULL, @Tipo VARCHAR(50) = NULL
+@Id INT, @Nombre VARCHAR(50) = NULL, @Tipo VARCHAR(50) = NULL, @esFamilia INT = NULL
  as
 SELECT * from Permiso_x_Permiso
 WHERE FK_Id_Permiso_Hijo = @Id

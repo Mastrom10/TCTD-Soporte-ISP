@@ -54,7 +54,7 @@ namespace SERV
 
             foreach (Permiso permiso in this.usuario.Permisos)
             {
-                if (permiso is Patente && ((Patente)permiso).Tipo == tipoPermiso)
+                if (permiso is Patente && ((Patente)permiso).Tipo.Equals(tipoPermiso))
                 {
                     tienePermiso = true;
                     break;

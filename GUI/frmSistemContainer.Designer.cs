@@ -36,9 +36,10 @@
             this.itemMenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.gestoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestorGruposDePermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
-            this.gestorGruposDePermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operacionProtegidaTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +48,8 @@
             // 
             this.topMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
-            this.gestoresToolStripMenuItem});
+            this.gestoresToolStripMenuItem,
+            this.operacionProtegidaTestToolStripMenuItem});
             this.topMenu.Location = new System.Drawing.Point(0, 0);
             this.topMenu.Name = "topMenu";
             this.topMenu.Size = new System.Drawing.Size(1081, 24);
@@ -101,6 +103,13 @@
             this.permisosToolStripMenuItem.Text = "Gestor Permisos de Usuario";
             this.permisosToolStripMenuItem.Click += new System.EventHandler(this.permisosToolStripMenuItem_Click);
             // 
+            // gestorGruposDePermisosToolStripMenuItem
+            // 
+            this.gestorGruposDePermisosToolStripMenuItem.Name = "gestorGruposDePermisosToolStripMenuItem";
+            this.gestorGruposDePermisosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.gestorGruposDePermisosToolStripMenuItem.Text = "Gestor Grupos de Permisos";
+            this.gestorGruposDePermisosToolStripMenuItem.Click += new System.EventHandler(this.gestorGruposDePermisosToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -117,12 +126,12 @@
             this.StatusSession.Size = new System.Drawing.Size(100, 17);
             this.StatusSession.Text = "¿Session Iniciada?";
             // 
-            // gestorGruposDePermisosToolStripMenuItem
+            // operacionProtegidaTestToolStripMenuItem
             // 
-            this.gestorGruposDePermisosToolStripMenuItem.Name = "gestorGruposDePermisosToolStripMenuItem";
-            this.gestorGruposDePermisosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.gestorGruposDePermisosToolStripMenuItem.Text = "Gestor Grupos de Permisos";
-            this.gestorGruposDePermisosToolStripMenuItem.Click += new System.EventHandler(this.gestorGruposDePermisosToolStripMenuItem_Click);
+            this.operacionProtegidaTestToolStripMenuItem.Name = "operacionProtegidaTestToolStripMenuItem";
+            this.operacionProtegidaTestToolStripMenuItem.Size = new System.Drawing.Size(145, 20);
+            this.operacionProtegidaTestToolStripMenuItem.Text = "OperacionProtegidaTest";
+            this.operacionProtegidaTestToolStripMenuItem.Click += new System.EventHandler(this.operacionProtegidaTestToolStripMenuItem_Click);
             // 
             // frmSistemConteiner
             // 
@@ -157,6 +166,7 @@
         private System.Windows.Forms.ToolStripMenuItem gestoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem permisosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestorGruposDePermisosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operacionProtegidaTestToolStripMenuItem;
     }
 }
 

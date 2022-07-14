@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SERV.Composite;
 using DAL;
-using BE;
 using SERV;
 
 namespace BLL
@@ -19,11 +15,7 @@ namespace BLL
             permisoDAL = (PermisoDAL)dal;
         }
 
-        public void CrearPatente(string Nombre, TipoPermiso tipoPermiso)
-        {
-            Patente patente = new Patente(Nombre, tipoPermiso);
-            permisoDAL.Create(patente);
-        }
+        
 
         public void CrearFamilia(string Nombre)
         {
@@ -33,7 +25,14 @@ namespace BLL
         }
 
         public void EliminarPermiso(Permiso permiso) {
-            permisoDAL.Delete(permiso);
+            if (permiso is Familia)
+            {
+                permisoDAL.Delete(permiso);
+            }
+            else {
+                throw new Exception("No está permitido eliminar permisos Base");
+            }
+            
         }
 
         public bool TienePadre(Permiso permiso)
@@ -43,18 +42,29 @@ namespace BLL
 
         public List<Permiso> getPermisosPorUsuario(Usuario usuario)
         {
-            return permisoDAL.GetByUser(usuario);
+            List<Permiso> permisos = permisoDAL.GetByUser(usuario);
+            if (usuario.Equals(Session.GetSession().usuario)) {
+                Session.GetSession().usuario.Permisos = permisos;
+            }
+            return permisos;
         }
 
         public void AgregarPermisoAUsuario(Usuario user, Permiso permiso)
         {
             permisoDAL.AgregarPermisoAUsuario(user, permiso);
+            if (user == Session.GetSession().usuario) {
+                Session.GetSession().usuario.Permisos = permisoDAL.GetByUser(user);
+            }
         }
 
         //QuitarPermisoAUsuario
         public void QuitarPermisoAUsuario(Usuario user, Permiso permiso)
         {
             permisoDAL.QuitarPermisoAUsuario(user, permiso);
+            if (user == Session.GetSession().usuario)
+            {
+                Session.GetSession().usuario.Permisos = permisoDAL.GetByUser(user);
+            }
         }
 
         public void VincularPadreHijo(Permiso padre, Permiso hijo)
@@ -82,6 +92,7 @@ namespace BLL
             }
         }
 
+       
 
     }
 }

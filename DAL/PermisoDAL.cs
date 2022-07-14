@@ -15,21 +15,26 @@ namespace DAL
     {
 
         public override SqlParameter[] sqlParameters(Permiso permiso) {
-            SqlParameter[] parametros = new SqlParameter[3];
+            SqlParameter[] parametros = new SqlParameter[4];
             parametros[0] = new SqlParameter("@Id", permiso.Id);
             parametros[0].DbType = System.Data.DbType.Int32;
             parametros[1] = new SqlParameter("@Nombre", permiso.Nombre);
             parametros[1].DbType = System.Data.DbType.String;
+            
             //@Tipo
             if (permiso is Patente)
             {
                 parametros[2] = new SqlParameter("@Tipo", ((Patente)permiso).Tipo);
                 parametros[2].DbType = System.Data.DbType.String;
+                parametros[3] = new SqlParameter("@esFamilia", 0);
+                parametros[3].DbType = System.Data.DbType.Int32;
             }
             else if (permiso is Familia)
             {
                 parametros[2] = new SqlParameter("@Tipo", "Group");
                 parametros[2].DbType = System.Data.DbType.String;
+                parametros[3] = new SqlParameter("@esFamilia", 1);
+                parametros[3].DbType = System.Data.DbType.Int32;
             }
 
             return parametros;
@@ -55,7 +60,7 @@ namespace DAL
         }
 
 
-        private SqlParameter[] sqlParametersUnID(int id) {
+        private SqlParameter[] sqlParameters(int id) {
             SqlParameter[] parametros = new SqlParameter[1];
             parametros[0] = new SqlParameter("@Id", id);
             parametros[0].DbType = DbType.Int32;
@@ -88,27 +93,61 @@ namespace DAL
                     SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_PERMISO_HIJO", sqlParameters(entity, permisoHijo));
                 }
             }
-            SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_PERMISO_PADRE", sqlParametersUnID(entity.Id));
+            SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_PERMISO_PADRE", sqlParameters(entity.Id));
             SQLConnectionManager.getInstance().ExecuteProcedure("BORRAR_PERMISO", sqlParameters(entity));
 
         }
 
         public void VincularPadreHijo(Familia padre, Permiso hijo)
         {
-            try
-            {
-                SQLConnectionManager.getInstance().ExecuteProcedure("GUARDAR_PERMISO_HIJO", sqlParameters(padre, hijo));
 
-            }
-            catch (Exception ex)
+            if (SinLoop(padre, hijo))
             {
-                if (ex.Message.Contains("Violation of PRIMARY KEY constraint"))
+                try
                 {
-                    throw new Exception("El permiso ya se encuentra asignado al grupo", ex);
-                }
+                    SQLConnectionManager.getInstance().ExecuteProcedure("GUARDAR_PERMISO_HIJO", sqlParameters(padre, hijo));
 
-                throw ex;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.Contains("Violation of PRIMARY KEY constraint"))
+                    {
+                        throw new Exception("El permiso ya se encuentra asignado al grupo", ex);
+                    }
+
+                    throw ex;
+                }
             }
+            else {
+                throw new Exception("No se puede vincular un permiso que ya es hijo, o a si mismo. ");
+            }
+        }
+
+        private bool SinLoop(Permiso padre, Permiso hijo)
+        {
+            if (padre.Id == hijo.Id)
+            {
+                return false;
+            }
+            bool sinLoop = true;
+            foreach (Permiso permiso in ObtenerPadres(padre))
+            {
+                if (permiso.Id == hijo.Id)
+                {
+                    sinLoop = false;
+                    break;
+                }
+                if (permiso is Familia)
+                {
+                    if (!SinLoop((Familia)permiso, hijo))
+                    {
+                        sinLoop = false;
+                        break;
+                    }
+                }
+            }
+            return sinLoop;
+
         }
 
         public void DesvincularPadreHijo(Familia padre, Permiso hijo)
@@ -124,7 +163,7 @@ namespace DAL
             }
            
         }
-
+        
         public override List<Permiso> GetAll()
         {
             List<Permiso> permisos = new List<Permiso>();
@@ -138,15 +177,15 @@ namespace DAL
 
         public override Permiso GetById(int id)
         {
-            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISO_POR_ID", sqlParametersUnID(id));
+            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISO_POR_ID", sqlParameters(id));
             if (dt.Rows.Count > 0)
             {
-                if (TieneHijos(id) || dt.Rows[0]["Tipo"].ToString() == "Group")
+                if (int.Parse(dt.Rows[0]["esFamilia"].ToString()) == 1)
                 {
                     Familia familia = new Familia();
                     familia.Id = id;
                     familia.Nombre = dt.Rows[0]["Nombre"].ToString();
-                    DataTable dtHijos = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISOS_HIJOS", sqlParametersUnID(id));
+                    DataTable dtHijos = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISOS_HIJOS", sqlParameters(id));
                     foreach (DataRow row in dtHijos.Rows)
                     {
                         Permiso permisoHijo = GetById(int.Parse(row["id"].ToString()));
@@ -166,15 +205,20 @@ namespace DAL
 
         }
 
-        private bool TieneHijos(int id) {
-            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISOS_HIJOS", sqlParametersUnID(id));
+        public bool TienePadre(Permiso permiso) {
+            //OBTENER_PERMISOS_PADRE
+            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISOS_PADRE", sqlParameters(permiso.Id));
             return dt.Rows.Count > 0;
         }
 
-        public bool TienePadre(Permiso permiso) {
-            //OBTENER_PERMISOS_PADRE
-            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISOS_PADRE", sqlParametersUnID(permiso.Id));
-            return dt.Rows.Count > 0;
+        public List<Permiso> ObtenerPadres(Permiso permiso) {
+            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISOS_PADRE", sqlParameters(permiso.Id));
+            List<Permiso> permisos = new List<Permiso>();
+            foreach (DataRow row in dt.Rows)
+            {
+                permisos.Add(GetById(int.Parse(row["FK_Id_Permiso_Padre"].ToString())));
+            }
+            return permisos;
         }
 
         public override int GetNextId()
@@ -206,7 +250,7 @@ namespace DAL
         public List<Permiso> GetByUser(Usuario usuario)
         {
             List<Permiso> permisos = new List<Permiso>();
-            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISOS_POR_ID_USUARIO", sqlParametersUnID(usuario.Id));
+            DataTable dt = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_PERMISOS_POR_ID_USUARIO", sqlParameters(usuario.Id));
             foreach (DataRow row in dt.Rows)
             {
                 permisos.Add(GetById(int.Parse(row["id"].ToString())));
@@ -214,7 +258,6 @@ namespace DAL
             return permisos;
         }
 
-        //AgregarPermisoAUsuario(user, permiso)
         public void AgregarPermisoAUsuario(Usuario usuario, Permiso permiso)
         {
             try
@@ -235,7 +278,6 @@ namespace DAL
             
         }
 
-        //QuitarPermisoAUsuario(user, permiso)
         public void QuitarPermisoAUsuario(Usuario usuario, Permiso permiso)
         {
             SQLConnectionManager.getInstance().ExecuteProcedure("QUITAR_PERMISO_A_USUARIO", sqlParameters(usuario, permiso));

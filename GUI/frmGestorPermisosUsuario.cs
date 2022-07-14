@@ -122,7 +122,7 @@ namespace GUI
             habilitarBotones();
         }
 
-        private void btnQuitarPermiso_Click_1(object sender, EventArgs e)
+        private void btnQuitarPermiso_Click(object sender, EventArgs e)
         {
             if (treeViewPermisosUsuario.SelectedNode != null)
             {
@@ -132,7 +132,7 @@ namespace GUI
             }
         }
 
-        private void btnAgregarPermiso_Click_1(object sender, EventArgs e)
+        private void btnAgregarPermiso_Click(object sender, EventArgs e)
         {
             if (treeViewTodosLosPermisos.SelectedNode != null)
             {

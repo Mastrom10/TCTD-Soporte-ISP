@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CheckEsGrupo = new System.Windows.Forms.CheckBox();
-            this.comboBoxPermisosEnum = new System.Windows.Forms.ComboBox();
-            this.btnCrearPermisoBasico = new System.Windows.Forms.Button();
+            this.btnCrearFamilia = new System.Windows.Forms.Button();
             this.txtboxNombrePermiso = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,56 +41,25 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Permisos de Sistema";
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.CheckEsGrupo);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.comboBoxPermisosEnum);
-            this.panel1.Controls.Add(this.btnCrearPermisoBasico);
+            this.panel1.Controls.Add(this.btnCrearFamilia);
             this.panel1.Controls.Add(this.txtboxNombrePermiso);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 36);
+            this.panel1.Location = new System.Drawing.Point(12, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(301, 100);
+            this.panel1.Size = new System.Drawing.Size(310, 43);
             this.panel1.TabIndex = 2;
             // 
-            // CheckEsGrupo
+            // btnCrearFamilia
             // 
-            this.CheckEsGrupo.AutoSize = true;
-            this.CheckEsGrupo.Location = new System.Drawing.Point(212, 15);
-            this.CheckEsGrupo.Name = "CheckEsGrupo";
-            this.CheckEsGrupo.Size = new System.Drawing.Size(80, 17);
-            this.CheckEsGrupo.TabIndex = 6;
-            this.CheckEsGrupo.Text = "¿Es grupo?";
-            this.CheckEsGrupo.UseVisualStyleBackColor = true;
-            this.CheckEsGrupo.CheckedChanged += new System.EventHandler(this.checkEsGrupo_CheckedChanged);
-            // 
-            // comboBoxPermisosEnum
-            // 
-            this.comboBoxPermisosEnum.FormattingEnabled = true;
-            this.comboBoxPermisosEnum.Location = new System.Drawing.Point(113, 43);
-            this.comboBoxPermisosEnum.Name = "comboBoxPermisosEnum";
-            this.comboBoxPermisosEnum.Size = new System.Drawing.Size(178, 21);
-            this.comboBoxPermisosEnum.TabIndex = 0;
-            // 
-            // btnCrearPermisoBasico
-            // 
-            this.btnCrearPermisoBasico.Location = new System.Drawing.Point(102, 74);
-            this.btnCrearPermisoBasico.Name = "btnCrearPermisoBasico";
-            this.btnCrearPermisoBasico.Size = new System.Drawing.Size(97, 23);
-            this.btnCrearPermisoBasico.TabIndex = 4;
-            this.btnCrearPermisoBasico.Text = "Crear";
-            this.btnCrearPermisoBasico.UseVisualStyleBackColor = true;
-            this.btnCrearPermisoBasico.Click += new System.EventHandler(this.btnCrearPermiso_Click);
+            this.btnCrearFamilia.Location = new System.Drawing.Point(204, 9);
+            this.btnCrearFamilia.Name = "btnCrearFamilia";
+            this.btnCrearFamilia.Size = new System.Drawing.Size(97, 23);
+            this.btnCrearFamilia.TabIndex = 4;
+            this.btnCrearFamilia.Text = "Crear Grupo";
+            this.btnCrearFamilia.UseVisualStyleBackColor = true;
+            this.btnCrearFamilia.Click += new System.EventHandler(this.btnCrearFamilia_Click);
             // 
             // txtboxNombrePermiso
             // 
@@ -117,9 +83,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 17);
+            this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Crear Nuevo permiso";
+            this.label3.Text = "Crear Nuevo Grupo";
             // 
             // treeViewTodosLosPermisos
             // 
@@ -167,7 +133,7 @@
             this.btnEliminarPermiso.Name = "btnEliminarPermiso";
             this.btnEliminarPermiso.Size = new System.Drawing.Size(183, 23);
             this.btnEliminarPermiso.TabIndex = 8;
-            this.btnEliminarPermiso.Text = "EliminarPermiso";
+            this.btnEliminarPermiso.Text = "Eliminar Grupo";
             this.btnEliminarPermiso.UseVisualStyleBackColor = false;
             this.btnEliminarPermiso.Click += new System.EventHandler(this.btnEliminarPermiso_Click);
             // 
@@ -175,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 559);
+            this.ClientSize = new System.Drawing.Size(526, 528);
             this.Controls.Add(this.btnEliminarPermiso);
             this.Controls.Add(this.btnQuitarPermiso);
             this.Controls.Add(this.btnSumarPermiso);
@@ -194,13 +160,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCrearPermisoBasico;
+        private System.Windows.Forms.Button btnCrearFamilia;
         private System.Windows.Forms.TextBox txtboxNombrePermiso;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBoxPermisosEnum;
-        private System.Windows.Forms.CheckBox CheckEsGrupo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TreeView treeViewTodosLosPermisos;
         private System.Windows.Forms.TreeView treeViewTodosLosPermisos2;

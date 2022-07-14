@@ -24,45 +24,24 @@ namespace GUI
 
         private void frmGestorPermisosGrupos_Load(object sender, EventArgs e)
         {
-            comboBoxPermisosEnum.DataSource = Enum.GetValues(typeof(TipoPermiso));
             CargarPermisos();
             HabilitarBotones();
         }
 
-        private void btnCrearPermiso_Click(object sender, EventArgs e)
+        private void btnCrearFamilia_Click(object sender, EventArgs e)
         {
             string nombre = txtboxNombrePermiso.Text;
             if (nombre == "")
             {
-                MessageBox.Show("Debe ingresar un nombre para el Permiso");
+                MessageBox.Show("Debe ingresar un nombre para el Grupo");
                 return;
             }
 
-            if (CheckEsGrupo.Checked) {
-                permisoBLL.CrearFamilia(nombre);
-                txtboxNombrePermiso.Text = "";
-                MessageBox.Show("Grupo creado con éxito");
-            }
-            else
-            {
-                TipoPermiso tipo = (TipoPermiso)comboBoxPermisosEnum.SelectedItem;
-                permisoBLL.CrearPatente(nombre, tipo);
-                txtboxNombrePermiso.Text = "";
-                MessageBox.Show("Permiso creado con éxito");
-            }
+            permisoBLL.CrearFamilia(nombre);
+            txtboxNombrePermiso.Text = "";
+            MessageBox.Show("Grupo creado con éxito");
+           
             CargarPermisos();
-        }
-
-        private void checkEsGrupo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!CheckEsGrupo.Checked)
-            {
-                comboBoxPermisosEnum.Enabled = true;
-            }
-            else
-            {
-                comboBoxPermisosEnum.Enabled = false;
-            }
         }
 
 
@@ -224,5 +203,6 @@ namespace GUI
             }
 
         }
+
     }
 }

@@ -90,7 +90,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(297, 88);
+            this.label4.Location = new System.Drawing.Point(298, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(154, 17);
             this.label4.TabIndex = 6;
@@ -100,7 +100,7 @@
             // 
             this.lblSelectedUser.AutoSize = true;
             this.lblSelectedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedUser.Location = new System.Drawing.Point(457, 88);
+            this.lblSelectedUser.Location = new System.Drawing.Point(298, 91);
             this.lblSelectedUser.Name = "lblSelectedUser";
             this.lblSelectedUser.Size = new System.Drawing.Size(61, 17);
             this.lblSelectedUser.TabIndex = 7;
@@ -118,7 +118,7 @@
             this.btnQuitarPermiso.TabIndex = 8;
             this.btnQuitarPermiso.Text = "Quitar Permiso";
             this.btnQuitarPermiso.UseVisualStyleBackColor = false;
-            this.btnQuitarPermiso.Click += new System.EventHandler(this.btnQuitarPermiso_Click_1);
+            this.btnQuitarPermiso.Click += new System.EventHandler(this.btnQuitarPermiso_Click);
             // 
             // treeViewTodosLosPermisos
             // 
@@ -149,13 +149,13 @@
             this.btnAgregarPermiso.TabIndex = 11;
             this.btnAgregarPermiso.Text = "Asignar Permiso";
             this.btnAgregarPermiso.UseVisualStyleBackColor = false;
-            this.btnAgregarPermiso.Click += new System.EventHandler(this.btnAgregarPermiso_Click_1);
+            this.btnAgregarPermiso.Click += new System.EventHandler(this.btnAgregarPermiso_Click);
             // 
             // frmGestorPermisosUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 654);
+            this.ClientSize = new System.Drawing.Size(541, 493);
             this.Controls.Add(this.btnAgregarPermiso);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.treeViewTodosLosPermisos);

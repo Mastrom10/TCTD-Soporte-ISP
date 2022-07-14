@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
 using SERV;
 
 namespace GUI
@@ -87,6 +88,20 @@ namespace GUI
             gestorPermisosGrupos.MdiParent = this;
             gestorPermisosGrupos.Show();
             
+        }
+
+        private void operacionProtegidaTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestBLL test = new TestBLL();
+            try
+            {
+                MessageBox.Show(test.MostrarMensajeProtegido());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }   
 }
