@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SERV.MultiIdioma;
 
 namespace SERV
 {
@@ -83,6 +84,34 @@ namespace SERV
         }
 
 
+        static List<IIdiomaObserver> _observers = new List<IIdiomaObserver>();
+
+        public static void SuscribirObservador(IIdiomaObserver o)
+        {
+            _observers.Add(o);
+        }
+        public static void DesuscribirObservador(IIdiomaObserver o)
+        {
+            _observers.Remove(o);
+        }
+
+        private static void Notificar(Idioma idioma)
+        {
+            foreach (IIdiomaObserver o in _observers)
+            {
+                o.ActualizarIdioma(idioma);
+            }
+        }
+
+        public static void CambiarIdioma(Idioma idioma)
+        {
+            if (GetSession().IsLogged())
+            {
+                GetSession().usuario.idioma = idioma;
+                
+                Notificar(idioma);
+            }
+        }
 
 
     }

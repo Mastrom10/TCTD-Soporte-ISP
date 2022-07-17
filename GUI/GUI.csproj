@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmABMIdiomas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmABMIdiomas.Designer.cs">
+      <DependentUpon>frmABMIdiomas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestorPermisosGrupos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmABMIdiomas.resx">
+      <DependentUpon>frmABMIdiomas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestorPermisosGrupos.resx">
       <DependentUpon>frmGestorPermisosGrupos.cs</DependentUpon>
     </EmbeddedResource>

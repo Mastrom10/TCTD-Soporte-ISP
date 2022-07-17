@@ -89,6 +89,10 @@
     <Compile Include="EnumUtils.cs" />
     <Compile Include="LoginException.cs" />
     <Compile Include="LoginResult.cs" />
+    <Compile Include="MultiIdioma\Etiqueta.cs" />
+    <Compile Include="MultiIdioma\Idioma.cs" />
+    <Compile Include="MultiIdioma\IIdiomaObserver.cs" />
+    <Compile Include="MultiIdioma\Traduccion.cs" />
     <Compile Include="ServiceEntity.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

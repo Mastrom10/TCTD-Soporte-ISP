@@ -262,3 +262,58 @@ AS
 GO
 
 
+
+
+--TABLE Idioma (
+--	[id] [int] NOT NULL,
+--	[Nombre] [varchar](50) NOT NULL
+-- )
+
+-- CREAR_IDIOMA
+CREATE PROCEDURE CREAR_IDIOMA
+@Id INT, @Nombre VARCHAR(50)
+AS
+	INSERT INTO Idioma
+				(id,
+				 nombre)
+	VALUES      (@Id,
+				 @Nombre)
+				GO
+				
+-- OBTENER_TODOS_IDIOMAS
+CREATE PROCEDURE OBTENER_TODOS_IDIOMAS
+AS
+	SELECT id, nombre from Idioma
+	GO
+
+-- OBTENER_IDIOMA_POR_ID
+CREATE PROCEDURE OBTENER_IDIOMA_POR_ID
+@Id INT, @Nombre VARCHAR(50) = NULL
+AS
+	SELECT id, nombre from Idioma
+	WHERE id = @Id
+GO
+
+-- BORRAR_IDIOMA
+CREATE PROCEDURE BORRAR_IDIOMA
+@Id INT, @Nombre VARCHAR(50) = NULL
+AS
+	DELETE FROM Idioma
+	WHERE id = @Id
+GO
+
+-- ACTUALIZAR_IDIOMA
+CREATE PROCEDURE ACTUALIZAR_IDIOMA
+@Id INT, @Nombre VARCHAR(50)
+AS
+	UPDATE Idioma
+	SET    nombre = @Nombre
+	WHERE id = @Id
+Go
+
+-- OBTENER_MAX_ID_IDIOMA
+CREATE PROCEDURE OBTENER_MAX_ID_IDIOMA
+AS
+	SELECT MAX(id) as id from Idioma
+GO
+

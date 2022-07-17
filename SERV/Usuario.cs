@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using SERV.Composite;
+using SERV.MultiIdioma;
 
 namespace SERV 
 {
@@ -13,6 +14,10 @@ namespace SERV
 
         public string Email { get; set; }
         public string Password { get; set; }
+
+        public Idioma idioma {
+            get;set;
+        } 
 
         public Empleado empleado { get; set; }
 

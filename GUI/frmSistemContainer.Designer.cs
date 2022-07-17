@@ -37,9 +37,13 @@
             this.gestoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestorGruposDePermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operacionProtegidaTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
-            this.operacionProtegidaTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.idiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.traduccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,24 +95,32 @@
             // 
             this.gestoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.permisosToolStripMenuItem,
-            this.gestorGruposDePermisosToolStripMenuItem});
+            this.gestorGruposDePermisosToolStripMenuItem,
+            this.idiomaToolStripMenuItem});
             this.gestoresToolStripMenuItem.Name = "gestoresToolStripMenuItem";
-            this.gestoresToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.gestoresToolStripMenuItem.Text = "Gestores";
+            this.gestoresToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.gestoresToolStripMenuItem.Text = "Configuracion";
             // 
             // permisosToolStripMenuItem
             // 
             this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
-            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.permisosToolStripMenuItem.Text = "Gestor Permisos de Usuario";
+            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.permisosToolStripMenuItem.Text = "Permisos de Usuario";
             this.permisosToolStripMenuItem.Click += new System.EventHandler(this.permisosToolStripMenuItem_Click);
             // 
             // gestorGruposDePermisosToolStripMenuItem
             // 
             this.gestorGruposDePermisosToolStripMenuItem.Name = "gestorGruposDePermisosToolStripMenuItem";
-            this.gestorGruposDePermisosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.gestorGruposDePermisosToolStripMenuItem.Text = "Gestor Grupos de Permisos";
+            this.gestorGruposDePermisosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.gestorGruposDePermisosToolStripMenuItem.Text = "Grupos de Permisos";
             this.gestorGruposDePermisosToolStripMenuItem.Click += new System.EventHandler(this.gestorGruposDePermisosToolStripMenuItem_Click);
+            // 
+            // operacionProtegidaTestToolStripMenuItem
+            // 
+            this.operacionProtegidaTestToolStripMenuItem.Name = "operacionProtegidaTestToolStripMenuItem";
+            this.operacionProtegidaTestToolStripMenuItem.Size = new System.Drawing.Size(145, 20);
+            this.operacionProtegidaTestToolStripMenuItem.Text = "OperacionProtegidaTest";
+            this.operacionProtegidaTestToolStripMenuItem.Click += new System.EventHandler(this.operacionProtegidaTestToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -126,12 +138,34 @@
             this.StatusSession.Size = new System.Drawing.Size(100, 17);
             this.StatusSession.Text = "¿Session Iniciada?";
             // 
-            // operacionProtegidaTestToolStripMenuItem
+            // idiomaToolStripMenuItem
             // 
-            this.operacionProtegidaTestToolStripMenuItem.Name = "operacionProtegidaTestToolStripMenuItem";
-            this.operacionProtegidaTestToolStripMenuItem.Size = new System.Drawing.Size(145, 20);
-            this.operacionProtegidaTestToolStripMenuItem.Text = "OperacionProtegidaTest";
-            this.operacionProtegidaTestToolStripMenuItem.Click += new System.EventHandler(this.operacionProtegidaTestToolStripMenuItem_Click);
+            this.idiomaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aBMIdiomasToolStripMenuItem,
+            this.traduccionesToolStripMenuItem,
+            this.cambiarIdiomaToolStripMenuItem});
+            this.idiomaToolStripMenuItem.Name = "idiomaToolStripMenuItem";
+            this.idiomaToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.idiomaToolStripMenuItem.Text = "Idioma";
+            // 
+            // aBMIdiomasToolStripMenuItem
+            // 
+            this.aBMIdiomasToolStripMenuItem.Name = "aBMIdiomasToolStripMenuItem";
+            this.aBMIdiomasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aBMIdiomasToolStripMenuItem.Text = "ABM Idiomas";
+            this.aBMIdiomasToolStripMenuItem.Click += new System.EventHandler(this.aBMIdiomasToolStripMenuItem_Click);
+            // 
+            // traduccionesToolStripMenuItem
+            // 
+            this.traduccionesToolStripMenuItem.Name = "traduccionesToolStripMenuItem";
+            this.traduccionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.traduccionesToolStripMenuItem.Text = "Traducciones";
+            // 
+            // cambiarIdiomaToolStripMenuItem
+            // 
+            this.cambiarIdiomaToolStripMenuItem.Name = "cambiarIdiomaToolStripMenuItem";
+            this.cambiarIdiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cambiarIdiomaToolStripMenuItem.Text = "Cambiar Idioma";
             // 
             // frmSistemConteiner
             // 
@@ -167,6 +201,10 @@
         private System.Windows.Forms.ToolStripMenuItem permisosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestorGruposDePermisosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operacionProtegidaTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem idiomaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBMIdiomasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem traduccionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
     }
 }
 

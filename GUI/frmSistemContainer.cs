@@ -103,5 +103,12 @@ namespace GUI
 
             }
         }
+
+        private void aBMIdiomasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmABMIdiomas frmABMIdiomas = new frmABMIdiomas();
+            frmABMIdiomas.MdiParent = this;
+            frmABMIdiomas.Show();
+        }
     }   
 }

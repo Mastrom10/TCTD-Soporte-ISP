@@ -189,7 +189,7 @@ namespace DAL
                     foreach (DataRow row in dtHijos.Rows)
                     {
                         Permiso permisoHijo = GetById(int.Parse(row["id"].ToString()));
-                        familia.AgregarHijo(permisoHijo);
+                        familia.AgregarHijo(permisoHijo);   
                     }
                     return familia;
                 }
