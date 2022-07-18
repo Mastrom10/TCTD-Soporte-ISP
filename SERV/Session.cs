@@ -15,6 +15,7 @@ namespace SERV
 
         private static Session _session;
         private static object _lock = new object();
+        public static Idioma defaultIdioma = new Idioma() { Id = 1, Nombre = "Español" };
         private Session(){}
 
         public static Session GetSession()
@@ -32,6 +33,7 @@ namespace SERV
         public void Login(Usuario usuario)
         {
             this.usuario = usuario;
+            CambiarIdioma(usuario.idioma);
         }
 
         public void Logout()
@@ -110,6 +112,14 @@ namespace SERV
                 GetSession().usuario.idioma = idioma;
                 
                 Notificar(idioma);
+            }
+        }
+
+        public static void CambiarIdioma()
+        {
+            if (GetSession().IsLogged())
+            {
+                Notificar(Session.GetSession().usuario.idioma);
             }
         }
 

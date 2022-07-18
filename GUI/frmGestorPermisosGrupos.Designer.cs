@@ -31,15 +31,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCrearFamilia = new System.Windows.Forms.Button();
             this.txtboxNombrePermiso = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblCrearNuevoGrupo = new System.Windows.Forms.Label();
             this.treeViewTodosLosPermisos = new System.Windows.Forms.TreeView();
             this.treeViewTodosLosPermisos2 = new System.Windows.Forms.TreeView();
             this.btnSumarPermiso = new System.Windows.Forms.Button();
             this.btnQuitarPermiso = new System.Windows.Forms.Button();
             this.btnEliminarPermiso = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblListadoDeGrupos = new System.Windows.Forms.Label();
+            this.lblTodosLosPermisos = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +48,7 @@
             // 
             this.panel1.Controls.Add(this.btnCrearFamilia);
             this.panel1.Controls.Add(this.txtboxNombrePermiso);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblNombre);
             this.panel1.Location = new System.Drawing.Point(12, 33);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(310, 43);
@@ -71,24 +71,24 @@
             this.txtboxNombrePermiso.Size = new System.Drawing.Size(145, 20);
             this.txtboxNombrePermiso.TabIndex = 3;
             // 
-            // label2
+            // lblNombre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nombre";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(4, 15);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.TabIndex = 2;
+            this.lblNombre.Text = "Nombre";
             // 
-            // label3
+            // lblCrearNuevoGrupo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 17);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Crear Nuevo Grupo";
+            this.lblCrearNuevoGrupo.AutoSize = true;
+            this.lblCrearNuevoGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCrearNuevoGrupo.Location = new System.Drawing.Point(12, 13);
+            this.lblCrearNuevoGrupo.Name = "lblCrearNuevoGrupo";
+            this.lblCrearNuevoGrupo.Size = new System.Drawing.Size(149, 17);
+            this.lblCrearNuevoGrupo.TabIndex = 3;
+            this.lblCrearNuevoGrupo.Text = "Crear Nuevo Grupo";
             // 
             // treeViewTodosLosPermisos
             // 
@@ -140,25 +140,25 @@
             this.btnEliminarPermiso.UseVisualStyleBackColor = false;
             this.btnEliminarPermiso.Click += new System.EventHandler(this.btnEliminarPermiso_Click);
             // 
-            // label1
+            // lblListadoDeGrupos
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 130);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 17);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Listado de Grupos";
+            this.lblListadoDeGrupos.AutoSize = true;
+            this.lblListadoDeGrupos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListadoDeGrupos.Location = new System.Drawing.Point(16, 130);
+            this.lblListadoDeGrupos.Name = "lblListadoDeGrupos";
+            this.lblListadoDeGrupos.Size = new System.Drawing.Size(142, 17);
+            this.lblListadoDeGrupos.TabIndex = 9;
+            this.lblListadoDeGrupos.Text = "Listado de Grupos";
             // 
-            // label4
+            // lblTodosLosPermisos
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(322, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 17);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Todos los Permisos";
+            this.lblTodosLosPermisos.AutoSize = true;
+            this.lblTodosLosPermisos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTodosLosPermisos.Location = new System.Drawing.Point(322, 130);
+            this.lblTodosLosPermisos.Name = "lblTodosLosPermisos";
+            this.lblTodosLosPermisos.Size = new System.Drawing.Size(150, 17);
+            this.lblTodosLosPermisos.TabIndex = 10;
+            this.lblTodosLosPermisos.Text = "Todos los Permisos";
             // 
             // label5
             // 
@@ -176,14 +176,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 528);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTodosLosPermisos);
+            this.Controls.Add(this.lblListadoDeGrupos);
             this.Controls.Add(this.btnEliminarPermiso);
             this.Controls.Add(this.btnQuitarPermiso);
             this.Controls.Add(this.btnSumarPermiso);
             this.Controls.Add(this.treeViewTodosLosPermisos2);
             this.Controls.Add(this.treeViewTodosLosPermisos);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblCrearNuevoGrupo);
             this.Controls.Add(this.panel1);
             this.Name = "frmGestorPermisosGrupos";
             this.Text = "frmGestorPermisosGrupos";
@@ -199,15 +199,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCrearFamilia;
         private System.Windows.Forms.TextBox txtboxNombrePermiso;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblCrearNuevoGrupo;
         private System.Windows.Forms.TreeView treeViewTodosLosPermisos;
         private System.Windows.Forms.TreeView treeViewTodosLosPermisos2;
         private System.Windows.Forms.Button btnSumarPermiso;
         private System.Windows.Forms.Button btnQuitarPermiso;
         private System.Windows.Forms.Button btnEliminarPermiso;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblListadoDeGrupos;
+        private System.Windows.Forms.Label lblTodosLosPermisos;
         private System.Windows.Forms.Label label5;
     }
 }

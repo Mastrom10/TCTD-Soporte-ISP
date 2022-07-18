@@ -9,5 +9,10 @@ namespace SERV.MultiIdioma
     public class Idioma : ServiceEntity
     {
         public string Nombre { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

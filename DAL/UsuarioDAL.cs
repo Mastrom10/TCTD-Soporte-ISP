@@ -14,10 +14,12 @@ namespace DAL
     {
         PermisoDAL permisoDAL;
         EmpleadoDAL empleadoDAL;
+        IdiomaDAL idiomaDAL;
         public UsuarioDAL()
         {
             this.empleadoDAL = new EmpleadoDAL();
             this.permisoDAL = new PermisoDAL();
+            this.idiomaDAL = new IdiomaDAL();
         }
 
         public override SqlParameter[] sqlParameters(Usuario usuario)
@@ -63,6 +65,7 @@ namespace DAL
                 usuario.Password = row["HashPassword"].ToString();
                 usuario.empleado = this.empleadoDAL.GetById(int.Parse(row["FK_id_Empleado"].ToString()));
                 usuario.Permisos = this.permisoDAL.GetByUser(usuario);
+                usuario.idioma = this.idiomaDAL.GetIdiomaFromUser(usuario);
                 usuarios.Add(usuario);
             }
             return usuarios;
@@ -98,6 +101,7 @@ namespace DAL
                 usuario.Password = dt.Rows[0]["HashPassword"].ToString();
                 usuario.empleado = this.empleadoDAL.GetById(int.Parse(dt.Rows[0]["FK_id_Empleado"].ToString()));
                 usuario.Permisos = this.permisoDAL.GetByUser(usuario);
+                usuario.idioma = this.idiomaDAL.GetIdiomaFromUser(usuario);
                 return usuario;
             }
             else {
@@ -121,6 +125,7 @@ namespace DAL
                 usuario.Password = row["HashPassword"].ToString();
                 usuario.empleado = this.empleadoDAL.GetById(int.Parse(row["FK_id_Empleado"].ToString()));
                 usuario.Permisos = this.permisoDAL.GetByUser(usuario);
+                usuario.idioma = this.idiomaDAL.GetIdiomaFromUser(usuario);
             }
             return usuario;
             

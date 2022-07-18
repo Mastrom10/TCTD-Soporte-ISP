@@ -10,24 +10,30 @@ using System.Windows.Forms;
 using BLL;
 using SERV.Composite;
 using SERV;
+using SERV.MultiIdioma;
 
 namespace GUI
 {
-    public partial class frmGestorPermisosUsuario : Form
+    public partial class frmGestorPermisosUsuario : Form, IIdiomaObserver
     {
         PermisoBLL permisoBLL = new PermisoBLL();
         UsuarioBLL usuarioBLL = new UsuarioBLL();
+        TraduccionBLL traduccionBLL;
+
 
         Usuario selectedUser = null;
         public frmGestorPermisosUsuario()
         {
+            traduccionBLL = new TraduccionBLL();
             InitializeComponent();
         }
 
         private void frmGestorPermisos_Load(object sender, EventArgs e)
         {
+            Session.SuscribirObservador(this);
             CargarPermisos();
             CargarUsuarios();
+            CargarIdioma();
         }
 
 
@@ -148,6 +154,39 @@ namespace GUI
                     MessageBox.Show(ex.Message);
                 }
                 CargarPermisosUsuario(selectedUser);
+            }
+        }
+
+        private void CargarIdioma()
+        {
+            if (Session.GetSession().IsLogged())
+            {
+                ActualizarIdioma(Session.GetSession().usuario.idioma);
+            }
+            else
+            {
+                ActualizarIdioma(Session.defaultIdioma);
+            }
+        }
+
+        public void ActualizarIdioma(Idioma idioma)
+        {
+            List<Traduccion> traducciones = traduccionBLL.GetAllByIdioma(idioma);
+            try
+            {
+                lblTituloGestorPermisos.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblTituloGestorPermisos").traduccion;
+                this.Text = traducciones.Find(x => x.etiqueta.Nombre == "frmGestorPermisosUsuario").traduccion;
+                lblUsuario.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblUsuario").traduccion;
+                lblUsuarioSeleccionado.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblUsuarioSeleccionado").traduccion;
+                lblListPermisosDeUsuario.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblListPermisosDeUsuario").traduccion;
+                lblListTodosLosPermisos.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblListTodosLosPermisos").traduccion;
+                btnQuitarPermiso.Text = traducciones.Find(x => x.etiqueta.Nombre == "btnQuitarPermiso").traduccion;
+                btnAgregarPermiso.Text = traducciones.Find(x => x.etiqueta.Nombre == "btnAgregarPermiso").traduccion;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontraron/ Faltan traducciones para el idioma seleccionado");
+
             }
         }
     }

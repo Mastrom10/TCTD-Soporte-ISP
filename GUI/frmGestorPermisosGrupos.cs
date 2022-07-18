@@ -1,31 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BE;
 using BLL;
 using SERV.Composite;
+using SERV.MultiIdioma;
+using SERV;
 
 namespace GUI
 {
-    public partial class frmGestorPermisosGrupos : Form
+    public partial class frmGestorPermisosGrupos : Form, IIdiomaObserver 
     {
         PermisoBLL permisoBLL;
+        TraduccionBLL traduccionBLL;
+        List<Traduccion> traducciones;
+
         public frmGestorPermisosGrupos()
         {
             InitializeComponent();
             permisoBLL = new PermisoBLL();
+            traduccionBLL = new TraduccionBLL();
         }
 
         private void frmGestorPermisosGrupos_Load(object sender, EventArgs e)
         {
+            Session.SuscribirObservador(this);
             CargarPermisos();
             HabilitarBotones();
+            CargarIdioma();
         }
 
         private void btnCrearFamilia_Click(object sender, EventArgs e)
@@ -33,13 +37,13 @@ namespace GUI
             string nombre = txtboxNombrePermiso.Text;
             if (nombre == "")
             {
-                MessageBox.Show("Debe ingresar un nombre para el Grupo");
+                MessageBox.Show(Tag("TagGrupoErrorNecesitaNombre"));
                 return;
             }
 
             permisoBLL.CrearFamilia(nombre);
             txtboxNombrePermiso.Text = "";
-            MessageBox.Show("Grupo creado con éxito");
+            MessageBox.Show(Tag("TagGrupoCreadoOK"));
            
             CargarPermisos();
         }
@@ -181,11 +185,8 @@ namespace GUI
             if (treeViewTodosLosPermisos2.SelectedNode != null && treeViewTodosLosPermisos2.SelectedNode.Text != "Permisos")
             {
                 // messagebox está seguro?
-                if (MessageBox.Show("Está a punto de eliminar el permiso: " + treeViewTodosLosPermisos2.SelectedNode.Text +
-                    "\n\nTodos los permisos Hijos quedarán Huerfanos." +
-                    "\nTambien se le quitará el permiso a todos los usuarios que lo tengan." +
-                    "\nESTA ES UNA OPERACION PELIGROSA QUE PODRIA AFECTAR A LA INTEGRIDAD DEL SISTEMA" +
-                    "\n\n¿Desea Eliminar el Permiso?", "Eliminar permiso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(Tag("TagAlertaBorrarPermisoP1") + treeViewTodosLosPermisos2.SelectedNode.Text + Tag("TagAlertaBorrarPermisoP2"), 
+                    Tag("TagEliminarPermiso"), MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Permiso permiso = (Permiso)treeViewTodosLosPermisos2.SelectedNode.Tag;
                     try
@@ -204,5 +205,55 @@ namespace GUI
 
         }
 
+        public void ActualizarIdioma(Idioma idioma)
+        {
+            traducciones = traduccionBLL.GetAllByIdioma(idioma);
+            try
+            {
+                lblCrearNuevoGrupo.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblCrearNuevoGrupo").traduccion;
+                lblNombre.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblNombre").traduccion;
+                btnCrearFamilia.Text = traducciones.Find(x => x.etiqueta.Nombre == "btnCrearFamilia").traduccion;
+                lblListadoDeGrupos.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblListadoDeGrupos").traduccion;
+                lblTodosLosPermisos.Text = traducciones.Find(x => x.etiqueta.Nombre == "lblTodosLosPermisos").traduccion;
+                btnQuitarPermiso.Text = traducciones.Find(x => x.etiqueta.Nombre == "btnQuitarPermiso").traduccion;
+                btnSumarPermiso.Text = traducciones.Find(x => x.etiqueta.Nombre == "btnSumarPermiso").traduccion;
+                btnEliminarPermiso.Text = traducciones.Find(x => x.etiqueta.Nombre == "btnEliminarPermiso").traduccion;
+                this.Text = traducciones.Find(x => x.etiqueta.Nombre == "frmPermisos").traduccion;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontraron/ Faltan traducciones para el idioma seleccionado");
+
+            }
+        }
+
+
+        private void CargarIdioma()
+        {
+            if (Session.GetSession().IsLogged())
+            {
+                ActualizarIdioma(Session.GetSession().usuario.idioma);
+            }
+            else
+            {
+                ActualizarIdioma(Session.defaultIdioma);
+            }
+        }
+
+        public string Tag(string tag)
+        {
+            string traduccion = tag;
+            try
+            {
+                traduccion = traducciones.Find(x => x.etiqueta.Nombre == tag).traduccion;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontraron/ Faltan traducciones para la etiqueta " + tag);
+            }
+            return traduccion;
+        }
+
+        
     }
 }

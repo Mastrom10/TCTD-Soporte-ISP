@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SERV.MultiIdioma;
+using SERV;
+
 namespace DAL
 {
     public  class IdiomaDAL : GenericDAL<Idioma>
@@ -96,11 +98,58 @@ namespace DAL
             return parametros;
         }
 
+        private SqlParameter[] sqlParameters(Idioma idioma, Usuario usuario)
+        {
+            SqlParameter[] parametros = new SqlParameter[2];
+            parametros[0] = new SqlParameter("@Id_Idioma", idioma.Id);
+            parametros[0].DbType = System.Data.DbType.Int32;
+            parametros[1] = new SqlParameter("@Id_Usuario", usuario.Id);
+            parametros[1].DbType = System.Data.DbType.Int32;
+            return parametros;
+        }
+
+        private SqlParameter[] sqlParameters(Usuario usuario)
+        {
+            SqlParameter[] parametros = new SqlParameter[1];
+            parametros[0] = new SqlParameter("@Id_Usuario", usuario.Id);
+            parametros[0].DbType = System.Data.DbType.Int32;
+            return parametros;
+        }
+
         public override void Update(Idioma entity)
         {
             //ACTUALIZAR_IDIOMA
             SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_IDIOMA", sqlParameters(entity));
             
         }
+
+        public void SetIdiomaToUser(Idioma Idioma, Usuario Usuario)
+        {
+            //SET_IDIOMA_TO_USER
+            SQLConnectionManager.getInstance().ExecuteProcedure("SET_IDIOMA_TO_USER", sqlParameters(Idioma, Usuario));
+        }
+
+        public Idioma GetIdiomaFromUser(Usuario Usuario)
+        {
+            //GET_IDIOMA_FROM_USER
+            DataTable dataTable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("GET_IDIOMA_FROM_USER", sqlParameters(Usuario));
+            if (dataTable.Rows.Count > 0)
+            {
+                Idioma idioma = GetById(Convert.ToInt32(dataTable.Rows[0]["FK_id_idioma"]));
+                if (idioma != null)
+                {
+                    return idioma;
+                }
+                else
+                {
+                    return GetById(1);
+                }
+            }
+            else {
+                return GetById(1);
+            }
+        }
+
+        
     }
 }

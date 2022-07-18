@@ -10,5 +10,10 @@ namespace SERV.MultiIdioma
     {
         public string Nombre { get; set; }
         public string defaultText { get; set; }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

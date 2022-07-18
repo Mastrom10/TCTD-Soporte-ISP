@@ -317,3 +317,86 @@ AS
 	SELECT MAX(id) as id from Idioma
 GO
 
+
+
+CREATE PROCEDURE OBTENER_TODAS_TRADUCCIONES
+AS
+SELECT * from Traduccion
+GO
+
+CREATE PROCEDURE OBTENER_TRADUCCIONES_POR_IDIOMA
+@Id INT, @Nombre_Idioma VARCHAR(50) = NULL
+AS
+SELECT       e.id as Id_Etiqueta, e.nombre as NombreEtiqueta, e.defaultText as defaultText, t.Traduccion as Traduccion
+FROM            dbo.Etiqueta AS e LEFT OUTER JOIN
+                             (SELECT        FK_id_idioma, FK_id_etiqueta, Traduccion
+                               FROM         Traducciones
+                               WHERE        FK_id_idioma = @Id) AS t ON e.id = t.FK_id_etiqueta
+GO
+
+-- UPDATE_TRADUCCIONES
+CREATE PROCEDURE UPDATE_TRADUCCIONES
+@Id_Idioma INT, @Id_Etiqueta INT, @Traduccion VARCHAR(200) = NULL
+AS
+BEGIN
+	IF NOT @Traduccion IS NULL
+	BEGIN
+		IF NOT EXISTS (
+		SELECT * FROM Traducciones 
+		WHERE FK_id_idioma = @Id_Idioma AND FK_id_etiqueta = @Id_Etiqueta
+		) 
+		BEGIN
+			INSERT INTO Traducciones
+						(FK_id_idioma,
+						 FK_id_etiqueta,
+						 Traduccion)
+			VALUES      (@Id_Idioma,
+						 @Id_Etiqueta,
+						 @Traduccion)
+		END
+		ELSE
+		BEGIN
+			UPDATE Traducciones
+			SET Traduccion = @Traduccion
+			WHERE FK_id_idioma = @Id_Idioma AND FK_id_etiqueta = @Id_Etiqueta
+		END
+	END
+END
+GO
+
+
+-- SET_IDIOMA_TO_USER
+CREATE PROCEDURE SET_IDIOMA_TO_USER
+@Id_Usuario INT, @Id_Idioma INT
+AS
+BEGIN
+	IF NOT EXISTS (
+	SELECT * FROM Usuario_x_Idioma
+	WHERE FK_id_usuario = @Id_Usuario)
+	BEGIN
+		INSERT INTO Usuario_x_Idioma
+					(FK_id_usuario,
+					 FK_id_idioma)
+		VALUES      (@Id_Usuario,
+					 @Id_Idioma)
+	END
+	ELSE
+	BEGIN
+		UPDATE Usuario_x_Idioma
+		SET FK_id_idioma = @Id_Idioma
+		WHERE FK_id_usuario = @Id_Usuario
+	END
+	
+END
+
+GO
+
+-- GET_IDIOMA_FROM_USER
+CREATE PROCEDURE GET_IDIOMA_FROM_USER
+@Id_Usuario INT
+AS
+BEGIN
+	SELECT FK_id_idioma FROM Usuario_x_Idioma
+	WHERE FK_id_usuario = @Id_Usuario
+END
+GO

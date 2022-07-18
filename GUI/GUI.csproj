@@ -52,6 +52,12 @@
     <Compile Include="frmABMIdiomas.Designer.cs">
       <DependentUpon>frmABMIdiomas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCambiarIdioma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambiarIdioma.Designer.cs">
+      <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestorPermisosGrupos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,10 +82,19 @@
     <Compile Include="frmSistemContainer.Designer.cs">
       <DependentUpon>frmSistemContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTraducciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTraducciones.Designer.cs">
+      <DependentUpon>frmTraducciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmABMIdiomas.resx">
       <DependentUpon>frmABMIdiomas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCambiarIdioma.resx">
+      <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestorPermisosGrupos.resx">
       <DependentUpon>frmGestorPermisosGrupos.cs</DependentUpon>
@@ -92,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSistemContainer.resx">
       <DependentUpon>frmSistemContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTraducciones.resx">
+      <DependentUpon>frmTraducciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
