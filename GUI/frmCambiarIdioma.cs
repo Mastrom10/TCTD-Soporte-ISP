@@ -38,8 +38,15 @@ namespace GUI
         }
 
         void CargarIdiomas() {
-            comboBoxIdiomas.DataSource = idiomaBLL.GetAll();
-            comboBoxIdiomas.DisplayMember = "Nombre";
+            try
+            {
+                comboBoxIdiomas.DataSource = idiomaBLL.GetAll();
+                comboBoxIdiomas.DisplayMember = "Nombre";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSeleccionarIdioma_Click(object sender, EventArgs e)
@@ -51,7 +58,7 @@ namespace GUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

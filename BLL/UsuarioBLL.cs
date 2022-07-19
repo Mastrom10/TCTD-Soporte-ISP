@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SERV;
 using DAL;
+using BE;
 
 namespace BLL
 {
@@ -12,10 +13,15 @@ namespace BLL
     {
         public UsuarioBLL()
         {
+            permiso = TipoPermiso.CRUDUsuario;
             dal = new UsuarioDAL();
         }
 
         public override void Create(Usuario usuario) {
+            TipoPermiso permisoEspecifico = TipoPermiso.CrearUsuario;
+            if (!Session.GetSession().TienePermiso(permisoEspecifico)) throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + permisoEspecifico.ToString());
+
+
             usuario.Password = Cryptography.CalculateHash(usuario.Password);
             base.Create(usuario);
         }

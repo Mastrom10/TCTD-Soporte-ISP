@@ -37,8 +37,15 @@ namespace GUI
         }
 
         private void ActualizarGrilla() {
-            listBoxIdiomas.DataSource = IdiomaBLL.GetAll();
-            listBoxIdiomas.DisplayMember = "Nombre";
+            try
+            {
+                listBoxIdiomas.DataSource = IdiomaBLL.GetAll();
+                listBoxIdiomas.DisplayMember = "Nombre";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -66,7 +73,7 @@ namespace GUI
 
         private void btnGuardarIdioma_Click(object sender, EventArgs e)
         {
-            if (textBoxModificarIdioma.Text != "")
+            if (textBoxModificarIdioma.Text != "" && listBoxIdiomas.SelectedItem != null)
             {
                 Idioma idioma = (Idioma)listBoxIdiomas.SelectedItem;
                 idioma.Nombre = textBoxModificarIdioma.Text;
@@ -85,19 +92,25 @@ namespace GUI
 
         private void btnEliminarIdioma_Click(object sender, EventArgs e)
         {
-            Idioma idioma = (Idioma)listBoxIdiomas.SelectedItem;
-            try
+            if (listBoxIdiomas.SelectedItem != null)
             {
-                //Messagebox confirmacion
-                if (MessageBox.Show(Tag("TagAlertaBorrarIdioma") + idioma.Nombre, Tag("TagEliminarIdioma"), MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Idioma idioma = (Idioma)listBoxIdiomas.SelectedItem;
+                try
                 {
-                    IdiomaBLL.Delete(idioma);
-                    MessageBox.Show(Tag("TagEliminadoOK"));
+                    //Messagebox confirmacion
+                    if (MessageBox.Show(Tag("TagAlertaBorrarIdioma") + idioma.Nombre, Tag("TagEliminarIdioma"), MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        IdiomaBLL.Delete(idioma);
+                        MessageBox.Show(Tag("TagEliminadoOK"));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(Tag("TagEliminadoError") + ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(Tag("TagEliminadoError") + ex.Message);
+            else {
+                MessageBox.Show(Tag("TagErrorEliminarIdiomaNoSelected"));
             }
             ActualizarGrilla();
         }
@@ -136,7 +149,9 @@ namespace GUI
             string traduccion = tag;
             try
             {
+                if (traducciones != null) { 
                 traduccion = traducciones.Find(x => x.etiqueta.Nombre == tag).traduccion;
+                }
             }
             catch (Exception ex)
             {

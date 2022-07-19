@@ -13,9 +13,8 @@ namespace BLL
 
         public string MostrarMensajeProtegido()
         {
-            if (!Session.GetSession().TienePermiso(TipoPermiso.MostrarMensajeProtegido))
-            { throw new Exception("No tiene permiso para realizar esta operacion" +
-                "\nCodigo de Operacion: " + TipoPermiso.MostrarMensajeProtegido.ToString()); }
+            TipoPermiso permisoEspecifico = TipoPermiso.MostrarMensajeProtegido;
+            if (!Session.GetSession().TienePermiso(permisoEspecifico)) throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + permisoEspecifico.ToString());
             
             
             

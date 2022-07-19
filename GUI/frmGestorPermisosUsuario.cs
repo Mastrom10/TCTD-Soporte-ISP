@@ -43,15 +43,33 @@ namespace GUI
         }
 
         private void CargarUsuarios() {
-            List<Usuario> usuarios = usuarioBLL.GetAll();
-            comboBoxUsuario.DataSource = usuarios;
-            comboBoxUsuario.DisplayMember = "Email";
+            try
+            {
+                List<Usuario> usuarios = usuarioBLL.GetAll();
+                comboBoxUsuario.DataSource = usuarios;
+                comboBoxUsuario.DisplayMember = "Email";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
         private void CargarPermisos() {
-            List<Permiso> todosLosPermisos = permisoBLL.GetAll();
-            CompletarLista(treeViewTodosLosPermisos, todosLosPermisos, true);
+
+            try
+            {
+                List<Permiso> todosLosPermisos = permisoBLL.GetAll();
+                CompletarLista(treeViewTodosLosPermisos, todosLosPermisos, true);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
+           
         }
 
         private void CompletarLista(TreeView tv, List<Permiso> listaDePermisos, bool validarPadre = true) {
@@ -151,7 +169,7 @@ namespace GUI
                 catch (Exception ex)
                 {
                     //show error
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 CargarPermisosUsuario(selectedUser);
             }

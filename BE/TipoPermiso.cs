@@ -8,12 +8,21 @@ namespace BE
 {
     public enum TipoPermiso
     {
-        UserProfile,
-        UserRead,
-        UserWrite,
-        CustomerSupportProfile,
-        TicketCreate,
-        MostrarMensajeProtegido
-
+        CRUDUsuario,
+        CRUDAdmin,
+        CRUDTraduccion,
+        UpdateManyIdioma,
+        CRUDPermiso,
+        CrearUsuario,
+        MostrarMensajeProtegido,
+        PermisoDesvincularPadreHijo,
+        PermisoVincularPadreHijo,
+        QuitarPermisoAUsuario,
+        PermisoAgregarPermisoAUsuario,
+        PermisoObtenerPermisosPorUsuario,
+        PermisoEliminarPermisos,
+        PermisoCrearGrupos,
+        CRUDIdioma,
+        IdiomaSeleccionarIdioma
     }
 }

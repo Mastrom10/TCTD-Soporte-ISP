@@ -34,8 +34,15 @@ namespace GUI
         }
 
         void CargarIdiomas() {
-            comboBoxIdiomas.DataSource = IdiomaBLL.GetAll();
-            comboBoxIdiomas.DisplayMember = "Nombre";
+            try
+            {
+                comboBoxIdiomas.DataSource = IdiomaBLL.GetAll();
+                comboBoxIdiomas.DisplayMember = "Nombre";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         void CargarTraducciones() {
@@ -52,11 +59,20 @@ namespace GUI
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
-            List<Traduccion> traducciones = dataGridViewTraducciones.DataSource as List<Traduccion>;
-            traduccionBLL.UpdateMany(traducciones);
-            CargarTraducciones();
-            Session.CambiarIdioma();
-            MessageBox.Show("Se han guardado los cambios");
+
+            try
+            {
+                List<Traduccion> traducciones = dataGridViewTraducciones.DataSource as List<Traduccion>;
+                traduccionBLL.UpdateMany(traducciones);
+                CargarTraducciones();
+                Session.CambiarIdioma();
+                MessageBox.Show("Se han guardado los cambios");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void ActualizarIdioma(Idioma idioma)

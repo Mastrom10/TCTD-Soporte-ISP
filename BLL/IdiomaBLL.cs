@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DAL;
 using SERV.MultiIdioma;
 using SERV;
+using BE;
 
 namespace BLL
 {
@@ -13,11 +14,16 @@ namespace BLL
     {
         public IdiomaBLL()
         {
+            permiso = TipoPermiso.CRUDIdioma;
             dal = new IdiomaDAL();
         }
 
         public void SeleccionarIdioma(Idioma idioma)
         {
+            TipoPermiso permisoEspecifico = TipoPermiso.IdiomaSeleccionarIdioma;
+            if (!Session.GetSession().TienePermiso(permisoEspecifico)) throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + permisoEspecifico.ToString());
+
+
             if (Session.GetSession().IsLogged())
             {
                 ((IdiomaDAL)dal).SetIdiomaToUser(idioma, Session.GetSession().usuario);

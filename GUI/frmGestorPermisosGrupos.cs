@@ -41,9 +41,18 @@ namespace GUI
                 return;
             }
 
-            permisoBLL.CrearFamilia(nombre);
-            txtboxNombrePermiso.Text = "";
-            MessageBox.Show(Tag("TagGrupoCreadoOK"));
+            try
+            {
+                permisoBLL.CrearFamilia(nombre);
+                txtboxNombrePermiso.Text = "";
+                MessageBox.Show(Tag("TagGrupoCreadoOK"));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
            
             CargarPermisos();
         }
@@ -52,10 +61,18 @@ namespace GUI
 
         private void CargarPermisos()
         {
-            List<Permiso> todosLosPermisos = permisoBLL.GetAll();
+            try
+            {
+                List<Permiso> todosLosPermisos = permisoBLL.GetAll();
 
-            CompletarLista(treeViewTodosLosPermisos, todosLosPermisos.Where(p => p is Familia).ToList(), true);
-            CompletarLista(treeViewTodosLosPermisos2, todosLosPermisos, true);
+                CompletarLista(treeViewTodosLosPermisos, todosLosPermisos.Where(p => p is Familia).ToList(), true);
+                CompletarLista(treeViewTodosLosPermisos2, todosLosPermisos, true);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CompletarLista(TreeView tv, List<Permiso> listaDePermisos, bool validarPadre = true)
@@ -120,7 +137,7 @@ namespace GUI
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
                 CargarPermisos();
@@ -138,7 +155,7 @@ namespace GUI
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 CargarPermisos();
             }
@@ -195,7 +212,7 @@ namespace GUI
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     CargarPermisos();
                 }
