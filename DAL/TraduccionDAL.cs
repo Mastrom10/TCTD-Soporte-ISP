@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SERV.MultiIdioma; 
 
 namespace DAL
@@ -67,7 +64,7 @@ namespace DAL
             return parametros;
         }
 
-        public SqlParameter[] sqlParameters(Idioma idioma)
+        private SqlParameter[] sqlParameters(Idioma idioma)
         {
             SqlParameter[] parametros = new SqlParameter[2];
             parametros[0] = new SqlParameter("@Id", idioma.Id);

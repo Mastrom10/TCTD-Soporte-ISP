@@ -42,7 +42,7 @@
             this.btnLogin.Location = new System.Drawing.Point(71, 123);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(114, 23);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Iniciar Session";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -52,7 +52,7 @@
             this.btnSalirLogin.Location = new System.Drawing.Point(221, 123);
             this.btnSalirLogin.Name = "btnSalirLogin";
             this.btnSalirLogin.Size = new System.Drawing.Size(114, 23);
-            this.btnSalirLogin.TabIndex = 1;
+            this.btnSalirLogin.TabIndex = 3;
             this.btnSalirLogin.Text = "Salir";
             this.btnSalirLogin.UseVisualStyleBackColor = true;
             this.btnSalirLogin.Click += new System.EventHandler(this.btnSalirLogin_Click);
@@ -80,7 +80,7 @@
             this.txtEmail.Location = new System.Drawing.Point(154, 35);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(181, 20);
-            this.txtEmail.TabIndex = 4;
+            this.txtEmail.TabIndex = 0;
             // 
             // txtPassword
             // 
@@ -88,7 +88,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(181, 20);
-            this.txtPassword.TabIndex = 5;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
             // 
             // frmLogin

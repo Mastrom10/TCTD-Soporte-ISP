@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using BLL;
@@ -65,7 +59,6 @@ namespace GUI
                 List<Traduccion> traducciones = dataGridViewTraducciones.DataSource as List<Traduccion>;
                 traduccionBLL.UpdateMany(traducciones);
                 CargarTraducciones();
-                Session.CambiarIdioma();
                 MessageBox.Show("Se han guardado los cambios");
             }
             catch (Exception ex)
