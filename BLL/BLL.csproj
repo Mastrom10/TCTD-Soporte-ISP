@@ -41,12 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericBLL.cs" />
-    <Compile Include="IdiomaBLL.cs" />
-    <Compile Include="PermisoBLL.cs" />
-    <Compile Include="TestBLL.cs" />
-    <Compile Include="TraduccionBLL.cs" />
-    <Compile Include="UsuarioBLL.cs" />
+    <Compile Include="AspectosTecnicos\GenericBLL.cs" />
+    <Compile Include="AspectosTecnicos\IdiomaBLL.cs" />
+    <Compile Include="AspectosTecnicos\PermisoBLL.cs" />
+    <Compile Include="AspectosTecnicos\TestBLL.cs" />
+    <Compile Include="AspectosTecnicos\TraduccionBLL.cs" />
+    <Compile Include="AspectosTecnicos\UsuarioBLL.cs" />
+    <Compile Include="NodoRedBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

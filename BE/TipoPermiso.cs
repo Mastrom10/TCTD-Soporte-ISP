@@ -23,6 +23,7 @@ namespace BE
         PermisoEliminarPermisos,
         PermisoCrearGrupos,
         CRUDIdioma,
-        IdiomaSeleccionarIdioma
+        IdiomaSeleccionarIdioma,
+        CRUDNodoRed
     }
 }

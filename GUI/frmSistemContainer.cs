@@ -159,6 +159,8 @@ namespace GUI
                 traduccionesToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "traduccionesToolStripMenuItem").traduccion;
                 cambiarIdiomaToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "cambiarIdiomaToolStripMenuItem").traduccion;
                 this.Text = traducciones.Find(x => x.etiqueta.Nombre == "frmSistemConteiner").traduccion;
+                nodosDeRedToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "nodosDeRedToolStripMenuItem").traduccion;
+                gestoresToolStripMenuItem1.Text = traducciones.Find(x => x.etiqueta.Nombre == "gestoresToolStripMenuItem1").traduccion;
             }
             catch (Exception ex)
             {
@@ -179,6 +181,48 @@ namespace GUI
                 MessageBox.Show("No se encontraron/ Faltan traducciones para la etiqueta " + tag);
             }
             return traduccion;
+        }
+
+        private void nodosDeRedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestorNodoRed gestorNodoRed = new frmGestorNodoRed();
+            gestorNodoRed.MdiParent = this;
+            gestorNodoRed.Show();
+        }
+
+        private void topMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void dEBUGLOGINToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoginResult loginResult = LoginResult.UnknownError;
+            try
+            {
+                UsuarioBLL usuarioBLL = new UsuarioBLL();
+                loginResult = usuarioBLL.Login("admin", "123456");
+            }
+            catch (LoginException ex)
+            {
+                if (ex.Result == LoginResult.InvalidUsername)
+                {
+                    MessageBox.Show("Usuario no encontrado");
+                }
+                else if (ex.Result == LoginResult.InvalidPassword)
+                {
+                    MessageBox.Show("Contraseña incorrecta");
+                }
+                else
+                {
+                    MessageBox.Show("Error desconocido");
+                }
+            }
+            if (loginResult == LoginResult.LoginOK || loginResult == LoginResult.AlreadyLogged)
+            {
+                ValidarSession();
+               
+            }
         }
     }   
 }

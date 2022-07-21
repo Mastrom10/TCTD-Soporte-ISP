@@ -58,6 +58,12 @@
     <Compile Include="frmCambiarIdioma.Designer.cs">
       <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGestorNodoRed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestorNodoRed.Designer.cs">
+      <DependentUpon>frmGestorNodoRed.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestorPermisosGrupos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCambiarIdioma.resx">
       <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestorNodoRed.resx">
+      <DependentUpon>frmGestorNodoRed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestorPermisosGrupos.resx">
       <DependentUpon>frmGestorPermisosGrupos.cs</DependentUpon>

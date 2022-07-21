@@ -67,6 +67,8 @@ namespace GUI
 
                 CompletarLista(treeViewTodosLosPermisos, todosLosPermisos.Where(p => p is Familia).ToList(), true);
                 CompletarLista(treeViewTodosLosPermisos2, todosLosPermisos, true);
+                permisoBLL.getPermisosPorUsuario(Session.GetSession().usuario);
+                
             }
             catch (Exception ex)
             {

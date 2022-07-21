@@ -42,8 +42,11 @@
             this.traduccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacionProtegidaTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nodosDeRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dEBUGLOGINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -53,12 +56,15 @@
             this.topMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
             this.gestoresToolStripMenuItem,
-            this.operacionProtegidaTestToolStripMenuItem});
+            this.operacionProtegidaTestToolStripMenuItem,
+            this.gestoresToolStripMenuItem1,
+            this.dEBUGLOGINToolStripMenuItem});
             this.topMenu.Location = new System.Drawing.Point(0, 0);
             this.topMenu.Name = "topMenu";
             this.topMenu.Size = new System.Drawing.Size(1081, 24);
             this.topMenu.TabIndex = 1;
             this.topMenu.Text = "Menu";
+            this.topMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.topMenu_ItemClicked);
             // 
             // inicioToolStripMenuItem
             // 
@@ -153,6 +159,21 @@
             this.operacionProtegidaTestToolStripMenuItem.Text = "OperacionProtegidaTest";
             this.operacionProtegidaTestToolStripMenuItem.Click += new System.EventHandler(this.operacionProtegidaTestToolStripMenuItem_Click);
             // 
+            // gestoresToolStripMenuItem1
+            // 
+            this.gestoresToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nodosDeRedToolStripMenuItem});
+            this.gestoresToolStripMenuItem1.Name = "gestoresToolStripMenuItem1";
+            this.gestoresToolStripMenuItem1.Size = new System.Drawing.Size(64, 20);
+            this.gestoresToolStripMenuItem1.Text = "Gestores";
+            // 
+            // nodosDeRedToolStripMenuItem
+            // 
+            this.nodosDeRedToolStripMenuItem.Name = "nodosDeRedToolStripMenuItem";
+            this.nodosDeRedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nodosDeRedToolStripMenuItem.Text = "Nodos de Red";
+            this.nodosDeRedToolStripMenuItem.Click += new System.EventHandler(this.nodosDeRedToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -168,6 +189,13 @@
             this.StatusSession.Name = "StatusSession";
             this.StatusSession.Size = new System.Drawing.Size(100, 17);
             this.StatusSession.Text = "¿Session Iniciada?";
+            // 
+            // dEBUGLOGINToolStripMenuItem
+            // 
+            this.dEBUGLOGINToolStripMenuItem.Name = "dEBUGLOGINToolStripMenuItem";
+            this.dEBUGLOGINToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.dEBUGLOGINToolStripMenuItem.Text = "DEBUG LOGIN";
+            this.dEBUGLOGINToolStripMenuItem.Click += new System.EventHandler(this.dEBUGLOGINToolStripMenuItem_Click);
             // 
             // frmSistemConteiner
             // 
@@ -208,6 +236,9 @@
         private System.Windows.Forms.ToolStripMenuItem aBMIdiomasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem traduccionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestoresToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nodosDeRedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dEBUGLOGINToolStripMenuItem;
     }
 }
 

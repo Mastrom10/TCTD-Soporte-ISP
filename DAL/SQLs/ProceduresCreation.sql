@@ -400,3 +400,80 @@ BEGIN
 	WHERE FK_id_usuario = @Id_Usuario
 END
 GO
+
+----------------------------------
+-- TABLE NodoRed
+-- public string nombre;
+-- public EstadoNodo estado;
+
+-- CREAR_NODORED
+CREATE PROCEDURE CREAR_NODORED
+@id INT, @nombre VARCHAR(50), @estado VARCHAR(50) = NULL
+AS
+ INSERT INTO NodoRed
+				(id,
+				 nombre,
+				 estado)
+	VALUES      (@id,
+				 @nombre,
+				 @estado)
+GO
+
+-- BORRAR_
+CREATE PROCEDURE BORRAR_NODORED
+@id INT, @nombre VARCHAR(50) = NULL, @estado VARCHAR(50) = NULL
+AS
+	DELETE FROM NodoRed
+	WHERE id = @id
+GO
+
+
+-- OBTENER_TODOS_
+CREATE PROCEDURE OBTENER_TODOS_NODOSRED
+AS
+	SELECT id, nombre, estado from NodoRed
+GO
+	
+-- OBTENER_POR_ID_
+ CREATE PROCEDURE OBTENER_POR_ID_NODOSRED
+@id INT, @nombre VARCHAR(50) = NULL, @estado VARCHAR(50) = NULL
+AS
+	SELECT id, nombre, estado from NodoRed
+	WHERE id = @id
+	GO
+
+-- ACTUALIZAR_
+ CREATE PROCEDURE ACTUALIZAR_NODORED
+@id INT, @nombre VARCHAR(50), @estado VARCHAR(50) = NULL
+AS
+	UPDATE NodoRed
+	SET    nombre = @nombre, estado = @estado
+	WHERE id = @id
+Go
+
+-- OBTENER_MAX_ID_
+CREATE PROCEDURE OBTENER_MAX_ID_NODOSRED
+AS
+	SELECT MAX(id) as id from NodoRed
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- CREAR_
+-- BORRAR_
+-- OBTENER_TODOS_
+-- OBTENER_POR_ID_
+-- ACTUALIZAR_
+-- OBTENER_MAX_ID_
