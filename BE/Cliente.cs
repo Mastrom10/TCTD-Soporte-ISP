@@ -8,7 +8,6 @@ namespace BE
 {
     public class Cliente : Entity
     {
-        public int nro_Cliente { get; set; }
         public string dni { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }

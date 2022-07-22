@@ -24,6 +24,11 @@ namespace BE
         PermisoCrearGrupos,
         CRUDIdioma,
         IdiomaSeleccionarIdioma,
-        CRUDNodoRed
+        CRUDNodoRed,
+        CRUDServicePlan,
+        CRUDDispositivo,
+        CRUDDireccion,
+        CRUDServicio,
+        CRUDCliente
     }
 }

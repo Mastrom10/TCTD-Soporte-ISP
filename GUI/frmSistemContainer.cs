@@ -161,6 +161,9 @@ namespace GUI
                 this.Text = traducciones.Find(x => x.etiqueta.Nombre == "frmSistemConteiner").traduccion;
                 nodosDeRedToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "nodosDeRedToolStripMenuItem").traduccion;
                 gestoresToolStripMenuItem1.Text = traducciones.Find(x => x.etiqueta.Nombre == "gestoresToolStripMenuItem1").traduccion;
+                planesDeServicioToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "planesDeServicioToolStripMenuItem").traduccion;
+                dispositivosToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "dispositivosToolStripMenuItem").traduccion;
+                clientesToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "clientesToolStripMenuItem").traduccion;
             }
             catch (Exception ex)
             {
@@ -190,11 +193,7 @@ namespace GUI
             gestorNodoRed.Show();
         }
 
-        private void topMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
+       
         private void dEBUGLOGINToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoginResult loginResult = LoginResult.UnknownError;
@@ -223,6 +222,28 @@ namespace GUI
                 ValidarSession();
                
             }
+        }
+
+        private void planesDeServicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestorServicePlan gestorServicePlan = new frmGestorServicePlan();
+            gestorServicePlan.MdiParent = this;
+            gestorServicePlan.Show();
+            
+        }
+
+        private void dispositivosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestorDispositivo gestorDispositivo = new frmGestorDispositivo();
+            gestorDispositivo.MdiParent = this;
+            gestorDispositivo.Show();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestorClientes gestorClientes = new frmGestorClientes();
+            gestorClientes.MdiParent = this;
+            gestorClientes.Show();
         }
     }   
 }

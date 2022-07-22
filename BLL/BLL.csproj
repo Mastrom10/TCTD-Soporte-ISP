@@ -47,8 +47,13 @@
     <Compile Include="AspectosTecnicos\TestBLL.cs" />
     <Compile Include="AspectosTecnicos\TraduccionBLL.cs" />
     <Compile Include="AspectosTecnicos\UsuarioBLL.cs" />
+    <Compile Include="ClienteBLL.cs" />
+    <Compile Include="DireccionBLL.cs" />
+    <Compile Include="DispositivoBLL.cs" />
     <Compile Include="NodoRedBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicePlanBLL.cs" />
+    <Compile Include="ServicioBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

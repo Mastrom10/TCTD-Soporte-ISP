@@ -50,6 +50,7 @@ namespace GUI
 
         private void frmGestorNodoRed_Load(object sender, EventArgs e)
         {
+            Session.SuscribirObservador(this);
             ActualizarIdioma(Session.GetSession().usuario?.idioma ?? Session.defaultIdioma);
             CargarNodos();
             

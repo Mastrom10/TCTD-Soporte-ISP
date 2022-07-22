@@ -48,12 +48,17 @@
     <Compile Include="AspectosTecnicos\ICrud.cs" />
     <Compile Include="AspectosTecnicos\IdiomaDAL.cs" />
     <Compile Include="AspectosTecnicos\PermisoDAL.cs" />
+    <Compile Include="ClienteDAL.cs" />
+    <Compile Include="DireccionDAL.cs" />
+    <Compile Include="DispositivoDAL.cs" />
     <Compile Include="NodoRedDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmpleadoDAL.cs" />
     <Compile Include="AspectosTecnicos\SQLConnectionManager.cs" />
     <Compile Include="AspectosTecnicos\TraduccionDAL.cs" />
     <Compile Include="AspectosTecnicos\UsuarioDAL.cs" />
+    <Compile Include="ServicePlanDAL.cs" />
+    <Compile Include="ServicioDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

@@ -4,6 +4,7 @@
     {
         Activo,
         Inactivo,
-        PendienteInstalacion
+        PendienteInstalacion,
+        Indefinido
     }
 }

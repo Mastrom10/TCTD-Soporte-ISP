@@ -459,6 +459,428 @@ GO
 
 
 
+-- CREAR_SERVICEPLAN
+CREATE PROCEDURE CREAR_SERVICEPLAN
+@id INT, @descripcion VARCHAR(200)
+AS
+ INSERT INTO ServicePlan
+				(id,
+				 descripcion)
+	VALUES      (@id,
+				 @descripcion)
+				Go
+
+-- BORRAR_SERVICEPLAN
+CREATE PROCEDURE BORRAR_SERVICEPLAN
+@id INT, @descripcion VARCHAR(200) = NULL
+AS
+	DELETE FROM ServicePlan
+	WHERE id = @id
+	GO
+	
+-- OBTENER_TODOS_SERVICEPLAN
+CREATE PROCEDURE OBTENER_TODOS_SERVICEPLAN
+AS
+	SELECT id, descripcion from ServicePlan
+	GO
+-- OBTENER_POR_ID_SERVICEPLAN
+CREATE PROCEDURE OBTENER_POR_ID_SERVICEPLAN
+@id INT, @descripcion VARCHAR(200) = NULL
+AS
+	SELECT id, descripcion from ServicePlan
+	WHERE id = @id
+	GO
+	
+-- ACTUALIZAR_SERVICEPLAN
+CREATE PROCEDURE ACTUALIZAR_SERVICEPLAN
+@id INT, @descripcion VARCHAR(200)
+AS
+	UPDATE ServicePlan
+	SET    descripcion = @descripcion
+	WHERE id = @id
+	GO
+	
+-- OBTENER_MAX_ID_SERVICEPLAN
+CREATE PROCEDURE OBTENER_MAX_ID_SERVICEPLAN
+AS
+	SELECT MAX(id) as id from ServicePlan
+	GO
+	
+
+
+-- CREAR_DISPOSITIVO
+CREATE PROCEDURE CREAR_DISPOSITIVO
+@id INT, @tipo VARCHAR(50) = NULL, @macAdress VARCHAR(50), @nroserie VARCHAR(50) = NULL
+AS
+ INSERT INTO Dispositivo
+				(id,
+				 tipo,
+				 macAdress,
+				 nroserie)
+	VALUES      (@id,
+				 @tipo,
+				 @macAdress,
+				 @nroserie)
+				Go
+
+
+-- BORRAR_DISPOSITIVO
+CREATE PROCEDURE BORRAR_DISPOSITIVO
+@id INT, @tipo VARCHAR(50) = NULL, @macAdress VARCHAR(50) = NULL, @nroserie VARCHAR(50) = NULL
+AS
+	DELETE FROM Dispositivo
+	WHERE id = @id
+	GO
+
+	
+-- OBTENER_TODOS_DISPOSITIVO
+CREATE PROCEDURE OBTENER_TODOS_DISPOSITIVO
+ AS
+	SELECT id, tipo, macAdress, nroserie from Dispositivo
+	GO
+	
+
+
+
+-- OBTENER_POR_ID_DISPOSITIVO
+ CREATE PROCEDURE OBTENER_POR_ID_DISPOSITIVO
+@id INT, @tipo VARCHAR(50) = NULL, @macAdress VARCHAR(50) = NULL, @nroserie VARCHAR(50) = NULL
+AS
+	SELECT id, tipo, macAdress, nroserie from Dispositivo
+	WHERE id = @id
+	GO
+
+-- OBTENER_MAX_ID_DISPOSITIVO
+CREATE PROCEDURE OBTENER_MAX_ID_DISPOSITIVO
+AS
+	SELECT MAX(id) as id from Dispositivo
+	GO
+
+	
+-- ACTUALIZAR_DISPOSITIVO
+CREATE PROCEDURE ACTUALIZAR_DISPOSITIVO
+@id INT, @tipo VARCHAR(50) = NULL, @macAdress VARCHAR(50), @nroserie VARCHAR(50) = NULL
+AS
+	UPDATE Dispositivo
+	SET    tipo = @tipo, macAdress = @macAdress, nroserie = @nroserie
+	WHERE id = @id
+	GO
+
+-- OBTENER_DISPOSITIVOS_POR_SERVICIO
+CREATE PROCEDURE OBTENER_DISPOSITIVOS_POR_SERVICIO
+@id INT
+AS
+	SELECT id, tipo, macAdress, nroserie from Dispositivo
+	WHERE id IN (SELECT FK_id_dispositivo FROM Servicio_x_Dispositivo WHERE FK_id_servicio = @id)
+GO
+
+--AGREGAR_DISPOSITIVO_A_SERVICIO
+CREATE PROCEDURE AGREGAR_DISPOSITIVO_A_SERVICIO
+@idDispositivo INT, @idServicio INT
+AS
+	INSERT INTO Servicio_x_Dispositivo
+				(FK_id_dispositivo,
+				 FK_id_servicio)
+	VALUES      (@idDispositivo,
+				 @idServicio)
+Go
+
+-- QUITAR_DISPOSITIVO_A_SERVICIO
+CREATE PROCEDURE QUITAR_DISPOSITIVO_A_SERVICIO
+@idDispositivo INT, @idServicio INT
+AS
+	DELETE FROM Servicio_x_Dispositivo
+	WHERE FK_id_dispositivo = @idDispositivo AND FK_id_servicio = @idServicio
+GO
+	
+
+-- OBTENER_UNASSIGNED_DISPOSITIVO
+CREATE PROCEDURE OBTENER_UNASSIGNED_DISPOSITIVO
+as
+SELECT id, tipo, macAdress, nroserie from Dispositivo
+	WHERE id NOT IN (SELECT FK_id_dispositivo FROM Servicio_x_Dispositivo)
+	GO
+
+
+
+
+-- CREAR_DIRECCION
+CREATE PROCEDURE CREAR_DIRECCION
+@id INT,
+@calle VARCHAR(200),
+@altura VARCHAR(50),
+@codigoPostal VARCHAR(50) = NULL,
+@localidad VARCHAR(50) = NULL,
+@provincia VARCHAR(50) = NULL,
+@depto VARCHAR(50) = NULL,
+@piso VARCHAR(50) = NULL,
+@FK_id_nodoRed INT = NULL
+AS
+ INSERT INTO Direccion
+				(id,
+				 calle,
+				 altura,
+				 codigoPostal,
+				 localidad,
+				 provincia,
+				 depto,
+				 piso,
+				 FK_id_nodoRed)
+	VALUES      (@id,
+				 @calle,
+				 @altura,
+				 @codigoPostal,
+				 @localidad,
+				 @provincia,
+				 @depto,
+				 @piso,
+				 @FK_id_nodoRed)
+Go
+
+-- BORRAR_DIRECCION
+CREATE PROCEDURE BORRAR_DIRECCION
+@id INT,
+@calle VARCHAR(200) = NULL,
+@altura VARCHAR(50) = NULL,
+@codigoPostal VARCHAR(50) = NULL,
+@localidad VARCHAR(50) = NULL,
+@provincia VARCHAR(50) = NULL,
+@depto VARCHAR(50) = NULL,
+@piso VARCHAR(50) = NULL,
+@FK_id_nodoRed INT = NULL
+AS
+	DELETE FROM Direccion
+	WHERE id = @id
+GO
+
+
+-- OBTENER_TODOS_DIRECCION
+CREATE PROCEDURE OBTENER_TODOS_DIRECCION
+AS
+	SELECT id, calle, altura, codigoPostal, localidad, provincia, depto, piso, FK_id_nodoRed from Direccion
+GO
+
+
+-- OBTENER_POR_ID_DIRECCION
+CREATE PROCEDURE OBTENER_POR_ID_DIRECCION
+@id INT,
+@calle VARCHAR(200) = NULL,
+@altura VARCHAR(50) = NULL,
+@codigoPostal VARCHAR(50) = NULL,
+@localidad VARCHAR(50) = NULL,
+@provincia VARCHAR(50) = NULL,
+@depto VARCHAR(50) = NULL,
+@piso VARCHAR(50) = NULL,
+@FK_id_nodoRed INT = NULL
+AS
+	SELECT id, calle, altura, codigoPostal, localidad, provincia, depto, piso, FK_id_nodoRed from Direccion
+	WHERE id = @id
+	GO
+	
+	
+
+
+-- OBTENER_MAX_ID_DIRECCION
+CREATE PROCEDURE OBTENER_MAX_ID_DIRECCION
+AS
+	SELECT MAX(id) as id from Direccion
+	GO
+
+
+-- ACTUALIZAR_DIRECCION
+CREATE PROCEDURE ACTUALIZAR_DIRECCION
+@id INT,
+@calle VARCHAR(200),
+@altura VARCHAR(50),
+@codigoPostal VARCHAR(50) = NULL,
+@localidad VARCHAR(50) = NULL,
+@provincia VARCHAR(50) = NULL,
+@depto VARCHAR(50) = NULL,
+@piso VARCHAR(50) = NULL,
+@FK_id_nodoRed INT = NULL
+AS 
+UPDATE Direccion
+SET    calle = @calle, altura = @altura, codigoPostal = @codigoPostal, localidad = @localidad, provincia = @provincia, depto = @depto, piso = @piso, FK_id_nodoRed = @FK_id_nodoRed
+WHERE id = @id
+GO
+
+
+-- OBTENER_DIRECCION_POR_ID_CLIENTE
+CREATE PROCEDURE OBTENER_DIRECCION_POR_ID_CLIENTE
+@id INT
+AS
+	SELECT Direccion.id as id, calle, altura, codigoPostal, localidad, provincia, depto, piso, FK_id_nodoRed
+	FROM Direccion
+	INNER JOIN Cliente ON Direccion.id = Cliente.FK_id_direccion
+	WHERE Cliente.id = @id
+GO
+	
+	
+	
+
+
+-- CREAR_SERVICIO
+CREATE PROCEDURE CREAR_SERVICIO
+@id INT, @estado VARCHAR(50), @FK_id_ServicePlan INT
+AS
+	INSERT INTO Servicio
+				(id,
+				 estado,
+				 FK_id_ServicePlan)
+	VALUES      (@id,
+				 @estado,
+				 @FK_id_ServicePlan)
+GO
+
+-- BORRAR_SERVICIO
+CREATE PROCEDURE BORRAR_SERVICIO
+@id INT, @estado VARCHAR(50) = NULL, @FK_id_ServicePlan INT = NULL
+AS
+	DELETE FROM Servicio
+	WHERE id = @id
+	GO
+
+
+-- OBTENER_TODOS_SERVICIO
+CREATE PROCEDURE OBTENER_TODOS_SERVICIO
+AS
+	SELECT id, estado, FK_id_ServicePlan from Servicio
+GO
+
+
+-- OBTENER_POR_ID_SERVICIO
+CREATE PROCEDURE OBTENER_POR_ID_SERVICIO
+@id INT, @estado VARCHAR(50) = NULL, @FK_id_ServicePlan INT = NULL
+AS
+	SELECT id, estado, FK_id_ServicePlan from Servicio
+	WHERE id = @id
+GO
+
+
+-- OBTENER_MAX_ID_SERVICIO
+CREATE PROCEDURE OBTENER_MAX_ID_SERVICIO
+ AS
+	SELECT MAX(id) as id from Servicio
+GO
+	
+
+
+-- ACTUALIZAR_SERVICIO
+CREATE PROCEDURE ACTUALIZAR_SERVICIO
+@id INT, @estado VARCHAR(50) = NULL, @FK_id_ServicePlan INT = NULL
+AS
+	UPDATE Servicio
+	SET    estado = @estado, FK_id_ServicePlan = @FK_id_ServicePlan
+	WHERE id = @id
+GO
+
+-- OBTENER_SERVICIO_POR_CLIENTE
+CREATE PROCEDURE OBTENER_SERVICIO_POR_CLIENTE
+@id INT
+AS
+	SELECT Servicio.id as id, estado, FK_id_ServicePlan
+	FROM Servicio
+	INNER JOIN Cliente ON Servicio.id = Cliente.FK_id_servicio
+	WHERE Cliente.id = @id
+GO
+
+-- CREAR_CLIENTE
+CREATE PROCEDURE CREAR_CLIENTE
+@id INT, @nombre VARCHAR(50) = NULL, @apellido VARCHAR(50)  = NULL, @dni VARCHAR(50)  = NULL, @telefonoPrincipal VARCHAR(50)  = NULL, @telefonoSecundario VARCHAR(50)  = NULL, @email VARCHAR(50)  = NULL, @FK_id_direccion INT  = NULL, @FK_id_servicio INT  = NULL, @fechaNacimiento DATE  = NULL
+AS
+INSERT INTO Cliente
+				(id,
+				 nombre,
+				 apellido,
+				 dni,
+				 telefonoPrincipal,
+				 telefonoSecundario,
+				 email,
+				 FK_id_direccion,
+				 FK_id_servicio,
+				 fechaNacimiento
+				)
+VALUES      (@id,
+			 @nombre,
+			 @apellido,
+			 @dni,
+			 @telefonoPrincipal,
+			 @telefonoSecundario,
+			 @email,
+			 @FK_id_direccion,
+			 @FK_id_servicio,
+			 @fechaNacimiento)
+GO
+				
+
+
+-- BORRAR_CLIENTE
+ CREATE PROCEDURE BORRAR_CLIENTE
+ @id INT, @nombre VARCHAR(50) = NULL, @apellido VARCHAR(50)  = NULL, @dni VARCHAR(50)  = NULL, @telefonoPrincipal VARCHAR(50)  = NULL, @telefonoSecundario VARCHAR(50)  = NULL, @email VARCHAR(50)  = NULL, @FK_id_direccion INT  = NULL, @FK_id_servicio INT  = NULL, @fechaNacimiento DATE  = NULL
+AS
+DELETE FROM Cliente
+WHERE id = @id
+GO
+
+-- OBTENER_TODOS_CLIENTE
+CREATE PROCEDURE OBTENER_TODOS_CLIENTE
+AS
+	SELECT id, nombre, apellido, dni, telefonoPrincipal, telefonoSecundario, email, FK_id_direccion, FK_id_servicio, fechaNacimiento
+	FROM Cliente
+	GO
+	
+
+
+-- OBTENER_POR_ID_CLIENTE
+CREATE PROCEDURE OBTENER_POR_ID_CLIENTE
+@id INT, @nombre VARCHAR(50) = NULL, @apellido VARCHAR(50)  = NULL, @dni VARCHAR(50)  = NULL, @telefonoPrincipal VARCHAR(50)  = NULL, @telefonoSecundario VARCHAR(50)  = NULL, @email VARCHAR(50)  = NULL, @FK_id_direccion INT  = NULL, @FK_id_servicio INT  = NULL, @fechaNacimiento DATE  = NULL
+AS
+	SELECT id, nombre, apellido, dni, telefonoPrincipal, telefonoSecundario, email, FK_id_direccion, FK_id_servicio, fechaNacimiento
+	FROM Cliente
+	WHERE id = @id
+	GO
+
+-- OBTENER_CLIENTE_POR_DNI
+CREATE PROCEDURE OBTENER_CLIENTE_POR_DNI
+@cadena VARCHAR(50)
+AS
+	SELECT id, nombre, apellido, dni, telefonoPrincipal, telefonoSecundario, email, FK_id_direccion, FK_id_servicio, fechaNacimiento
+	FROM Cliente
+	WHERE dni = @cadena
+	GO
+	
+
+
+-- OBTENER_MAX_ID_CLIENTE
+	CREATE PROCEDURE OBTENER_MAX_ID_CLIENTE
+ AS
+	SELECT MAX(id) as id from Cliente
+	GO
+	
+
+
+-- ACTUALIZAR_CLIENTE
+CREATE PROCEDURE ACTUALIZAR_CLIENTE
+@id INT, @nombre VARCHAR(50) = NULL, @apellido VARCHAR(50)  = NULL, @dni VARCHAR(50)  = NULL, @telefonoPrincipal VARCHAR(50)  = NULL, @telefonoSecundario VARCHAR(50)  = NULL, @email VARCHAR(50)  = NULL, @FK_id_direccion INT  = NULL, @FK_id_servicio INT  = NULL, @fechaNacimiento DATE  = NULL
+AS
+	UPDATE Cliente
+	SET    nombre = @nombre, apellido = @apellido, dni = @dni, telefonoPrincipal = @telefonoPrincipal, telefonoSecundario = @telefonoSecundario, email = @email, FK_id_direccion = @FK_id_direccion, FK_id_servicio = @FK_id_servicio, fechaNacimiento = @fechaNacimiento
+	WHERE id = @id
+	GO
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -475,5 +897,5 @@ GO
 -- BORRAR_
 -- OBTENER_TODOS_
 -- OBTENER_POR_ID_
--- ACTUALIZAR_
 -- OBTENER_MAX_ID_
+-- ACTUALIZAR_

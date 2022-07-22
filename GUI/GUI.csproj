@@ -58,6 +58,30 @@
     <Compile Include="frmCambiarIdioma.Designer.cs">
       <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDispositivosNoAsignados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDispositivosNoAsignados.Designer.cs">
+      <DependentUpon>frmDispositivosNoAsignados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestionDispositivosCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionDispositivosCliente.Designer.cs">
+      <DependentUpon>frmGestionDispositivosCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestorClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestorClientes.Designer.cs">
+      <DependentUpon>frmGestorClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestorDispositivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestorDispositivo.Designer.cs">
+      <DependentUpon>frmGestorDispositivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestorNodoRed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +99,12 @@
     </Compile>
     <Compile Include="frmGestorPermisosUsuario.Designer.cs">
       <DependentUpon>frmGestorPermisosUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestorServicePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestorServicePlan.Designer.cs">
+      <DependentUpon>frmGestorServicePlan.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -102,6 +132,18 @@
     <EmbeddedResource Include="frmCambiarIdioma.resx">
       <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDispositivosNoAsignados.resx">
+      <DependentUpon>frmDispositivosNoAsignados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionDispositivosCliente.resx">
+      <DependentUpon>frmGestionDispositivosCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestorClientes.resx">
+      <DependentUpon>frmGestorClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestorDispositivo.resx">
+      <DependentUpon>frmGestorDispositivo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestorNodoRed.resx">
       <DependentUpon>frmGestorNodoRed.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestorPermisosUsuario.resx">
       <DependentUpon>frmGestorPermisosUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestorServicePlan.resx">
+      <DependentUpon>frmGestorServicePlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

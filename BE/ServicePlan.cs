@@ -1,8 +1,7 @@
 ﻿namespace BE
 {
-    public class ServicePlan
+    public class ServicePlan : Entity
     {
-        public string titulo { get; set; }
         public string descripcion { get; set; }
     }
 }
