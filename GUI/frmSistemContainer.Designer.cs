@@ -46,9 +46,11 @@
             this.planesDeServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dispositivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dEBUGLOGINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
+            this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dEBUGLOGINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +61,7 @@
             this.inicioToolStripMenuItem,
             this.gestoresToolStripMenuItem,
             this.gestoresToolStripMenuItem1,
+            this.soporteTécnicoToolStripMenuItem,
             this.dEBUGLOGINToolStripMenuItem});
             this.topMenu.Location = new System.Drawing.Point(0, 0);
             this.topMenu.Name = "topMenu";
@@ -134,21 +137,21 @@
             // aBMIdiomasToolStripMenuItem
             // 
             this.aBMIdiomasToolStripMenuItem.Name = "aBMIdiomasToolStripMenuItem";
-            this.aBMIdiomasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aBMIdiomasToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.aBMIdiomasToolStripMenuItem.Text = "ABM Idiomas";
             this.aBMIdiomasToolStripMenuItem.Click += new System.EventHandler(this.aBMIdiomasToolStripMenuItem_Click);
             // 
             // traduccionesToolStripMenuItem
             // 
             this.traduccionesToolStripMenuItem.Name = "traduccionesToolStripMenuItem";
-            this.traduccionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.traduccionesToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.traduccionesToolStripMenuItem.Text = "Traducciones";
             this.traduccionesToolStripMenuItem.Click += new System.EventHandler(this.traduccionesToolStripMenuItem_Click);
             // 
             // cambiarIdiomaToolStripMenuItem
             // 
             this.cambiarIdiomaToolStripMenuItem.Name = "cambiarIdiomaToolStripMenuItem";
-            this.cambiarIdiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cambiarIdiomaToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.cambiarIdiomaToolStripMenuItem.Text = "Cambiar Idioma";
             this.cambiarIdiomaToolStripMenuItem.Click += new System.EventHandler(this.cambiarIdiomaToolStripMenuItem_Click);
             // 
@@ -166,37 +169,30 @@
             // nodosDeRedToolStripMenuItem
             // 
             this.nodosDeRedToolStripMenuItem.Name = "nodosDeRedToolStripMenuItem";
-            this.nodosDeRedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nodosDeRedToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.nodosDeRedToolStripMenuItem.Text = "Nodos de Red";
             this.nodosDeRedToolStripMenuItem.Click += new System.EventHandler(this.nodosDeRedToolStripMenuItem_Click);
             // 
             // planesDeServicioToolStripMenuItem
             // 
             this.planesDeServicioToolStripMenuItem.Name = "planesDeServicioToolStripMenuItem";
-            this.planesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.planesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.planesDeServicioToolStripMenuItem.Text = "Planes de Servicio";
             this.planesDeServicioToolStripMenuItem.Click += new System.EventHandler(this.planesDeServicioToolStripMenuItem_Click);
             // 
             // dispositivosToolStripMenuItem
             // 
             this.dispositivosToolStripMenuItem.Name = "dispositivosToolStripMenuItem";
-            this.dispositivosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dispositivosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.dispositivosToolStripMenuItem.Text = "Dispositivos";
             this.dispositivosToolStripMenuItem.Click += new System.EventHandler(this.dispositivosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
-            // 
-            // dEBUGLOGINToolStripMenuItem
-            // 
-            this.dEBUGLOGINToolStripMenuItem.Name = "dEBUGLOGINToolStripMenuItem";
-            this.dEBUGLOGINToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.dEBUGLOGINToolStripMenuItem.Text = "DEBUG LOGIN";
-            this.dEBUGLOGINToolStripMenuItem.Click += new System.EventHandler(this.dEBUGLOGINToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -213,6 +209,28 @@
             this.StatusSession.Name = "StatusSession";
             this.StatusSession.Size = new System.Drawing.Size(100, 17);
             this.StatusSession.Text = "¿Session Iniciada?";
+            // 
+            // soporteTécnicoToolStripMenuItem
+            // 
+            this.soporteTécnicoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clientesToolStripMenuItem1});
+            this.soporteTécnicoToolStripMenuItem.Name = "soporteTécnicoToolStripMenuItem";
+            this.soporteTécnicoToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.soporteTécnicoToolStripMenuItem.Text = "Soporte Técnico";
+            // 
+            // clientesToolStripMenuItem1
+            // 
+            this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem1.Text = "Clientes";
+            this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
+            // 
+            // dEBUGLOGINToolStripMenuItem
+            // 
+            this.dEBUGLOGINToolStripMenuItem.Name = "dEBUGLOGINToolStripMenuItem";
+            this.dEBUGLOGINToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.dEBUGLOGINToolStripMenuItem.Text = "DEBUG LOGIN";
+            this.dEBUGLOGINToolStripMenuItem.Click += new System.EventHandler(this.dEBUGLOGINToolStripMenuItem_Click_1);
             // 
             // frmSistemConteiner
             // 
@@ -254,10 +272,12 @@
         private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestoresToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem nodosDeRedToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dEBUGLOGINToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planesDeServicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dispositivosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem soporteTécnicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dEBUGLOGINToolStripMenuItem;
     }
 }
 

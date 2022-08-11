@@ -58,6 +58,12 @@
     <Compile Include="frmCambiarIdioma.Designer.cs">
       <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDialogCrearTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogCrearTicket.Designer.cs">
+      <DependentUpon>frmDialogCrearTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDispositivosNoAsignados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,18 @@
     <Compile Include="frmSistemContainer.Designer.cs">
       <DependentUpon>frmSistemContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSoporteClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSoporteClientes.Designer.cs">
+      <DependentUpon>frmSoporteClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTicket.Designer.cs">
+      <DependentUpon>frmTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTraducciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCambiarIdioma.resx">
       <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogCrearTicket.resx">
+      <DependentUpon>frmDialogCrearTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDispositivosNoAsignados.resx">
       <DependentUpon>frmDispositivosNoAsignados.cs</DependentUpon>
@@ -161,6 +182,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSistemContainer.resx">
       <DependentUpon>frmSistemContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSoporteClientes.resx">
+      <DependentUpon>frmSoporteClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTicket.resx">
+      <DependentUpon>frmTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTraducciones.resx">
       <DependentUpon>frmTraducciones.cs</DependentUpon>

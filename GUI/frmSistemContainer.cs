@@ -164,6 +164,8 @@ namespace GUI
                 planesDeServicioToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "planesDeServicioToolStripMenuItem").traduccion;
                 dispositivosToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "dispositivosToolStripMenuItem").traduccion;
                 clientesToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "clientesToolStripMenuItem").traduccion;
+                soporteTécnicoToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "soporteTécnicoToolStripMenuItem").traduccion;
+                clientesToolStripMenuItem1.Text = traducciones.Find(x => x.etiqueta.Nombre == "clientesToolStripMenuItem").traduccion;
             }
             catch (Exception ex)
             {
@@ -193,9 +195,38 @@ namespace GUI
             gestorNodoRed.Show();
         }
 
-       
-        private void dEBUGLOGINToolStripMenuItem_Click(object sender, EventArgs e)
+        private void planesDeServicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmGestorServicePlan gestorServicePlan = new frmGestorServicePlan();
+            gestorServicePlan.MdiParent = this;
+            gestorServicePlan.Show();
+            
+        }
+
+        private void dispositivosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestorDispositivo gestorDispositivo = new frmGestorDispositivo();
+            gestorDispositivo.MdiParent = this;
+            gestorDispositivo.Show();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestorClientes gestorClientes = new frmGestorClientes();
+            gestorClientes.MdiParent = this;
+            gestorClientes.Show();
+        }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmSoporteClientes soporteClientes = new frmSoporteClientes();
+            soporteClientes.MdiParent = this;
+            soporteClientes.Show();
+        }
+
+        private void dEBUGLOGINToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
             LoginResult loginResult = LoginResult.UnknownError;
             try
             {
@@ -220,30 +251,8 @@ namespace GUI
             if (loginResult == LoginResult.LoginOK || loginResult == LoginResult.AlreadyLogged)
             {
                 ValidarSession();
-               
+
             }
-        }
-
-        private void planesDeServicioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmGestorServicePlan gestorServicePlan = new frmGestorServicePlan();
-            gestorServicePlan.MdiParent = this;
-            gestorServicePlan.Show();
-            
-        }
-
-        private void dispositivosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmGestorDispositivo gestorDispositivo = new frmGestorDispositivo();
-            gestorDispositivo.MdiParent = this;
-            gestorDispositivo.Show();
-        }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmGestorClientes gestorClientes = new frmGestorClientes();
-            gestorClientes.MdiParent = this;
-            gestorClientes.Show();
         }
     }   
 }

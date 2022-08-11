@@ -875,6 +875,196 @@ AS
 
 
 
+-- CREAR_TICKET
+CREATE PROCEDURE CREAR_TICKET
+@id INT, @titulo VARCHAR(200), @descripcion VARCHAR(2000) = NULL, @estado VARCHAR(50), @prioridad VARCHAR(50), @fechaCreacion DATETIME = NULL,
+@fechaUltimaModificacion DATETIME = NULL, @fechaCierre DATETIME = NULL, @FK_id_cliente INT, @FK_id_empleado INT
+AS
+INSERT INTO Ticket
+				(id,
+				 titulo,
+				 descripcion,
+				 estado,
+				 prioridad,
+				 fechaCreacion,
+				 fechaUltimaModificacion,
+				 fechaCierre,
+				 FK_id_cliente,
+				 FK_id_empleado
+				) 
+ VALUES      (@id,
+			 @titulo,
+			 @descripcion,
+			 @estado,
+			 @prioridad,
+			 @fechaCreacion,
+			 @fechaUltimaModificacion,
+			 @fechaCierre,
+			 @FK_id_cliente,
+			 @FK_id_empleado)
+ GO
+
+
+
+
+
+-- BORRAR_TICKET
+CREATE PROCEDURE BORRAR_TICKET
+@id INT, @titulo VARCHAR(200) = NULL, @descripcion VARCHAR(2000) = NULL, 
+@estado VARCHAR(50) = NULL, @prioridad VARCHAR(50) = NULL, @fechaCreacion DATETIME = NULL,
+@fechaUltimaModificacion DATETIME = NULL, @fechaCierre DATETIME = NULL, 
+@FK_id_cliente INT = NULL, @FK_id_empleado INT = NULL
+AS
+DELETE FROM Ticket
+WHERE id = @id
+GO
+
+-- OBTENER_TODOS_TICKET
+CREATE PROCEDURE OBTENER_TODOS_TICKET
+AS
+	SELECT id, titulo, descripcion, estado, prioridad, fechaCreacion, fechaUltimaModificacion, fechaCierre, FK_id_cliente, FK_id_empleado
+	FROM Ticket
+	GO
+	
+-- OBTENER_POR_ID_TICKET
+CREATE PROCEDURE OBTENER_POR_ID_TICKET
+@id INT, @titulo VARCHAR(200) = NULL, @descripcion VARCHAR(2000) = NULL,
+@estado VARCHAR(50) = NULL, @prioridad VARCHAR(50) = NULL, @fechaCreacion DATETIME = NULL,
+@fechaUltimaModificacion DATETIME = NULL, @fechaCierre DATETIME = NULL,
+@FK_id_cliente INT = NULL, @FK_id_empleado INT = NULL
+AS
+	SELECT id, titulo, descripcion, estado, prioridad, fechaCreacion, fechaUltimaModificacion, fechaCierre, FK_id_cliente, FK_id_empleado
+	FROM Ticket
+	WHERE id = @id
+	GO
+	
+-- OBTENER_MAX_ID_TICKET
+CREATE PROCEDURE OBTENER_MAX_ID_TICKET
+AS
+	SELECT MAX(id) as id from Ticket
+	GO
+	
+-- ACTUALIZAR_TICKET
+CREATE PROCEDURE ACTUALIZAR_TICKET
+@id INT, @titulo VARCHAR(200) = NULL, @descripcion VARCHAR(2000) = NULL,
+@estado VARCHAR(50) = NULL, @prioridad VARCHAR(50) = NULL, @fechaCreacion DATETIME = NULL,
+@fechaUltimaModificacion DATETIME = NULL, @fechaCierre DATETIME = NULL,
+@FK_id_cliente INT = NULL, @FK_id_empleado INT = NULL
+AS
+	UPDATE Ticket
+	SET    titulo = @titulo, descripcion = @descripcion, estado = @estado, prioridad = @prioridad, fechaCreacion = @fechaCreacion, fechaUltimaModificacion = @fechaUltimaModificacion, fechaCierre = @fechaCierre, FK_id_cliente = @FK_id_cliente, FK_id_empleado = @FK_id_empleado
+	WHERE id = @id
+	GO
+
+-- OBTENER_TICKET_POR_ID_CLIENTE
+CREATE PROCEDURE OBTENER_TICKET_POR_ID_CLIENTE
+@id INT
+AS
+	SELECT id, titulo, descripcion, estado, prioridad, fechaCreacion, fechaUltimaModificacion, fechaCierre, FK_id_cliente, FK_id_empleado
+	FROM Ticket
+	WHERE FK_id_cliente = @id
+	GO
+
+ -- OBTENER_TICKET_POR_ID_EMPLEADO
+CREATE PROCEDURE OBTENER_TICKET_POR_ID_EMPLEADO
+@id INT
+AS
+	SELECT id, titulo, descripcion, estado, prioridad, fechaCreacion, fechaUltimaModificacion, fechaCierre, FK_id_cliente, FK_id_empleado
+	FROM Ticket
+	WHERE FK_id_empleado = @id
+	GO
+
+	-- OBTENER_TICKET_POR_ESTADO
+	CREATE PROCEDURE OBTENER_TICKET_POR_ESTADO
+	@texto VARCHAR(50)
+	AS
+		SELECT id, titulo, descripcion, estado, prioridad, fechaCreacion, fechaUltimaModificacion, fechaCierre, FK_id_cliente, FK_id_empleado
+		FROM Ticket
+		WHERE estado = @texto
+	GO
+
+
+
+	USE [SoporteISP]
+GO
+
+
+
+/*
+	[id] [int] NOT NULL,
+	[accion] [varchar](200) NOT NULL,
+	[motivo] [varchar](200) NULL,
+	[observacion] [varchar](2000) NULL,
+	[fecha] [datetime] NOT NULL,
+	[FK_id_empleado] [int] NOT NULL,
+	[FK_id_ticket] [int] NOT NULL,
+*/
+
+-- CREAR_INTERACCION
+CREATE PROCEDURE CREAR_INTERACCION
+@id INT, @accion VARCHAR(200) = NULL, 
+@motivo VARCHAR(200) = NULL, @observacion VARCHAR(2000) = NULL, 
+@fecha DATETIME = NULL, @FK_id_empleado INT = NULL, @FK_id_ticket INT = NULL
+AS
+	INSERT INTO Interaccion
+	(id, accion, motivo, observacion, fecha, FK_id_empleado, FK_id_ticket)
+	VALUES
+	(@id, @accion, @motivo, @observacion, @fecha, @FK_id_empleado, @FK_id_ticket)
+	GO
+	
+-- BORRAR_INTERACCION
+CREATE PROCEDURE BORRAR_INTERACCION
+@id INT
+AS
+	DELETE FROM Interaccion
+	WHERE id = @id
+	GO
+	
+-- OBTENER_TODOS_INTERACCION
+CREATE PROCEDURE OBTENER_TODOS_INTERACCION
+AS
+	SELECT id, accion, motivo, observacion, fecha, FK_id_empleado, FK_id_ticket
+	FROM Interaccion
+	GO
+-- OBTENER_POR_ID_INTERACCION
+CREATE PROCEDURE OBTENER_POR_ID_INTERACCION
+@id INT
+AS
+	SELECT id, accion, motivo, observacion, fecha, FK_id_empleado, FK_id_ticket
+	FROM Interaccion
+	WHERE id = @id
+	GO
+-- OBTENER_MAX_ID_INTERACCION
+CREATE PROCEDURE OBTENER_MAX_ID_INTERACCION
+AS
+	SELECT MAX(id) as id from Interaccion
+	GO
+	
+-- ACTUALIZAR_INTERACCION
+CREATE PROCEDURE ACTUALIZAR_INTERACCION
+@id INT, @accion VARCHAR(200) = NULL, @motivo VARCHAR(200) = NULL, @observacion VARCHAR(2000) = NULL, @fecha DATETIME = NULL, @FK_id_empleado INT = NULL, @FK_id_ticket INT = NULL
+AS
+	UPDATE Interaccion
+	SET    accion = @accion, motivo = @motivo, observacion = @observacion, fecha = @fecha, FK_id_empleado = @FK_id_empleado, FK_id_ticket = @FK_id_ticket
+	WHERE id = @id
+	GO
+	
+-- OBTENER_INTERACCION_POR_ID_TICKET
+CREATE PROCEDURE OBTENER_INTERACCION_POR_ID_TICKET
+@id INT
+AS
+	SELECT id, accion, motivo, observacion, fecha, FK_id_empleado, FK_id_ticket
+	FROM Interaccion
+	WHERE FK_id_ticket = @id
+	GO
+
+	-- OBTENER_POR_ID_EMPLEADO
+	CREATE PROCEDURE OBTENER_POR_ID_EMPLEADO
+	@id INT
+	AS
+		SELECT id, accion, motivo, observacion, fecha, FK_id_empleado, FK_id_ticket
+		FROM Interaccion
+		WHERE FK_id_empleado = @id
 
 
 
@@ -890,10 +1080,7 @@ AS
 
 
 
-
-
-
--- CREAR_
+-- CREAR_INTERACCION
 -- BORRAR_
 -- OBTENER_TODOS_
 -- OBTENER_POR_ID_

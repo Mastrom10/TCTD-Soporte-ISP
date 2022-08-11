@@ -25,6 +25,8 @@ namespace GUI
 
 
         Cliente clienteSeleccionado;
+
+        bool dialogMode = false;
         public frmGestorClientes()
         {
             traduccionBLL = new TraduccionBLL();
@@ -32,6 +34,19 @@ namespace GUI
             nodoRedBLL = new NodoRedBLL();
             servicePlanBLL = new ServicePlanBLL();
             InitializeComponent();
+            dialogMode = false;
+        }
+
+        public frmGestorClientes(Cliente cliente) {
+            traduccionBLL = new TraduccionBLL();
+            clienteBLL = new ClienteBLL();
+            nodoRedBLL = new NodoRedBLL();
+            servicePlanBLL = new ServicePlanBLL();
+            InitializeComponent();
+            clienteSeleccionado = cliente;
+            dialogMode = true;
+
+
         }
 
         public void ActualizarIdioma(Idioma idioma)
@@ -124,6 +139,15 @@ namespace GUI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (dialogMode) {
+                btnBuscar.Enabled = false;
+                buttonNuevo.Enabled = false;
+                textBoxNroClienteID.Text = clienteSeleccionado.Id.ToString();
+                textBoxNroClienteID.Enabled = false;
+                textBoxDNICliente.Enabled = false;
+                CompletarDatosCliente(clienteSeleccionado);
             }
         }
 

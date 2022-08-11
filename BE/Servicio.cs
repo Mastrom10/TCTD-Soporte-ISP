@@ -9,5 +9,7 @@ namespace BE
         public ServicePlan servicePlan { get; set; }
         
         public List<Dispositivo> dispositivos { get; set; }
+
+        
     }
 }

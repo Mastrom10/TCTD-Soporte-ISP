@@ -29,6 +29,8 @@ namespace BE
         CRUDDispositivo,
         CRUDDireccion,
         CRUDServicio,
-        CRUDCliente
+        CRUDCliente,
+        CRUDTicket,
+        CRUDInteraccion
     }
 }
