@@ -126,46 +126,46 @@ namespace GUI
         private void frmSistemConteiner_Load(object sender, EventArgs e)
         {
             Session.SuscribirObservador(this);
-            CargarIdioma();
+            ActualizarIdioma(Session.GetSession().usuario?.idioma ?? Session.defaultIdioma);
+            
             ValidarSession();
         }
 
-        private void CargarIdioma()
-        {
-            if (Session.GetSession().IsLogged())
-            {
-                ActualizarIdioma(Session.GetSession().usuario.idioma);
-            }
-            else
-            {
-                ActualizarIdioma(Session.defaultIdioma);
-            }
-        }
-        
+
+        Func<string, string> Tag = IdiomaUtils.Tag;
+
         public void ActualizarIdioma(Idioma idioma)
         {
+
+            IdiomaUtils.traducciones = new TraduccionBLL().GetAllByIdioma(idioma);            
+            
             traducciones = traduccionBLL.GetAllByIdioma(idioma);
             try
             {
-                inicioToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "inicioToolStripMenuItem").traduccion;
-                itemMenuLogIn.Text = traducciones.Find(x => x.etiqueta.Nombre == "itemMenuLogIn").traduccion;
-                itemMenuLogOut.Text = traducciones.Find(x => x.etiqueta.Nombre == "itemMenuLogOut").traduccion;
-                itemMenuExit.Text = traducciones.Find(x => x.etiqueta.Nombre == "itemMenuExit").traduccion;
-                gestoresToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "gestoresToolStripMenuItem").traduccion;
-                permisosToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "permisosToolStripMenuItem").traduccion;
-                gestorGruposDePermisosToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "gestorGruposDePermisosToolStripMenuItem").traduccion;
-                idiomaToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "idiomaToolStripMenuItem").traduccion;
-                aBMIdiomasToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "aBMIdiomasToolStripMenuItem").traduccion;
-                traduccionesToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "traduccionesToolStripMenuItem").traduccion;
-                cambiarIdiomaToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "cambiarIdiomaToolStripMenuItem").traduccion;
-                this.Text = traducciones.Find(x => x.etiqueta.Nombre == "frmSistemConteiner").traduccion;
-                nodosDeRedToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "nodosDeRedToolStripMenuItem").traduccion;
-                gestoresToolStripMenuItem1.Text = traducciones.Find(x => x.etiqueta.Nombre == "gestoresToolStripMenuItem1").traduccion;
-                planesDeServicioToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "planesDeServicioToolStripMenuItem").traduccion;
-                dispositivosToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "dispositivosToolStripMenuItem").traduccion;
-                clientesToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "clientesToolStripMenuItem").traduccion;
-                soporteTécnicoToolStripMenuItem.Text = traducciones.Find(x => x.etiqueta.Nombre == "soporteTécnicoToolStripMenuItem").traduccion;
-                clientesToolStripMenuItem1.Text = traducciones.Find(x => x.etiqueta.Nombre == "clientesToolStripMenuItem").traduccion;
+                this.Text = Tag("frmSistemConteiner");
+                inicioToolStripMenuItem.Text = Tag("inicioToolStripMenuItem");
+                itemMenuLogIn.Text = Tag("itemMenuLogIn");
+                itemMenuLogOut.Text = Tag("itemMenuLogOut");
+                itemMenuExit.Text = Tag("itemMenuExit");
+                permisosToolStripMenuItem.Text = Tag("permisosToolStripMenuItem");
+                gestoresToolStripMenuItem.Text = Tag("gestoresToolStripMenuItem");
+                gestorGruposDePermisosToolStripMenuItem.Text = Tag("gestorGruposDePermisosToolStripMenuItem");
+                idiomaToolStripMenuItem.Text = Tag("idiomaToolStripMenuItem");
+                aBMIdiomasToolStripMenuItem.Text = Tag("aBMIdiomasToolStripMenuItem");
+                traduccionesToolStripMenuItem.Text = Tag("traduccionesToolStripMenuItem");
+                cambiarIdiomaToolStripMenuItem.Text = Tag("cambiarIdiomaToolStripMenuItem");
+                nodosDeRedToolStripMenuItem.Text = Tag("nodosDeRedToolStripMenuItem");
+                gestoresToolStripMenuItem1.Text = Tag("gestoresToolStripMenuItem1");
+                planesDeServicioToolStripMenuItem.Text = Tag("planesDeServicioToolStripMenuItem");
+                dispositivosToolStripMenuItem.Text = Tag("dispositivosToolStripMenuItem");
+                clientesToolStripMenuItem.Text = Tag("clientesToolStripMenuItem");
+                soporteTécnicoToolStripMenuItem.Text = Tag("soporteTécnicoToolStripMenuItem");
+                clientesToolStripMenuItem1.Text = Tag("clientesToolStripMenuItem");
+                ticketsDeBackOfficeToolStripMenuItem.Text = Tag("ticketsDeBackOfficeToolStripMenuItem");
+                serviceTécnicoToolStripMenuItem.Text = Tag("serviceTécnicoToolStripMenuItem");
+                gestionDeAgendaToolStripMenuItem.Text = Tag("gestionDeAgendaToolStripMenuItem");
+
+
             }
             catch (Exception ex)
             {
@@ -174,19 +174,6 @@ namespace GUI
             }
         }
 
-        public string Tag(string tag)
-        {
-            string traduccion = tag;
-            try
-            {
-                traduccion = traducciones.Find(x => x.etiqueta.Nombre == tag).traduccion;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se encontraron/ Faltan traducciones para la etiqueta " + tag);
-            }
-            return traduccion;
-        }
 
         private void nodosDeRedToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -253,6 +240,19 @@ namespace GUI
                 ValidarSession();
 
             }
+        }
+
+        private void ticketsDeBackOfficeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTicketDeBackOffice ticketDeBackOffice = new frmTicketDeBackOffice();
+            ticketDeBackOffice.MdiParent = this;
+            ticketDeBackOffice.Show();
+        }
+
+
+        private void gestionDeAgendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }   
 }

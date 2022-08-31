@@ -20,9 +20,7 @@ namespace GUI
     public partial class frmDialogCrearTicket : Form, IIdiomaObserver
     {
 
-        TraduccionBLL traduccionBLL;
-        List<Traduccion> traducciones;
-
+       
         TicketBLL ticketBLL;
 
         Cliente clienteSeleccionado = null;
@@ -38,34 +36,18 @@ namespace GUI
 
         private void frmDialogCrearTicket_Load(object sender, EventArgs e)
         {
-            traduccionBLL = new TraduccionBLL();
             Session.SuscribirObservador(this);
             ActualizarIdioma(Session.GetSession().usuario?.idioma ?? Session.defaultIdioma);
+            
             comboBoxPrioridad.DataSource = Enum.GetValues(typeof(PrioridadTicket));
             comboBoxPrioridad.SelectedIndex = 0;
         }
 
-
-        public string Tag(string tag)
-        {
-            string traduccion = tag;
-            try
-            {
-                if (traducciones != null)
-                {
-                    traduccion = traducciones.Find(x => x.etiqueta.Nombre == tag).traduccion;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se encontraron/ Faltan traducciones para la etiqueta " + tag);
-            }
-            return traduccion;
-        }
-
+       
+        Func<string, string> Tag = IdiomaUtils.Tag;
         public void ActualizarIdioma(Idioma idioma)
         {
-            traducciones = traduccionBLL.GetAllByIdioma(idioma);
+            IdiomaUtils.traducciones = new TraduccionBLL().GetAllByIdioma(idioma);
             this.Text = Tag("frmDialogCrearTicket");
             lblTituloCrearTicket.Text = Tag("frmDialogCrearTicket");
             lblTitulo.Text = Tag("lblTitulo");

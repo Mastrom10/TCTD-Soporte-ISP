@@ -1066,6 +1066,8 @@ AS
 		FROM Interaccion
 		WHERE FK_id_empleado = @id
 
+		GO
+		
 
 
 

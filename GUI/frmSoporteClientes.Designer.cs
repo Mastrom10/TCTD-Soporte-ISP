@@ -79,6 +79,7 @@
             this.lblEstadoServicio = new System.Windows.Forms.Label();
             this.lblServicePlan = new System.Windows.Forms.Label();
             this.groupBoxUltimosTickets = new System.Windows.Forms.GroupBox();
+            this.btnVerTicket = new System.Windows.Forms.Button();
             this.listBoxTicketCliente = new System.Windows.Forms.ListBox();
             this.btnCrearTicket = new System.Windows.Forms.Button();
             this.groupBoxBuscarCliente.SuspendLayout();
@@ -587,6 +588,7 @@
             // 
             // groupBoxUltimosTickets
             // 
+            this.groupBoxUltimosTickets.Controls.Add(this.btnVerTicket);
             this.groupBoxUltimosTickets.Controls.Add(this.listBoxTicketCliente);
             this.groupBoxUltimosTickets.Controls.Add(this.btnCrearTicket);
             this.groupBoxUltimosTickets.Location = new System.Drawing.Point(12, 308);
@@ -596,6 +598,17 @@
             this.groupBoxUltimosTickets.TabStop = false;
             this.groupBoxUltimosTickets.Text = "Ultimos Tickets";
             // 
+            // btnVerTicket
+            // 
+            this.btnVerTicket.Enabled = false;
+            this.btnVerTicket.Location = new System.Drawing.Point(594, 28);
+            this.btnVerTicket.Name = "btnVerTicket";
+            this.btnVerTicket.Size = new System.Drawing.Size(75, 23);
+            this.btnVerTicket.TabIndex = 2;
+            this.btnVerTicket.Text = "Ver Ticket";
+            this.btnVerTicket.UseVisualStyleBackColor = true;
+            this.btnVerTicket.Click += new System.EventHandler(this.btnVerTicket_Click);
+            // 
             // listBoxTicketCliente
             // 
             this.listBoxTicketCliente.Enabled = false;
@@ -604,10 +617,11 @@
             this.listBoxTicketCliente.Name = "listBoxTicketCliente";
             this.listBoxTicketCliente.Size = new System.Drawing.Size(576, 173);
             this.listBoxTicketCliente.TabIndex = 1;
+            this.listBoxTicketCliente.SelectedIndexChanged += new System.EventHandler(this.listBoxTicketCliente_SelectedIndexChanged);
             // 
             // btnCrearTicket
             // 
-            this.btnCrearTicket.Location = new System.Drawing.Point(594, 28);
+            this.btnCrearTicket.Location = new System.Drawing.Point(595, 57);
             this.btnCrearTicket.Name = "btnCrearTicket";
             this.btnCrearTicket.Size = new System.Drawing.Size(75, 23);
             this.btnCrearTicket.TabIndex = 0;
@@ -629,6 +643,7 @@
             this.Name = "frmSoporteClientes";
             this.Text = "frmSoporteClientes";
             this.Load += new System.EventHandler(this.frmSoporteClientes_Load);
+            this.Enter += new System.EventHandler(this.frmSoporteClientes_Enter);
             this.groupBoxBuscarCliente.ResumeLayout(false);
             this.groupBoxBuscarCliente.PerformLayout();
             this.groupBoxDomicilio.ResumeLayout(false);
@@ -699,5 +714,6 @@
         private System.Windows.Forms.GroupBox groupBoxUltimosTickets;
         private System.Windows.Forms.Button btnCrearTicket;
         private System.Windows.Forms.ListBox listBoxTicketCliente;
+        private System.Windows.Forms.Button btnVerTicket;
     }
 }

@@ -10,9 +10,9 @@ namespace BE
     {
         Abierto,
         Cerrado,
+        Cancelado,
         EnProceso,
-        EscaladoBackOffice,
-        EscaladoTecnico
-        
+        DerivadoBackoffice,
+        DerivadoTecnico,
     }
 }

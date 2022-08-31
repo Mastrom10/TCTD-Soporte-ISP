@@ -8,6 +8,7 @@ namespace SERV.MultiIdioma
 {
     public interface IIdiomaObserver
     {
+
         void ActualizarIdioma(Idioma idioma);
 
     }

@@ -18,8 +18,6 @@ namespace GUI
     public partial class frmSoporteClientes : Form, IIdiomaObserver
     {
 
-        TraduccionBLL traduccionBLL;
-        List<Traduccion> traducciones;
 
         ClienteBLL clienteBLL;
         Cliente clienteSeleccionado = null;
@@ -34,31 +32,15 @@ namespace GUI
 
         private void frmSoporteClientes_Load(object sender, EventArgs e)
         {
-            traduccionBLL = new TraduccionBLL();
             Session.SuscribirObservador(this);
             ActualizarIdioma(Session.GetSession().usuario?.idioma ?? Session.defaultIdioma);
         }
 
-        public string Tag(string tag)
-        {
-            string traduccion = tag;
-            try
-            {
-                if (traducciones != null)
-                {
-                    traduccion = traducciones.Find(x => x.etiqueta.Nombre == tag).traduccion;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se encontraron/ Faltan traducciones para la etiqueta " + tag);
-            }
-            return traduccion;
-        }
-
+        Func<string, string> Tag;
         public void ActualizarIdioma(Idioma idioma)
         {
-            traducciones = traduccionBLL.GetAllByIdioma(idioma);
+            IdiomaUtils.traducciones = new TraduccionBLL().GetAllByIdioma(idioma);
+            Tag = IdiomaUtils.Tag;
             this.Text = Tag("frmSoporteClientes");
             groupBoxBuscarCliente.Text = Tag("groupBoxBuscarCliente");
             lblNroCliente.Text = Tag("lblNroCliente");
@@ -87,6 +69,7 @@ namespace GUI
             groupBoxServicio.Text = Tag("groupBoxServicio");
             groupBoxInfoCliente.Text = Tag("groupBoxInfoCliente");
             groupBoxDatosContacto.Text = Tag("groupBoxDatosContacto");
+            btnVerTicket.Text = Tag("btnVerTicket");
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -186,6 +169,7 @@ namespace GUI
             lblValueEstado.Text = "";
             lblValuePlanServicio.Text = "";
             lblValueDispositivos.Text = "";
+            btnVerTicket.Enabled = false;
             listBoxTicketCliente.DataSource = null;
             listBoxTicketCliente.Items.Clear();
             HabilitarControlesBusqueda(true);
@@ -228,13 +212,18 @@ namespace GUI
             frmDialogCrearTickets.ShowDialog();
             if (frmDialogCrearTickets.DialogResult == DialogResult.OK)
             {
-                listarUltimosTickets();
+                
                 MessageBox.Show(Tag("TicketCreado") + frmDialogCrearTickets.ticketCreado.Id.ToString(), Tag("tagInfoTitle"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+                ticketSeleccionado = frmDialogCrearTickets.ticketCreado;
+                frmTicket frmticket = new frmTicket(ticketSeleccionado);
+                frmticket.ShowDialog();
+                listarUltimosTickets();
+
             }
         }
 
         void listarUltimosTickets() {
+            listBoxTicketCliente.DataSource = null;
             if (clienteSeleccionado != null)
             {
                 List<Ticket> tickets = ticketBLL.GetTicketsByCliente(clienteSeleccionado);
@@ -256,6 +245,52 @@ namespace GUI
                 MessageBox.Show(Tag("ClienteNoSeleccionado"), Tag("tagInfoTitle"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+
+        Ticket ticketSeleccionado;
+        private void listBoxTicketCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ticketSeleccionado = (Ticket)listBoxTicketCliente.SelectedItem;
+            }
+            catch (Exception)
+            {
+                ticketSeleccionado = null;
+            }
+
+            if (ticketSeleccionado != null)
+            {
+                btnVerTicket.Enabled = true;
+            }
+            else
+            {
+                btnVerTicket.Enabled = false;
+            }
+        }
+
+        private void btnVerTicket_Click(object sender, EventArgs e)
+        {
+            if (ticketSeleccionado != null)
+            {
+                frmTicket frmticket = new frmTicket(ticketSeleccionado);
+                frmticket.ShowDialog();
+                listarUltimosTickets();
+
+            }
+            else
+            {
+                MessageBox.Show(Tag("TicketNoSeleccionado"), Tag("tagInfoTitle"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void frmSoporteClientes_Enter(object sender, EventArgs e)
+        {
+            if (clienteSeleccionado != null)
+            {
+                CompletarDatosCliente(clienteSeleccionado);
+            }
         }
     }
 }

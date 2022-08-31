@@ -56,5 +56,76 @@ namespace BLL
 
             return ((TicketDAL)dal).GetByCliente(cliente);
         }
+
+        //getTicketsByEstado
+        public List<Ticket> GetTicketsByEstado(EstadoTicket estado)
+        {
+            TipoPermiso permisoEspecifico = TipoPermiso.CRUDTicket;
+            if (!Session.GetSession().TienePermiso(permisoEspecifico)) throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + permisoEspecifico.ToString());
+           
+            return ((TicketDAL)dal).GetByEstado(estado);
+        }
+
+        public void Update(Ticket ticketActual, Ticket ticketActualizado)
+        {
+            if (ticketActual.titulo != ticketActualizado.titulo) {
+                InteraccionTicket interaccion = new InteraccionTicket();
+                interaccion.idTicket = ticketActual.Id;
+                interaccion.fecha = DateTime.Now;
+                interaccion.empleado = Session.GetSession().usuario.empleado;
+                interaccion.motivo = "Actualizacion Datos";
+                interaccion.observacion = "Anterior: " + ticketActual.titulo + "\n Actual: " + ticketActualizado.titulo;
+                interaccion.accion = "Cambio de titulo";
+                ticketActual.interacciones.Add(interaccion);
+                interaccionBLL.Create(interaccion);
+                ticketActual.titulo = ticketActualizado.titulo;
+                ticketActual.fechaUltimaModificacion = DateTime.Now;
+            }
+            if (ticketActual.prioridad != ticketActualizado.prioridad)
+            {
+                InteraccionTicket interaccion = new InteraccionTicket();
+                interaccion.idTicket = ticketActual.Id;
+                interaccion.fecha = DateTime.Now;
+                interaccion.empleado = Session.GetSession().usuario.empleado;
+                interaccion.motivo = "Actualizacion Datos";
+                interaccion.observacion = "Anterior: " + ticketActual.prioridad + "\n Actual: " + ticketActualizado.prioridad;
+                interaccion.accion = "Cambio de prioridad";
+                ticketActual.interacciones.Add(interaccion);
+                interaccionBLL.Create(interaccion);
+                ticketActual.prioridad = ticketActualizado.prioridad;
+                ticketActual.fechaUltimaModificacion = DateTime.Now;
+            }
+            if (ticketActual.descripcion != ticketActualizado.descripcion)
+            {
+                InteraccionTicket interaccion = new InteraccionTicket();
+                interaccion.idTicket = ticketActual.Id;
+                interaccion.fecha = DateTime.Now;
+                interaccion.empleado = Session.GetSession().usuario.empleado;
+                interaccion.motivo = "Actualizacion Datos";
+                interaccion.observacion = "Anterior: " + ticketActual.descripcion + "\n Actual: " + ticketActualizado.descripcion;
+                interaccion.accion = "Cambio de descripcion";
+                ticketActual.interacciones.Add(interaccion);
+                interaccionBLL.Create(interaccion);
+                ticketActual.descripcion = ticketActualizado.descripcion;
+                ticketActual.fechaUltimaModificacion = DateTime.Now;
+            }
+            Update(ticketActual);
+            
+        }
+
+        public void RegistrarMostrarTicket(Ticket ticket)
+        {
+            InteraccionTicket interaccion = new InteraccionTicket();
+            interaccion.idTicket = ticket.Id;
+            interaccion.fecha = DateTime.Now;
+            interaccion.empleado = Session.GetSession().usuario.empleado;
+            interaccion.motivo = "Visualizacion Ticket";
+            interaccion.observacion = "";
+            interaccion.accion = "Visualizacion Ticket";
+            ticket.interacciones.Add(interaccion);
+            interaccionBLL.Create(interaccion);
+
+        }
+        
     }
 }

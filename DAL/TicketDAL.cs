@@ -136,7 +136,20 @@ namespace DAL
             }
             return tickets;
         }
-        
+
+        //GetByEstado
+        public List<Ticket> GetByEstado(EstadoTicket estado)
+        {
+            //OBTENER_TICKET_POR_ESTADO
+            List<Ticket> tickets = new List<Ticket>();
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_TICKET_POR_ESTADO", sqlParameters(estado.ToString()));
+            foreach (DataRow row in datatable.Rows)
+            {
+                tickets.Add(mapToTicket(row));
+            }
+            return tickets;
+        }
+
         public override int GetNextId()
         {
             //OBTENER_MAX_ID_TICKET

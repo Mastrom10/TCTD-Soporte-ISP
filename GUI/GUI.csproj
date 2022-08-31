@@ -58,17 +58,35 @@
     <Compile Include="frmCambiarIdioma.Designer.cs">
       <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDialogCerrarTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogCerrarTicket.Designer.cs">
+      <DependentUpon>frmDialogCerrarTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDialogCrearTicket.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDialogCrearTicket.Designer.cs">
       <DependentUpon>frmDialogCrearTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDialogDerivarTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogDerivarTicket.Designer.cs">
+      <DependentUpon>frmDialogDerivarTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDispositivosNoAsignados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDispositivosNoAsignados.Designer.cs">
       <DependentUpon>frmDispositivosNoAsignados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestiondeAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestiondeAgenda.Designer.cs">
+      <DependentUpon>frmGestiondeAgenda.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGestionDispositivosCliente.cs">
       <SubType>Form</SubType>
@@ -136,11 +154,23 @@
     <Compile Include="frmTicket.Designer.cs">
       <DependentUpon>frmTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTicketDeBackOffice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTicketDeBackOffice.Designer.cs">
+      <DependentUpon>frmTicketDeBackOffice.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTraducciones.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTraducciones.Designer.cs">
       <DependentUpon>frmTraducciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InteraccionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InteraccionControl.Designer.cs">
+      <DependentUpon>InteraccionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,8 +180,14 @@
     <EmbeddedResource Include="frmCambiarIdioma.resx">
       <DependentUpon>frmCambiarIdioma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogCerrarTicket.resx">
+      <DependentUpon>frmDialogCerrarTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialogCrearTicket.resx">
       <DependentUpon>frmDialogCrearTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogDerivarTicket.resx">
+      <DependentUpon>frmDialogDerivarTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDispositivosNoAsignados.resx">
       <DependentUpon>frmDispositivosNoAsignados.cs</DependentUpon>
@@ -189,8 +225,14 @@
     <EmbeddedResource Include="frmTicket.resx">
       <DependentUpon>frmTicket.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTicketDeBackOffice.resx">
+      <DependentUpon>frmTicketDeBackOffice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTraducciones.resx">
       <DependentUpon>frmTraducciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InteraccionControl.resx">
+      <DependentUpon>InteraccionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

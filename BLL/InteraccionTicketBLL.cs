@@ -9,12 +9,17 @@ using SERV;
 
 namespace BLL
 {
-    public  class InteraccionTicketBLL : GenericBLL<InteraccionTicket>
+    public class InteraccionTicketBLL : GenericBLL<InteraccionTicket>
     {
         public InteraccionTicketBLL()
         {
             dal = new InteraccionTicketDAL();
             permiso = TipoPermiso.CRUDInteraccion;
+        }
+
+        public List<InteraccionTicket> GetAllByTicket(Ticket ticket)
+        {
+            return ((InteraccionTicketDAL)dal).GetAllByTicketID(ticket.Id);
         }
 
     }

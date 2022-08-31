@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Ticket : Entity
+    public class Ticket : Entity, ICloneable
     {
             
         public string titulo { get; set; }
@@ -19,6 +19,11 @@ namespace BE
         public Cliente cliente { get; set; }
         public Empleado empleado { get; set; }
         public List<InteraccionTicket> interacciones { get; set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
 
         public override string ToString()
         {
