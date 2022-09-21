@@ -23,7 +23,8 @@ namespace GUI
         public EstadoTicket estadoTicket;
         public string motivo;
         public string franjaHoraria;
-        
+        public OrdenTecnica ordenTecnica;
+
         public frmDialogDerivarTicket(Ticket ticket)
         {
             InitializeComponent();
@@ -80,11 +81,39 @@ namespace GUI
         {
             //comboBoxTipoDerivacion.SelectedItem as EstadoTicket
             estadoTicket = (EstadoTicket)comboBoxTipoDerivacion.SelectedItem;
-            motivo = textBoxMotivoEscalamiento.Text;
-            franjaHoraria = comboBoxFranjaHoraria.SelectedItem.ToString();
-            this.DialogResult = DialogResult.OK;
+            if (estadoTicket == EstadoTicket.DerivadoBackoffice)
+            {
+                motivo = textBoxMotivoEscalamiento.Text;
+                franjaHoraria = comboBoxFranjaHoraria.SelectedItem.ToString();
+                this.DialogResult = DialogResult.OK;
+            }
+            else {
+                frmOrdenTecnica frmOrdenTecnica = new frmOrdenTecnica(ticketActual);
+                frmOrdenTecnica.ShowDialog();
+                if (frmOrdenTecnica.DialogResult == DialogResult.OK)
+                {
+                    ordenTecnica = frmOrdenTecnica.ordenTecnica;
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.Cancel;
+                }
+            }
             this.Close();
         }
+
+        private void comboBoxTipoDerivacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            estadoTicket = (EstadoTicket)comboBoxTipoDerivacion.SelectedItem;
+            bool mostrarOpciones = estadoTicket != EstadoTicket.DerivadoTecnico;
+            comboBoxFranjaHoraria.Visible = mostrarOpciones;
+            lblFranjaHoraria.Visible = mostrarOpciones;
+            lblMotivoEscalamiento.Visible = mostrarOpciones;
+            textBoxMotivoEscalamiento.Visible = mostrarOpciones;
+        }
+
+
     }
 }
 

@@ -65,6 +65,7 @@
             this.comboBoxTipoDerivacion.Name = "comboBoxTipoDerivacion";
             this.comboBoxTipoDerivacion.Size = new System.Drawing.Size(248, 21);
             this.comboBoxTipoDerivacion.TabIndex = 2;
+            this.comboBoxTipoDerivacion.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoDerivacion_SelectedIndexChanged);
             // 
             // lblMotivoEscalamiento
             // 

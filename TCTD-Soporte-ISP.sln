@@ -19,9 +19,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{764BD443-1A64-449E-91FA-C0267C7CF93A}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		TO DO List.txt = TO DO List.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST", "TEST\TEST.csproj", "{50D98202-4ABB-4163-BC53-472317516D28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEST", "TEST\TEST.csproj", "{50D98202-4ABB-4163-BC53-472317516D28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

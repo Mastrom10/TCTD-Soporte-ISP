@@ -164,8 +164,9 @@ namespace GUI
                 ticketsDeBackOfficeToolStripMenuItem.Text = Tag("ticketsDeBackOfficeToolStripMenuItem");
                 serviceTécnicoToolStripMenuItem.Text = Tag("serviceTécnicoToolStripMenuItem");
                 gestionDeAgendaToolStripMenuItem.Text = Tag("gestionDeAgendaToolStripMenuItem");
-
-
+                buscadorTicketsToolStripMenuItem.Text = Tag("buscadorTicketsToolStripMenuItem");
+                usuariosToolStripMenuItem.Text = Tag("usuariosToolStripMenuItem");
+                empleadosToolStripMenuItem.Text = Tag("empleadosToolStripMenuItem");
             }
             catch (Exception ex)
             {
@@ -251,6 +252,25 @@ namespace GUI
 
 
         private void gestionDeAgendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestiondeAgenda frmgestiondeAgenda = new frmGestiondeAgenda();
+            frmgestiondeAgenda.MdiParent = this;
+            frmgestiondeAgenda.Show();
+        }
+
+        private void topMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void buscadorTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBuscadorTickets ticketfinder = new frmBuscadorTickets();
+            ticketfinder.MdiParent = this;
+            ticketfinder.Show();
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

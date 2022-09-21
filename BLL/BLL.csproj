@@ -52,10 +52,12 @@
     <Compile Include="DispositivoBLL.cs" />
     <Compile Include="InteraccionTicketBLL.cs" />
     <Compile Include="NodoRedBLL.cs" />
+    <Compile Include="OrdenTecnicaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicePlanBLL.cs" />
     <Compile Include="ServicioBLL.cs" />
     <Compile Include="TicketBLL.cs" />
+    <Compile Include="TurnoBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

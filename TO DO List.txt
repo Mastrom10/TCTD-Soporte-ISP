@@ -1,0 +1,24 @@
+
+-- crear gestor de usuarios (ABM de usuarios de sistema.)
+
+-- no cambiar estado del ticket al recuperar
+
+-- Si el ticket está "derivado BackOffice" la habilitacion de botones depende del perfil (implementar en GUI y en BLL)
+
+-- Si la orden técnica está creada, que no se pueda cambiar el tipo de OT
+
+-- El turno debe pasar a "Tomado" una vez que tiene una OT Asignada. 
+
+
+
+
+
+-- (Opcional) El ticket deberia mostrar la OT (¿Poder ver la OT desde el ticket?). 
+
+-- (opcional) Estado de OT. Si la OT se cancela, turno cancelado. 
+
+
+-- ABM Empleado
+
+-- ABM Usuario
+

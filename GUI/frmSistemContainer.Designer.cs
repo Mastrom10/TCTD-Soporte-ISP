@@ -49,11 +49,14 @@
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketsDeBackOfficeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscadorTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviceTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDeAgendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dEBUGLOGINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
-            this.serviceTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDeAgendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +75,7 @@
             this.topMenu.Size = new System.Drawing.Size(1081, 24);
             this.topMenu.TabIndex = 1;
             this.topMenu.Text = "Menu";
+            this.topMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.topMenu_ItemClicked);
             // 
             // inicioToolStripMenuItem
             // 
@@ -109,7 +113,9 @@
             this.gestoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.permisosToolStripMenuItem,
             this.gestorGruposDePermisosToolStripMenuItem,
-            this.idiomaToolStripMenuItem});
+            this.idiomaToolStripMenuItem,
+            this.usuariosToolStripMenuItem,
+            this.empleadosToolStripMenuItem});
             this.gestoresToolStripMenuItem.Name = "gestoresToolStripMenuItem";
             this.gestoresToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.gestoresToolStripMenuItem.Text = "Configuracion";
@@ -173,28 +179,28 @@
             // nodosDeRedToolStripMenuItem
             // 
             this.nodosDeRedToolStripMenuItem.Name = "nodosDeRedToolStripMenuItem";
-            this.nodosDeRedToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.nodosDeRedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nodosDeRedToolStripMenuItem.Text = "Nodos de Red";
             this.nodosDeRedToolStripMenuItem.Click += new System.EventHandler(this.nodosDeRedToolStripMenuItem_Click);
             // 
             // planesDeServicioToolStripMenuItem
             // 
             this.planesDeServicioToolStripMenuItem.Name = "planesDeServicioToolStripMenuItem";
-            this.planesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.planesDeServicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.planesDeServicioToolStripMenuItem.Text = "Planes de Servicio";
             this.planesDeServicioToolStripMenuItem.Click += new System.EventHandler(this.planesDeServicioToolStripMenuItem_Click);
             // 
             // dispositivosToolStripMenuItem
             // 
             this.dispositivosToolStripMenuItem.Name = "dispositivosToolStripMenuItem";
-            this.dispositivosToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.dispositivosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dispositivosToolStripMenuItem.Text = "Dispositivos";
             this.dispositivosToolStripMenuItem.Click += new System.EventHandler(this.dispositivosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
@@ -202,7 +208,8 @@
             // 
             this.soporteTécnicoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientesToolStripMenuItem1,
-            this.ticketsDeBackOfficeToolStripMenuItem});
+            this.ticketsDeBackOfficeToolStripMenuItem,
+            this.buscadorTicketsToolStripMenuItem});
             this.soporteTécnicoToolStripMenuItem.Name = "soporteTécnicoToolStripMenuItem";
             this.soporteTécnicoToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
             this.soporteTécnicoToolStripMenuItem.Text = "Soporte Técnico";
@@ -220,6 +227,28 @@
             this.ticketsDeBackOfficeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.ticketsDeBackOfficeToolStripMenuItem.Text = "Tickets de BackOffice";
             this.ticketsDeBackOfficeToolStripMenuItem.Click += new System.EventHandler(this.ticketsDeBackOfficeToolStripMenuItem_Click);
+            // 
+            // buscadorTicketsToolStripMenuItem
+            // 
+            this.buscadorTicketsToolStripMenuItem.Name = "buscadorTicketsToolStripMenuItem";
+            this.buscadorTicketsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.buscadorTicketsToolStripMenuItem.Text = "Tickets";
+            this.buscadorTicketsToolStripMenuItem.Click += new System.EventHandler(this.buscadorTicketsToolStripMenuItem_Click);
+            // 
+            // serviceTécnicoToolStripMenuItem
+            // 
+            this.serviceTécnicoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestionDeAgendaToolStripMenuItem});
+            this.serviceTécnicoToolStripMenuItem.Name = "serviceTécnicoToolStripMenuItem";
+            this.serviceTécnicoToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.serviceTécnicoToolStripMenuItem.Text = "Service Técnico";
+            // 
+            // gestionDeAgendaToolStripMenuItem
+            // 
+            this.gestionDeAgendaToolStripMenuItem.Name = "gestionDeAgendaToolStripMenuItem";
+            this.gestionDeAgendaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.gestionDeAgendaToolStripMenuItem.Text = "Gestion de Agenda";
+            this.gestionDeAgendaToolStripMenuItem.Click += new System.EventHandler(this.gestionDeAgendaToolStripMenuItem_Click);
             // 
             // dEBUGLOGINToolStripMenuItem
             // 
@@ -244,20 +273,18 @@
             this.StatusSession.Size = new System.Drawing.Size(100, 17);
             this.StatusSession.Text = "¿Session Iniciada?";
             // 
-            // serviceTécnicoToolStripMenuItem
+            // usuariosToolStripMenuItem
             // 
-            this.serviceTécnicoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionDeAgendaToolStripMenuItem});
-            this.serviceTécnicoToolStripMenuItem.Name = "serviceTécnicoToolStripMenuItem";
-            this.serviceTécnicoToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.serviceTécnicoToolStripMenuItem.Text = "Service Técnico";
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
-            // gestionDeAgendaToolStripMenuItem
+            // empleadosToolStripMenuItem
             // 
-            this.gestionDeAgendaToolStripMenuItem.Name = "gestionDeAgendaToolStripMenuItem";
-            this.gestionDeAgendaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.gestionDeAgendaToolStripMenuItem.Text = "Gestion de Agenda";
-            this.gestionDeAgendaToolStripMenuItem.Click += new System.EventHandler(this.gestionDeAgendaToolStripMenuItem_Click);
+            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // frmSistemConteiner
             // 
@@ -308,6 +335,9 @@
         private System.Windows.Forms.ToolStripMenuItem ticketsDeBackOfficeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviceTécnicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDeAgendaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buscadorTicketsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
     }
 }
 

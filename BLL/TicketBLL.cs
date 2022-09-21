@@ -68,6 +68,9 @@ namespace BLL
 
         public void Update(Ticket ticketActual, Ticket ticketActualizado)
         {
+            
+
+
             if (ticketActual.titulo != ticketActualizado.titulo) {
                 InteraccionTicket interaccion = new InteraccionTicket();
                 interaccion.idTicket = ticketActual.Id;

@@ -156,10 +156,10 @@
             // 
             // textBoxDescripcion
             // 
-            this.textBoxDescripcion.Enabled = false;
             this.textBoxDescripcion.Location = new System.Drawing.Point(122, 228);
             this.textBoxDescripcion.Multiline = true;
             this.textBoxDescripcion.Name = "textBoxDescripcion";
+            this.textBoxDescripcion.ReadOnly = true;
             this.textBoxDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxDescripcion.Size = new System.Drawing.Size(553, 74);
             this.textBoxDescripcion.TabIndex = 22;

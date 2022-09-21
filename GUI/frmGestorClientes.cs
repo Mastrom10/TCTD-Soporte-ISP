@@ -318,9 +318,17 @@ namespace GUI
                     cliente.servicio.estado = comboBoxEstadoServicio.Text != "" ? (EstadoServicio)Enum.Parse(typeof(EstadoServicio), comboBoxEstadoServicio.Text) : EstadoServicio.Indefinido;
                     cliente.servicio.servicePlan = comboBoxServicePlan.SelectedItem as ServicePlan;
                     clienteBLL.Update(cliente);
+                    MessageBox.Show(Tag("ClienteActualizadoCorrectamente"), Tag("tagInfoTitle"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
                 }
                 CompletarDatosCliente(cliente);
                 clienteSeleccionado = cliente;
+                if (this.Modal)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {

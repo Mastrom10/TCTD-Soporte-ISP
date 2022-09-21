@@ -100,7 +100,7 @@ namespace GUI
             //enable textBoxTitulo, comboBoxPrioridad, textBoxDescripcion, btnGuardar
             textBoxTitulo.Enabled = true;
             comboBoxPrioridad.Enabled = true;
-            textBoxDescripcion.Enabled = true;
+            textBoxDescripcion.ReadOnly = false;
             btnGuardar.Enabled = true;
             btnEditar.Enabled = false;
             
@@ -112,7 +112,7 @@ namespace GUI
             { 
             textBoxTitulo.Enabled = false;
             comboBoxPrioridad.Enabled = false;
-            textBoxDescripcion.Enabled = false;
+            textBoxDescripcion.ReadOnly = true;
             btnGuardar.Enabled = false;
             btnEditar.Enabled = true;
             } else
@@ -125,7 +125,7 @@ namespace GUI
             //disable textBoxTitulo, comboBoxPrioridad, textBoxDescripcion, btnGuardar, btnEditar, btnDerivar, btnCerrarTicket
             textBoxTitulo.Enabled = false;
             comboBoxPrioridad.Enabled = false;
-            textBoxDescripcion.Enabled = false;
+            textBoxDescripcion.ReadOnly = true;
             btnGuardar.Enabled = false;
             btnEditar.Enabled = false;
             btnDerivar.Enabled = false;
@@ -164,8 +164,17 @@ namespace GUI
             ticketActualizado.prioridad = (PrioridadTicket)comboBoxPrioridad.SelectedItem;
             ticketActualizado.descripcion = textBoxDescripcion.Text;
             ticketActualizado.fechaUltimaModificacion = DateTime.Now;
-            ticketBLL.Update(ticketActual, ticketActualizado);
-            MessageBox.Show(Tag("msgTicketActualizado"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            try
+            {
+                ticketBLL.Update(ticketActual, ticketActualizado);
+                MessageBox.Show(Tag("msgTicketActualizado"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             DeshabilitarEdicion();
             MostrarInfoTicket();
         }
@@ -190,8 +199,7 @@ namespace GUI
 
                 ticketActual.estado = frmDialogDerivarTicket.estadoTicket;
                 ticketActual.fechaUltimaModificacion = DateTime.Now;
-                ticketActual.descripcion = "Horario Contacto: " + frmDialogDerivarTicket.franjaHoraria + Environment.NewLine + frmDialogDerivarTicket.motivo + Environment.NewLine + Environment.NewLine + ticketActual.descripcion;
-                ticketBLL.Update(ticketActual);   
+                 ticketBLL.Update(ticketActual);   
                 
                 MessageBox.Show(Tag("msgTicketDerivado"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DeshabilitarEdicion();

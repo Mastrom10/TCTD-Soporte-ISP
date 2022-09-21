@@ -1075,7 +1075,144 @@ AS
 
 
 
+-- CREAR_TURNO
 
+CREATE PROCEDURE CREAR_TURNO
+@id INT, @estadoTurno varchar(50) = NULL, @fecha datetime = NULL, @franjaHoraria varchar(50) = NULL
+AS
+	INSERT INTO Turno
+	(id, estadoTurno, fecha, franjaHoraria)
+	VALUES
+	(@id, @estadoTurno, @fecha, @franjaHoraria)
+	GO
+	
+-- BORRAR_TURNO
+CREATE PROCEDURE BORRAR_TURNO
+@id INT, @estadoTurno varchar(50) = NULL, @fecha datetime = NULL, @franjaHoraria varchar(50) = NULL
+AS
+	DELETE FROM Turno
+	WHERE id = @id
+	GO
+-- OBTENER_TODOS_TURNO
+CREATE PROCEDURE OBTENER_TODOS_TURNO
+AS
+	SELECT id, estadoTurno, fecha, franjaHoraria
+	FROM Turno
+	GO
+-- OBTENER_POR_ID_TURNO
+CREATE PROCEDURE OBTENER_POR_ID_TURNO
+@id INT, @estadoTurno varchar(50) = NULL, @fecha datetime = NULL, @franjaHoraria varchar(50) = NULL
+AS
+	SELECT id, estadoTurno, fecha, franjaHoraria
+	FROM Turno
+	WHERE id = @id
+	GO
+-- OBTENER_MAX_ID_TURNO
+CREATE PROCEDURE OBTENER_MAX_ID_TURNO
+AS
+	SELECT MAX(id) as id from Turno
+	GO
+-- ACTUALIZAR_TURNO
+CREATE PROCEDURE ACTUALIZAR_TURNO
+@id INT, @estadoTurno varchar(50) = NULL, @fecha datetime = NULL, @franjaHoraria varchar(50) = NULL
+AS
+	UPDATE Turno
+	SET    estadoTurno = @estadoTurno, fecha = @fecha, franjaHoraria = @franjaHoraria
+	WHERE id = @id
+	GO
+
+-- OBTENER_TURNOS_POR_RANGO_FECHAS
+-- @fechaDesde datetime, @fechaHasta datetime
+CREATE PROCEDURE OBTENER_TURNOS_POR_RANGO_FECHAS
+@fechaDesde datetime, @fechaHasta datetime
+AS
+	SELECT id, estadoTurno, fecha, franjaHoraria
+	FROM Turno
+	WHERE fecha BETWEEN @fechaDesde AND @fechaHasta
+	GO
+
+
+
+
+
+
+
+-- CREAR_ORDEN_TECNICA
+CREATE PROCEDURE CREAR_ORDEN_TECNICA
+@id INT, @tipoOrdenTecnica  VARCHAR(50) = NULL, @notas  VARCHAR(5000) = NULL, @FK_id_turno INT = NULL, @FK_id_ticket INT = NULL
+AS
+INSERT INTO OrdenTecnica
+	(id, tipoOrdenTecnica, notas, FK_id_turno, FK_id_ticket)
+	VALUES
+	(@id, @tipoOrdenTecnica, @notas, @FK_id_turno, @FK_id_ticket)
+	GO
+
+
+-- BORRAR_ORDEN_TECNICA
+ CREATE PROCEDURE BORRAR_ORDEN_TECNICA
+@id INT, @tipoOrdenTecnica  VARCHAR(50) = NULL, @notas  VARCHAR(5000) = NULL, @FK_id_turno INT = NULL, @FK_id_ticket INT = NULL
+AS
+	DELETE FROM OrdenTecnica
+	WHERE id = @id
+	GO
+
+-- OBTENER_TODOS_ORDEN_TECNICA
+CREATE PROCEDURE OBTENER_TODOS_ORDEN_TECNICA
+AS
+	SELECT id, tipoOrdenTecnica, notas, FK_id_turno, FK_id_ticket
+	FROM OrdenTecnica
+	GO
+	
+-- OBTENER_POR_ID_ORDEN_TECNICA
+CREATE PROCEDURE OBTENER_POR_ID_ORDEN_TECNICA
+@id INT, @tipoOrdenTecnica  VARCHAR(50) = NULL, @notas  VARCHAR(5000) = NULL, @FK_id_turno INT = NULL, @FK_id_ticket INT = NULL
+AS
+	SELECT id, tipoOrdenTecnica, notas, FK_id_turno, FK_id_ticket
+	FROM OrdenTecnica
+	WHERE id = @id
+	GO
+	
+-- OBTENER_MAX_ID_ORDEN_TECNICA
+CREATE PROCEDURE OBTENER_MAX_ID_ORDEN_TECNICA
+AS
+	SELECT MAX(id) as id from OrdenTecnica
+	GO
+	
+-- ACTUALIZAR_ORDEN_TECNICA
+CREATE PROCEDURE ACTUALIZAR_ORDEN_TECNICA
+@id INT, @tipoOrdenTecnica  VARCHAR(50) = NULL, @notas  VARCHAR(5000) = NULL, @FK_id_turno INT = NULL, @FK_id_ticket INT = NULL
+AS
+	UPDATE OrdenTecnica
+	SET    tipoOrdenTecnica = @tipoOrdenTecnica, notas = @notas, FK_id_turno = @FK_id_turno, FK_id_ticket = @FK_id_ticket
+	WHERE id = @id
+	GO
+	
+--OBTENER_ORDEN_TECNICA_POR_ID_TICKET
+CREATE PROCEDURE OBTENER_ORDEN_TECNICA_POR_ID_TICKET
+@id INT
+AS
+	SELECT id, tipoOrdenTecnica, notas, FK_id_turno, FK_id_ticket
+	FROM OrdenTecnica
+	WHERE FK_id_ticket = @id
+	GO
+
+-- OBTENER_ORDEN_TECNICA_POR_ID_TURNO
+CREATE PROCEDURE OBTENER_ORDEN_TECNICA_POR_ID_TURNO
+@id INT
+AS
+	SELECT id, tipoOrdenTecnica, notas, FK_id_turno, FK_id_ticket
+	FROM OrdenTecnica
+	WHERE FK_id_turno = @id
+	GO
+
+--OBTENER_ORDEN_TECNICA_POR_TIPO
+CREATE PROCEDURE OBTENER_ORDEN_TECNICA_POR_TIPO
+@texto  VARCHAR(50) = NULL
+AS
+	SELECT id, tipoOrdenTecnica, notas, FK_id_turno, FK_id_ticket
+	FROM OrdenTecnica
+	WHERE tipoOrdenTecnica = @texto
+	GO
 
 
 

@@ -76,11 +76,35 @@
     <Compile Include="frmDialogDerivarTicket.Designer.cs">
       <DependentUpon>frmDialogDerivarTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDialogEditarTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogEditarTurnos.Designer.cs">
+      <DependentUpon>frmDialogEditarTurnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogEmpleado.Designer.cs">
+      <DependentUpon>frmDialogEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogTurnosDisponibles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogTurnosDisponibles.Designer.cs">
+      <DependentUpon>frmDialogTurnosDisponibles.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDispositivosNoAsignados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDispositivosNoAsignados.Designer.cs">
       <DependentUpon>frmDispositivosNoAsignados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpleado.Designer.cs">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGestiondeAgenda.cs">
       <SubType>Form</SubType>
@@ -136,6 +160,12 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOrdenTecnica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrdenTecnica.Designer.cs">
+      <DependentUpon>frmOrdenTecnica.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSistemContainer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +183,12 @@
     </Compile>
     <Compile Include="frmTicket.Designer.cs">
       <DependentUpon>frmTicket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscadorTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscadorTickets.Designer.cs">
+      <DependentUpon>frmBuscadorTickets.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTicketDeBackOffice.cs">
       <SubType>Form</SubType>
@@ -189,8 +225,23 @@
     <EmbeddedResource Include="frmDialogDerivarTicket.resx">
       <DependentUpon>frmDialogDerivarTicket.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogEditarTurnos.resx">
+      <DependentUpon>frmDialogEditarTurnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogEmpleado.resx">
+      <DependentUpon>frmDialogEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogTurnosDisponibles.resx">
+      <DependentUpon>frmDialogTurnosDisponibles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDispositivosNoAsignados.resx">
       <DependentUpon>frmDispositivosNoAsignados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpleado.resx">
+      <DependentUpon>frmEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestiondeAgenda.resx">
+      <DependentUpon>frmGestiondeAgenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionDispositivosCliente.resx">
       <DependentUpon>frmGestionDispositivosCliente.cs</DependentUpon>
@@ -216,6 +267,9 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmOrdenTecnica.resx">
+      <DependentUpon>frmOrdenTecnica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSistemContainer.resx">
       <DependentUpon>frmSistemContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTicket.resx">
       <DependentUpon>frmTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscadorTickets.resx">
+      <DependentUpon>frmBuscadorTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTicketDeBackOffice.resx">
       <DependentUpon>frmTicketDeBackOffice.cs</DependentUpon>
