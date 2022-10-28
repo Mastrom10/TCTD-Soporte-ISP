@@ -80,6 +80,7 @@
             this.comboBoxServicePlan = new System.Windows.Forms.ComboBox();
             this.lblEstadoServicio = new System.Windows.Forms.Label();
             this.lblServicePlan = new System.Windows.Forms.Label();
+            this.btnRestaurarEstado = new System.Windows.Forms.Button();
             this.groupBoxBuscarCliente.SuspendLayout();
             this.groupBoxInfoCliente.SuspendLayout();
             this.groupBoxDatosContacto.SuspendLayout();
@@ -571,11 +572,23 @@
             this.lblServicePlan.TabIndex = 20;
             this.lblServicePlan.Text = "Plan de Servicio:";
             // 
+            // btnRestaurarEstado
+            // 
+            this.btnRestaurarEstado.Location = new System.Drawing.Point(449, 8);
+            this.btnRestaurarEstado.Name = "btnRestaurarEstado";
+            this.btnRestaurarEstado.Size = new System.Drawing.Size(249, 23);
+            this.btnRestaurarEstado.TabIndex = 12;
+            this.btnRestaurarEstado.Text = "Restaurar Estado";
+            this.btnRestaurarEstado.UseVisualStyleBackColor = true;
+            this.btnRestaurarEstado.Visible = false;
+            this.btnRestaurarEstado.Click += new System.EventHandler(this.btnRestaurarEstado_Click);
+            // 
             // frmGestorClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 503);
+            this.Controls.Add(this.btnRestaurarEstado);
             this.Controls.Add(this.groupBoxServicio);
             this.Controls.Add(this.groupBoxDomicilio);
             this.Controls.Add(this.groupBoxDatosContacto);
@@ -654,5 +667,6 @@
         private System.Windows.Forms.Button buttonGuadar;
         private System.Windows.Forms.Button buttonNuevo;
         private System.Windows.Forms.Button buttonGestionarDispositivos;
+        private System.Windows.Forms.Button btnRestaurarEstado;
     }
 }

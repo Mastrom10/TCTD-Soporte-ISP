@@ -13,6 +13,6 @@ namespace BLL
         public NodoRedBLL(){
             dal = new NodoRedDAL();
             permiso = TipoPermiso.CRUDNodoRed;
-        }
+        } 
     }
 }

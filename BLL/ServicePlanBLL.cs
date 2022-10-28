@@ -11,7 +11,7 @@ namespace BLL
 {
     public class ServicePlanBLL : GenericBLL<ServicePlan>
     {
-        public ServicePlanBLL()
+        public ServicePlanBLL() 
         {
             dal = new ServicePlanDAL();
             permiso = TipoPermiso.CRUDServicePlan;

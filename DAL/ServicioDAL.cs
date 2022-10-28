@@ -66,19 +66,7 @@ namespace DAL
             }
         }
 
-        public Servicio GetByCliente(Cliente cliente) {
-            //OBTENER_SERVICIO_POR_CLIENTE
-            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_SERVICIO_POR_CLIENTE", sqlParameters(cliente.Id));
-            if (datatable.Rows.Count > 0)
-            {
-                return mapToServicio(datatable.Rows[0]);
-            }
-            else
-            {
-                return null;
-            }
-
-        }
+        
         
 
         public override int GetNextId()
@@ -107,14 +95,7 @@ namespace DAL
             parametros[2].DbType = DbType.Int32;
             return parametros;
         }
-        public SqlParameter[] sqlParameters(int id)
-        {
-            //@id INT, @estado VARCHAR(50), @FK_id_ServicePlan INT
-            SqlParameter[] parametros = new SqlParameter[1];
-            parametros[0] = new SqlParameter("@id", id);
-            parametros[0].DbType = DbType.Int32;
-            return parametros;
-        }        
+
 
         public override void Update(Servicio entity)
         {
@@ -123,6 +104,15 @@ namespace DAL
 
         }
 
+        public SqlParameter[] sqlParameters(int id)
+        {
+            //@id INT, @estado VARCHAR(50), @FK_id_ServicePlan INT
+            SqlParameter[] parametros = new SqlParameter[1];
+            parametros[0] = new SqlParameter("@id", id);
+            parametros[0].DbType = DbType.Int32;
+            return parametros;
+        }
+        
         Servicio mapToServicio(DataRow row) {
             Servicio servicio = new Servicio();
             servicio.Id = int.Parse(row["id"].ToString());
@@ -133,6 +123,21 @@ namespace DAL
             }
             servicio.dispositivos = dDAL.getByServicio(servicio);
             return servicio;
+        }
+
+        public Servicio GetByCliente(Cliente cliente)
+        {
+            //OBTENER_SERVICIO_POR_CLIENTE
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_SERVICIO_POR_CLIENTE", sqlParameters(cliente.Id));
+            if (datatable.Rows.Count > 0)
+            {
+                return mapToServicio(datatable.Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

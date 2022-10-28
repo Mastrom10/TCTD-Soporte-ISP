@@ -18,7 +18,7 @@ namespace DAL
                 entity.Id = GetNextId();
             }
             SQLConnectionManager.getInstance().ExecuteProcedure("CREAR_TURNO", sqlParameters(entity));
-
+            
         }
 
         public List<Turno> GetTurnosByFechaRange(DateTime fechaDesde, DateTime fechaHasta)

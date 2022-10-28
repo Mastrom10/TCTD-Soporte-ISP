@@ -16,7 +16,8 @@ namespace SERV
     {
         public static byte[] EncriptionKey = { 1, 5, 4, 8, 3, 6, 5, 9 };
         public static byte[] EncriptionVector = { 9, 7, 6, 4, 5, 8, 1, 2 };
-
+        public static int loggerDepth = 3;
+        public static LogLevel logLevel = LogLevel.Debug;
         
        
        

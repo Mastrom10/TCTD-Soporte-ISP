@@ -9,7 +9,7 @@ using BE;
 using SERV;
 namespace DAL
 {
-    public class ClienteDAL : GenericDAL<Cliente>
+    public class ClienteDAL : GenericDAL<Cliente>, IState<Cliente>
     {
         ServicioDAL servicioDAL;
         DireccionDAL direccionDAL;
@@ -91,18 +91,6 @@ namespace DAL
             }
         }
 
-        public Cliente GetByDni(string dni) {
-            //OBTENER_CLIENTE_POR_DNI
-            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_CLIENTE_POR_DNI", sqlParameters(dni));
-            if (datatable.Rows.Count > 0)
-            {
-                return mapToClient(datatable.Rows[0]);
-            }
-            else
-            {
-                return null;
-            }
-        }
 
         public override SqlParameter[] sqlParameters(Cliente entity)
         {
@@ -130,6 +118,26 @@ namespace DAL
                 parametros[9].DbType = DbType.Date;
             return parametros;
         }
+        public override void Update(Cliente entity)
+        {
+            //ACTUALIZAR_SERVICIO
+            direccionDAL.Update(entity.direccion);
+            servicioDAL.Update(entity.servicio);
+            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_CLIENTE", sqlParameters(entity));
+
+        }
+        public Cliente GetByDni(string dni) {
+            //OBTENER_CLIENTE_POR_DNI
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_CLIENTE_POR_DNI", sqlParameters(dni));
+            if (datatable.Rows.Count > 0)
+            {
+                return mapToClient(datatable.Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public SqlParameter[] sqlParameters(int id)
         {
@@ -147,14 +155,6 @@ namespace DAL
         }
 
 
-        public override void Update(Cliente entity)
-        {
-            //ACTUALIZAR_SERVICIO
-            direccionDAL.Update(entity.direccion);
-            servicioDAL.Update(entity.servicio);
-            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_CLIENTE", sqlParameters(entity));
-
-        }
 
         Cliente mapToClient(DataRow row) {
             if (row == null)
@@ -201,6 +201,72 @@ namespace DAL
                 cliente.fechaDeNacimiento = DateTime.Parse(row["fechaNacimiento"].ToString());
             }
             return cliente;
+        }
+
+
+        
+        public void SaveState(State<Cliente> estado)
+        {
+            /*  public int idCambio;
+                public Usuario usuario;
+                public TipoCambio tipoCambio;
+                public DateTime fecha;
+            */
+            if (estado.idCambio == 0)
+            {
+                estado.idCambio = getNextStateId();
+            }
+            SqlParameter[] stateParameters = new SqlParameter[4];
+            stateParameters[0] = new SqlParameter("@idCambio", estado.idCambio);
+            stateParameters[0].DbType = DbType.Int32;
+            stateParameters[1] = new SqlParameter("@FK_idUsuarioCambio", estado.usuario.Id);
+            stateParameters[1].DbType = DbType.Int32;
+            stateParameters[2] = new SqlParameter("@tipoCambio", estado.tipoCambio.ToString());
+            stateParameters[2].DbType = DbType.String;
+            stateParameters[3] = new SqlParameter("@fechaCambio", estado.fecha);
+            stateParameters[3].DbType = DbType.DateTime;
+
+            SqlParameter[] allParameters = sqlParameters(estado.entity).Concat(stateParameters).ToArray();
+
+            SQLConnectionManager.getInstance().ExecuteProcedure("GUARDAR_STATE_CLIENTE", allParameters);
+        }
+
+        public List<State<Cliente>> getStates(Cliente entity)
+        {
+            List<State<Cliente>> states = new List<State<Cliente>>();
+            SqlParameter[] parametros = sqlParameters(entity);
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_STATES_CLIENTE", parametros);
+            foreach (DataRow row in datatable.Rows)
+            {
+                states.Add(mapToState(row));
+            }
+            return states;
+        }
+
+        public int getNextStateId()
+        {
+            //OBTENER_MAX_ID_CLIENTE
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_MAX_ID_STATE_CLIENTE");
+            if (datatable.Rows.Count > 0)
+            {
+                return int.Parse(datatable.Rows[0]["idCambio"].ToString()) + 1;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+
+        private State<Cliente> mapToState(DataRow row)
+        {
+            State<Cliente> state = new State<Cliente>();
+            state.idCambio = int.Parse(row["idCambio"].ToString());
+            state.usuario = new UsuarioDAL().GetById(int.Parse(row["FK_idUsuarioCambio"].ToString()));
+            state.tipoCambio = (TipoCambio)Enum.Parse(typeof(TipoCambio), row["tipoCambio"].ToString());
+            state.fecha = DateTime.Parse(row["fechaCambio"].ToString());
+            state.entity = mapToClient(row);
+            return state;
         }
     }
 }

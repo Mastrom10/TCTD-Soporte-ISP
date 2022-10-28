@@ -144,6 +144,7 @@
             this.textBoxDNICliente.Name = "textBoxDNICliente";
             this.textBoxDNICliente.Size = new System.Drawing.Size(130, 20);
             this.textBoxDNICliente.TabIndex = 3;
+            this.textBoxDNICliente.TextChanged += new System.EventHandler(this.textBoxDNICliente_TextChanged);
             // 
             // textBoxNroClienteID
             // 

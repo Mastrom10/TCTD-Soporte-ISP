@@ -14,6 +14,6 @@ namespace BLL
         public OrdenTecnicaBLL() {
             dal = new OrdenTecnicaDAL();
             permiso = TipoPermiso.CRUDOrdenTecnica;
-        }
+        } 
     } 
 }

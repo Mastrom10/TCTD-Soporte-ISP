@@ -127,29 +127,6 @@ namespace DAL
 
         }
 
-        public SqlParameter[] sqlParameters(int id) {
-            SqlParameter[] parametros = new SqlParameter[1];
-            parametros[0] = new SqlParameter("@id", id);
-            parametros[0].DbType = DbType.Int32;
-            return parametros;
-        }
-
-        public SqlParameter[] sqlParameters(string texto) {
-            SqlParameter[] parametros = new SqlParameter[1];
-            parametros[0] = new SqlParameter("@texto", texto);
-            parametros[0].DbType = DbType.String;
-            return parametros;
-        }
-
-        OrdenTecnica mapToOrdenTecnica(DataRow row) {
-            OrdenTecnica ordenTecnica = new OrdenTecnica();
-                ordenTecnica.Id = Convert.ToInt32(row["id"]);
-                ordenTecnica.tipoOrdenTecnica = (TipoOrdenTecnica)Enum.Parse(typeof(TipoOrdenTecnica), row["tipoOrdenTecnica"].ToString());
-                ordenTecnica.notas = row["notas"].ToString();
-                ordenTecnica.turno = new TurnoDAL().GetById(Convert.ToInt32(row["FK_id_turno"]));
-                ordenTecnica.ticket = new TicketDAL().GetById(Convert.ToInt32(row["FK_id_ticket"]));
-            return ordenTecnica;
-        }
 
         public override void Update(OrdenTecnica entity)
         {
@@ -158,6 +135,34 @@ namespace DAL
             
         }
 
+
+        public SqlParameter[] sqlParameters(int id)
+        {
+            SqlParameter[] parametros = new SqlParameter[1];
+            parametros[0] = new SqlParameter("@id", id);
+            parametros[0].DbType = DbType.Int32;
+            return parametros;
+        }
+
+        public SqlParameter[] sqlParameters(string texto)
+        {
+            SqlParameter[] parametros = new SqlParameter[1];
+            parametros[0] = new SqlParameter("@texto", texto);
+            parametros[0].DbType = DbType.String;
+            return parametros;
+        }
+
+        OrdenTecnica mapToOrdenTecnica(DataRow row)
+        {
+            OrdenTecnica ordenTecnica = new OrdenTecnica();
+            ordenTecnica.Id = Convert.ToInt32(row["id"]);
+            ordenTecnica.tipoOrdenTecnica = (TipoOrdenTecnica)Enum.Parse(typeof(TipoOrdenTecnica), row["tipoOrdenTecnica"].ToString());
+            ordenTecnica.notas = row["notas"].ToString();
+            ordenTecnica.turno = new TurnoDAL().GetById(Convert.ToInt32(row["FK_id_turno"]));
+            ordenTecnica.ticket = new TicketDAL().GetById(Convert.ToInt32(row["FK_id_ticket"]));
+            return ordenTecnica;
+        }
+        
         public OrdenTecnica GetByIdTicket(int FK_id_ticket)
         {
             //OBTENER_ORDEN_TECNICA_POR_ID_TICKET

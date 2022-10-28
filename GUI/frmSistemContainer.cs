@@ -167,6 +167,12 @@ namespace GUI
                 buscadorTicketsToolStripMenuItem.Text = Tag("buscadorTicketsToolStripMenuItem");
                 usuariosToolStripMenuItem.Text = Tag("usuariosToolStripMenuItem");
                 empleadosToolStripMenuItem.Text = Tag("empleadosToolStripMenuItem");
+
+                buscarLogsToolStripMenuItem.Text = Tag("buscarLogsToolStripMenuItem");
+                verLogsEnTiempoRealToolStripMenuItem.Text = Tag("verLogsEnTiempoRealToolStripMenuItem");
+
+                controlDeCambiosToolStripMenuItem.Text = Tag("controlDeCambiosToolStripMenuItem");
+                clientesToolStripMenuItem2.Text = Tag("clientesToolStripMenuItem2");
             }
             catch (Exception ex)
             {
@@ -273,6 +279,35 @@ namespace GUI
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void debugFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDebug debugForm = new frmDebug();
+            debugForm.MdiParent = this;
+            debugForm.Show();
+
+        }
+
+        private void verLogsEnTiempoRealToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLogsRealTime frmLogsRealTime = new frmLogsRealTime();
+            frmLogsRealTime.MdiParent = this;
+            frmLogsRealTime.Show();
+        }
+
+        private void buscarLogsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLogsExplorer frmLogsExplorer = new frmLogsExplorer();
+            frmLogsExplorer.MdiParent = this;
+            frmLogsExplorer.Show();
+        }
+
+        private void clientesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmControlCambiosClientes frmControlCambiosClientes = new frmControlCambiosClientes();
+            frmControlCambiosClientes.MdiParent = this;
+            frmControlCambiosClientes.Show();
         }
     }   
 }

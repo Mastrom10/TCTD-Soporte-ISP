@@ -18,7 +18,14 @@ namespace BLL
         }
 
         public Servicio GetByCliente(Cliente cliente) {
-            return ((ServicioDAL)dal).GetByCliente(cliente);
+            if (!Session.GetSession().TienePermiso(this.permiso))
+            {
+                logger.Log("No tiene permiso para realizar esta accion", LogLevel.Warning, "Permiso Faltante: " + this.permiso.ToString(), this.GetType().ToString());
+                throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + this.permiso.ToString());
+            }
+            Servicio servicio = ((ServicioDAL)dal).GetByCliente(cliente);
+            logger.Log("Se obtuvo el servicio del cliente " + cliente.Id, LogLevel.Debug, SERV.Serializacion.LogSerializer.Serialize(servicio), this.GetType().ToString());
+            return servicio;
         }
     }
 }

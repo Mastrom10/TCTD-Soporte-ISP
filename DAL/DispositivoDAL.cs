@@ -74,16 +74,6 @@ namespace DAL
             return id + 1;
         }
 
-        public List<Dispositivo> getByServicio(Servicio servicio) {
-            //OBTENER_DISPOSITIVOS_POR_SERVICIO
-            List<Dispositivo> dispositivos = new List<Dispositivo>();
-            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_DISPOSITIVOS_POR_SERVICIO", sqlParameters(servicio.Id));
-            foreach (DataRow row in datatable.Rows)
-            {
-                dispositivos.Add(mapRowtoDispositivo(row));
-            }
-            return dispositivos;
-        }
 
         public override SqlParameter[] sqlParameters(Dispositivo entity)
         {
@@ -100,13 +90,22 @@ namespace DAL
             return parameters;
         }
 
-        public  SqlParameter[] sqlParameters(int id)
+
+        public override void Update(Dispositivo entity)
+        {
+            //ACTUALIZAR_DISPOSITIVO
+            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_DISPOSITIVO", sqlParameters(entity));
+        }
+
+         
+
+        public SqlParameter[] sqlParameters(int id)
         {
             SqlParameter[] parameters = new SqlParameter[1];
             parameters[0] = new SqlParameter("@id", id);
             parameters[0].DbType = System.Data.DbType.Int32;
             return parameters;
-            
+
         }
 
         public SqlParameter[] sqlParameters(int idDispositivo, int idServicio)
@@ -119,12 +118,19 @@ namespace DAL
             return parameters;
         }
 
-
-        public override void Update(Dispositivo entity)
+        
+        public List<Dispositivo> getByServicio(Servicio servicio)
         {
-            //ACTUALIZAR_DISPOSITIVO
-            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_DISPOSITIVO", sqlParameters(entity));
+            //OBTENER_DISPOSITIVOS_POR_SERVICIO
+            List<Dispositivo> dispositivos = new List<Dispositivo>();
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_DISPOSITIVOS_POR_SERVICIO", sqlParameters(servicio.Id));
+            foreach (DataRow row in datatable.Rows)
+            {
+                dispositivos.Add(mapRowtoDispositivo(row));
+            }
+            return dispositivos;
         }
+
 
         Dispositivo mapRowtoDispositivo(DataRow row) {
             Dispositivo dispositivo = new Dispositivo();

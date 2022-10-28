@@ -121,7 +121,6 @@ namespace GUI
             lblValueNombre.Text = cliente.nombre;
             lblValueApellido.Text = cliente.apellido;
             lblValueDNI.Text = cliente.dni;
-            //Formato DD/MM/YYYY
             lblValueFNacimiento.Text = cliente.fechaDeNacimiento.ToString("dd/MM/yyyy");
             lblValueEmail.Text = cliente.email;
             lblValueTelPrincipal.Text = cliente.telefonoPrincipal;
@@ -291,6 +290,11 @@ namespace GUI
             {
                 CompletarDatosCliente(clienteSeleccionado);
             }
+        }
+
+        private void textBoxDNICliente_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

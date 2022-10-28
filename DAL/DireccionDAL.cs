@@ -46,44 +46,6 @@ namespace DAL
             return direcciones;
         }
 
-        Direccion mapToDireccion(DataRow row) {
-            Direccion direccion = new Direccion();
-            direccion.Id = int.Parse(row["id"].ToString());
-            direccion.calle = row["calle"].ToString();
-            direccion.altura = row["altura"].ToString();
-            
-            if (row["piso"] != DBNull.Value)
-            {
-                direccion.piso = row["piso"].ToString();
-            }
-
-            if (row["depto"] != DBNull.Value)
-            {
-                direccion.depto = row["depto"].ToString();
-            }
-
-            if (row["localidad"] != DBNull.Value)
-            {
-                direccion.localidad = row["localidad"].ToString();
-            }
-            
-            if (row["provincia"] != DBNull.Value)
-            {
-                direccion.provincia = row["provincia"].ToString();
-            }
-
-            if (row["codigoPostal"] != DBNull.Value)
-            {
-                direccion.codigoPostal = row["codigoPostal"].ToString();
-            }
-            
-            if (row["FK_id_nodoRed"] != DBNull.Value)
-            {
-                direccion.nodoRed = nodoRedDAL.GetById(int.Parse(row["FK_id_nodoRed"].ToString()));
-            }
-            
-            return direccion;
-        }
         public override Direccion GetById(int id)
         {
             //OBTENER_POR_ID_DIRECCION
@@ -97,18 +59,6 @@ namespace DAL
             }
         }
 
-        public Direccion GetByCliente(Cliente cliente) {
-            //OBTENER_POR_ID_CLIENTE
-            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_DIRECCION_POR_ID_CLIENTE", sqlParameters(cliente.Id));
-            if (datatable.Rows.Count > 0)
-            {
-                return mapToDireccion(datatable.Rows[0]);
-            }
-            else
-            {
-                return null;
-            }
-        }
         
         public override int GetNextId()
         {
@@ -158,6 +108,65 @@ namespace DAL
             return parametros;
         }
 
+
+        public override void Update(Direccion entity)
+        {
+            //ACTUALIZAR_DIRECCION
+            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_DIRECCION", sqlParameters(entity));
+        }
+
+        public Direccion GetByCliente(Cliente cliente) {
+            //OBTENER_POR_ID_CLIENTE
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_DIRECCION_POR_ID_CLIENTE", sqlParameters(cliente.Id));
+            if (datatable.Rows.Count > 0)
+            {
+                return mapToDireccion(datatable.Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
+        Direccion mapToDireccion(DataRow row)
+        {
+            Direccion direccion = new Direccion();
+            direccion.Id = int.Parse(row["id"].ToString());
+            direccion.calle = row["calle"].ToString();
+            direccion.altura = row["altura"].ToString();
+
+            if (row["piso"] != DBNull.Value)
+            {
+                direccion.piso = row["piso"].ToString();
+            }
+
+            if (row["depto"] != DBNull.Value)
+            {
+                direccion.depto = row["depto"].ToString();
+            }
+
+            if (row["localidad"] != DBNull.Value)
+            {
+                direccion.localidad = row["localidad"].ToString();
+            }
+
+            if (row["provincia"] != DBNull.Value)
+            {
+                direccion.provincia = row["provincia"].ToString();
+            }
+
+            if (row["codigoPostal"] != DBNull.Value)
+            {
+                direccion.codigoPostal = row["codigoPostal"].ToString();
+            }
+
+            if (row["FK_id_nodoRed"] != DBNull.Value)
+            {
+                direccion.nodoRed = nodoRedDAL.GetById(int.Parse(row["FK_id_nodoRed"].ToString()));
+            }
+
+            return direccion;
+        }
+
         public SqlParameter[] sqlParameters(int id)
         {
             SqlParameter[] parametros = new SqlParameter[1];
@@ -166,10 +175,7 @@ namespace DAL
             return parametros;
         }
 
-        public override void Update(Direccion entity)
-        {
-            //ACTUALIZAR_DIRECCION
-            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_DIRECCION", sqlParameters(entity));
-        }
+
     }
+
 }

@@ -41,6 +41,11 @@
             this.aBMIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.traduccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verLogsEnTiempoRealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.nodosDeRedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planesDeServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,10 +58,11 @@
             this.serviceTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDeAgendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dEBUGLOGINToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.debugFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusSession = new System.Windows.Forms.ToolStripStatusLabel();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlDeCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +75,8 @@
             this.gestoresToolStripMenuItem1,
             this.soporteTécnicoToolStripMenuItem,
             this.serviceTécnicoToolStripMenuItem,
-            this.dEBUGLOGINToolStripMenuItem});
+            this.dEBUGLOGINToolStripMenuItem,
+            this.debugFormToolStripMenuItem});
             this.topMenu.Location = new System.Drawing.Point(0, 0);
             this.topMenu.Name = "topMenu";
             this.topMenu.Size = new System.Drawing.Size(1081, 24);
@@ -115,7 +122,9 @@
             this.gestorGruposDePermisosToolStripMenuItem,
             this.idiomaToolStripMenuItem,
             this.usuariosToolStripMenuItem,
-            this.empleadosToolStripMenuItem});
+            this.empleadosToolStripMenuItem,
+            this.logsToolStripMenuItem,
+            this.controlDeCambiosToolStripMenuItem});
             this.gestoresToolStripMenuItem.Name = "gestoresToolStripMenuItem";
             this.gestoresToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.gestoresToolStripMenuItem.Text = "Configuracion";
@@ -164,6 +173,42 @@
             this.cambiarIdiomaToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.cambiarIdiomaToolStripMenuItem.Text = "Cambiar Idioma";
             this.cambiarIdiomaToolStripMenuItem.Click += new System.EventHandler(this.cambiarIdiomaToolStripMenuItem_Click);
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
+            // empleadosToolStripMenuItem
+            // 
+            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.empleadosToolStripMenuItem.Text = "Empleados";
+            // 
+            // logsToolStripMenuItem
+            // 
+            this.logsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buscarLogsToolStripMenuItem,
+            this.verLogsEnTiempoRealToolStripMenuItem});
+            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.logsToolStripMenuItem.Text = "Logs";
+            // 
+            // buscarLogsToolStripMenuItem
+            // 
+            this.buscarLogsToolStripMenuItem.Name = "buscarLogsToolStripMenuItem";
+            this.buscarLogsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.buscarLogsToolStripMenuItem.Text = "Explorar Logs";
+            this.buscarLogsToolStripMenuItem.Click += new System.EventHandler(this.buscarLogsToolStripMenuItem_Click);
+            // 
+            // verLogsEnTiempoRealToolStripMenuItem
+            // 
+            this.verLogsEnTiempoRealToolStripMenuItem.Name = "verLogsEnTiempoRealToolStripMenuItem";
+            this.verLogsEnTiempoRealToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.verLogsEnTiempoRealToolStripMenuItem.Text = "Ver Logs en tiempo real";
+            this.verLogsEnTiempoRealToolStripMenuItem.Click += new System.EventHandler(this.verLogsEnTiempoRealToolStripMenuItem_Click);
             // 
             // gestoresToolStripMenuItem1
             // 
@@ -246,7 +291,7 @@
             // gestionDeAgendaToolStripMenuItem
             // 
             this.gestionDeAgendaToolStripMenuItem.Name = "gestionDeAgendaToolStripMenuItem";
-            this.gestionDeAgendaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.gestionDeAgendaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gestionDeAgendaToolStripMenuItem.Text = "Gestion de Agenda";
             this.gestionDeAgendaToolStripMenuItem.Click += new System.EventHandler(this.gestionDeAgendaToolStripMenuItem_Click);
             // 
@@ -256,6 +301,13 @@
             this.dEBUGLOGINToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.dEBUGLOGINToolStripMenuItem.Text = "DEBUG LOGIN";
             this.dEBUGLOGINToolStripMenuItem.Click += new System.EventHandler(this.dEBUGLOGINToolStripMenuItem_Click_1);
+            // 
+            // debugFormToolStripMenuItem
+            // 
+            this.debugFormToolStripMenuItem.Name = "debugFormToolStripMenuItem";
+            this.debugFormToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.debugFormToolStripMenuItem.Text = "DebugForm";
+            this.debugFormToolStripMenuItem.Click += new System.EventHandler(this.debugFormToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -273,18 +325,20 @@
             this.StatusSession.Size = new System.Drawing.Size(100, 17);
             this.StatusSession.Text = "¿Session Iniciada?";
             // 
-            // usuariosToolStripMenuItem
+            // controlDeCambiosToolStripMenuItem
             // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            this.controlDeCambiosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clientesToolStripMenuItem2});
+            this.controlDeCambiosToolStripMenuItem.Name = "controlDeCambiosToolStripMenuItem";
+            this.controlDeCambiosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.controlDeCambiosToolStripMenuItem.Text = "Control de Cambios";
             // 
-            // empleadosToolStripMenuItem
+            // clientesToolStripMenuItem2
             // 
-            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.empleadosToolStripMenuItem.Text = "Empleados";
+            this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
+            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem2.Text = "Clientes";
+            this.clientesToolStripMenuItem2.Click += new System.EventHandler(this.clientesToolStripMenuItem2_Click);
             // 
             // frmSistemConteiner
             // 
@@ -338,6 +392,12 @@
         private System.Windows.Forms.ToolStripMenuItem buscadorTicketsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem debugFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buscarLogsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verLogsEnTiempoRealToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem controlDeCambiosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem2;
     }
 }
 

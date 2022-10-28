@@ -26,8 +26,11 @@ namespace BLL
         public void UpdateMany(List<Traduccion> traducciones)
         {
             TipoPermiso permisoEspecifico = TipoPermiso.UpdateManyIdioma;
-            if (!Session.GetSession().TienePermiso(permisoEspecifico)) throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + permisoEspecifico.ToString());
-
+            if (!Session.GetSession().TienePermiso(permisoEspecifico))
+            {
+                logger.Log("El usuario no tiene permiso para Actualizar Idiomas", LogLevel.Warning, null, "TraduccionBLL", "UpdateMany");
+                throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + permisoEspecifico.ToString());
+            }
             
             foreach (Traduccion t in traducciones)
             {
@@ -36,6 +39,7 @@ namespace BLL
                     tDAL.Update(t);
                 }
             }
+            logger.Log("Se actualizaron las traducciones", LogLevel.Info, SERV.Serializacion.LogSerializer.Serialize(traducciones), "TraduccionBLL", "UpdateMany");
             Session.CambiarIdioma();
         }
     }

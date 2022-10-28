@@ -51,65 +51,6 @@ namespace DAL
             return tickets;
         }
 
-        private Ticket mapToTicket(DataRow row)
-        {
-            if (row == null)
-            {
-                return null;
-            }
-            Ticket ticket = new Ticket();
-            /* @id INT, 
-            * @titulo VARCHAR(200),
-            * @descripcion VARCHAR(2000) = NULL, 
-            * @estado VARCHAR(50), 
-            * @prioridad VARCHAR(50), 
-            * @fechaCreacion DATETIME,
-            * @fechaUltimaModificacion DATETIME, 
-            * @fechaCierre DATETIME = NULL, 
-            * @FK_id_cliente INT, 
-            * @FK_id_empleado INT
-            */
-            ticket.Id = int.Parse(row["id"].ToString());
-            if (row["titulo"] != DBNull.Value)
-            {
-                ticket.titulo = row["titulo"].ToString();
-            }
-            if (row["descripcion"] != DBNull.Value)
-            {
-                ticket.descripcion = row["descripcion"].ToString();
-            }
-            if (row["estado"] != DBNull.Value)
-            {
-                ticket.estado = (EstadoTicket)Enum.Parse(typeof(EstadoTicket), row["estado"].ToString());
-            }
-            if (row["prioridad"] != DBNull.Value)
-            {
-                ticket.prioridad = (PrioridadTicket)Enum.Parse(typeof(PrioridadTicket), row["prioridad"].ToString());
-            }
-            if (row["fechaCreacion"] != DBNull.Value)
-            {
-                ticket.fechaCreacion = DateTime.Parse(row["fechaCreacion"].ToString());
-            }
-            if (row["fechaUltimaModificacion"] != DBNull.Value)
-            {
-                ticket.fechaUltimaModificacion = DateTime.Parse(row["fechaUltimaModificacion"].ToString());
-            }
-            if (row["fechaCierre"] != DBNull.Value)
-            {
-                ticket.fechaCierre = DateTime.Parse(row["fechaCierre"].ToString());
-            }
-            if (row["FK_id_cliente"] != DBNull.Value)
-            {
-                ticket.cliente = clienteDAL.GetById(int.Parse(row["FK_id_cliente"].ToString()));
-            }
-            if (row["FK_id_empleado"] != DBNull.Value)
-            {
-                ticket.empleado = empleadoDAL.GetById(int.Parse(row["FK_id_empleado"].ToString()));
-            }
-            ticket.interacciones = interaccionTicketDAL.GetAllByTicketID(ticket.Id);
-            return ticket;
-
-        }
 
         public override Ticket GetById(int id)
         {
@@ -125,30 +66,6 @@ namespace DAL
             }
         }
 
-        public List<Ticket> GetByCliente(Cliente cliente)
-        {
-            //OBTENER_TICKET_POR_ID_CLIENTE
-            List<Ticket> tickets = new List<Ticket>();
-            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_TICKET_POR_ID_CLIENTE", sqlParameters(cliente.Id));
-            foreach (DataRow row in datatable.Rows)
-            {
-                tickets.Add(mapToTicket(row));
-            }
-            return tickets;
-        }
-
-        //GetByEstado
-        public List<Ticket> GetByEstado(EstadoTicket estado)
-        {
-            //OBTENER_TICKET_POR_ESTADO
-            List<Ticket> tickets = new List<Ticket>();
-            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_TICKET_POR_ESTADO", sqlParameters(estado.ToString()));
-            foreach (DataRow row in datatable.Rows)
-            {
-                tickets.Add(mapToTicket(row));
-            }
-            return tickets;
-        }
 
         public override int GetNextId()
         {
@@ -229,9 +146,20 @@ namespace DAL
 
 
         }
+        public override void Update(Ticket entity)
+        {
+            //ACTUALIZAR_TICKET
+            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_TICKET", sqlParameters(entity));
+
+            //Actualizamos las Interacciones
+            foreach (InteraccionTicket interaccion in entity.interacciones)
+            {
+                interaccionTicketDAL.Update(interaccion);
+            }
+        }
 
 
-        public  SqlParameter[] sqlParameters(int id)
+        public SqlParameter[] sqlParameters(int id)
         {
 
             SqlParameter[] parameters = new SqlParameter[1];
@@ -248,17 +176,90 @@ namespace DAL
             return parameters;
         }
 
-        
-        public override void Update(Ticket entity)
+        private Ticket mapToTicket(DataRow row)
         {
-            //ACTUALIZAR_TICKET
-            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_TICKET", sqlParameters(entity));
-           
-            //Actualizamos las Interacciones
-            foreach (InteraccionTicket interaccion in entity.interacciones)
+            if (row == null)
             {
-                interaccionTicketDAL.Update(interaccion);
+                return null;
             }
+            Ticket ticket = new Ticket();
+            /* @id INT, 
+            * @titulo VARCHAR(200),
+            * @descripcion VARCHAR(2000) = NULL, 
+            * @estado VARCHAR(50), 
+            * @prioridad VARCHAR(50), 
+            * @fechaCreacion DATETIME,
+            * @fechaUltimaModificacion DATETIME, 
+            * @fechaCierre DATETIME = NULL, 
+            * @FK_id_cliente INT, 
+            * @FK_id_empleado INT
+            */
+            ticket.Id = int.Parse(row["id"].ToString());
+            if (row["titulo"] != DBNull.Value)
+            {
+                ticket.titulo = row["titulo"].ToString();
+            }
+            if (row["descripcion"] != DBNull.Value)
+            {
+                ticket.descripcion = row["descripcion"].ToString();
+            }
+            if (row["estado"] != DBNull.Value)
+            {
+                ticket.estado = (EstadoTicket)Enum.Parse(typeof(EstadoTicket), row["estado"].ToString());
+            }
+            if (row["prioridad"] != DBNull.Value)
+            {
+                ticket.prioridad = (PrioridadTicket)Enum.Parse(typeof(PrioridadTicket), row["prioridad"].ToString());
+            }
+            if (row["fechaCreacion"] != DBNull.Value)
+            {
+                ticket.fechaCreacion = DateTime.Parse(row["fechaCreacion"].ToString());
+            }
+            if (row["fechaUltimaModificacion"] != DBNull.Value)
+            {
+                ticket.fechaUltimaModificacion = DateTime.Parse(row["fechaUltimaModificacion"].ToString());
+            }
+            if (row["fechaCierre"] != DBNull.Value)
+            {
+                ticket.fechaCierre = DateTime.Parse(row["fechaCierre"].ToString());
+            }
+            if (row["FK_id_cliente"] != DBNull.Value)
+            {
+                ticket.cliente = clienteDAL.GetById(int.Parse(row["FK_id_cliente"].ToString()));
+            }
+            if (row["FK_id_empleado"] != DBNull.Value)
+            {
+                ticket.empleado = empleadoDAL.GetById(int.Parse(row["FK_id_empleado"].ToString()));
+            }
+            ticket.interacciones = interaccionTicketDAL.GetAllByTicketID(ticket.Id);
+            return ticket;
+
         }
+
+        public List<Ticket> GetByCliente(Cliente cliente)
+        {
+            //OBTENER_TICKET_POR_ID_CLIENTE
+            List<Ticket> tickets = new List<Ticket>();
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_TICKET_POR_ID_CLIENTE", sqlParameters(cliente.Id));
+            foreach (DataRow row in datatable.Rows)
+            {
+                tickets.Add(mapToTicket(row));
+            }
+            return tickets;
+        }
+
+        //GetByEstado
+        public List<Ticket> GetByEstado(EstadoTicket estado)
+        {
+            //OBTENER_TICKET_POR_ESTADO
+            List<Ticket> tickets = new List<Ticket>();
+            DataTable datatable = SQLConnectionManager.getInstance().ExecuteProcedureDataTable("OBTENER_TICKET_POR_ESTADO", sqlParameters(estado.ToString()));
+            foreach (DataRow row in datatable.Rows)
+            {
+                tickets.Add(mapToTicket(row));
+            }
+            return tickets;
+        }
+
     }
 }

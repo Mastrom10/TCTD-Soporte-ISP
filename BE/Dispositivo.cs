@@ -2,9 +2,9 @@
 {
     public class Dispositivo: Entity
     {
-        public string tipo;
-        public string macAdress;
-        public string nroserie;
+        public string tipo { get; set; }
+        public string macAdress { get; set; }
+        public string nroserie { get; set; }
 
         public override string ToString()
         {

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspectosTecnicos\BitacoraBLL.cs" />
     <Compile Include="AspectosTecnicos\GenericBLL.cs" />
     <Compile Include="AspectosTecnicos\IdiomaBLL.cs" />
     <Compile Include="AspectosTecnicos\PermisoBLL.cs" />

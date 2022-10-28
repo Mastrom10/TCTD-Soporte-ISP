@@ -42,7 +42,7 @@ namespace DAL
                     estado = (EstadoNodo)Enum.Parse(typeof(EstadoNodo), row["estado"].ToString())
                 });
             }
-            return nodos;
+            return nodos;  
         }
 
         public override NodoRed GetById(int id)

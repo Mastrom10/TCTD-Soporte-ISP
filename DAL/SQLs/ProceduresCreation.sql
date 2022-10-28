@@ -1225,3 +1225,100 @@ AS
 -- OBTENER_POR_ID_
 -- OBTENER_MAX_ID_
 -- ACTUALIZAR_
+
+
+
+-- SAVE_LOG
+CREATE PROCEDURE SAVE_LOG
+@level  VARCHAR(50), 
+@time datetime, 
+@user  VARCHAR(200), 
+@message  VARCHAR(1000), 
+@details  VARCHAR(5000) = NULL, 
+@class  VARCHAR(200) = NULL, 
+@method  VARCHAR(200) = NULL
+AS
+INSERT INTO Bitacora
+	([level], time, [user], message, details, class, method)
+	VALUES
+	(@level, @time, @user, @message, @details, @class, @method)
+	GO
+
+
+-- GET_LOGS_BY_FIELDS_WITH_LIMIT
+CREATE PROCEDURE GET_LOGS_BY_FIELDS_WITH_LIMIT
+@level  VARCHAR(50) = NULL, 
+@timefrom datetime = NULL,
+@timeto datetime = NULL,
+@user  VARCHAR(200) = NULL, 
+@message  VARCHAR(1000) = NULL, 
+@details  VARCHAR(5000) = NULL, 
+@class  VARCHAR(200) = NULL, 
+@method  VARCHAR(200) = NULL, 
+@limit INT = 100
+AS
+	SELECT TOP (@limit) id, [level], time, [user], message, details, class, method
+	FROM Bitacora
+	WHERE (@level is null OR [level] = @level) 
+	AND (@timefrom is null OR time >= @timefrom)
+	AND (@timeto is null OR time <= @timeto)
+	AND (@user is null OR [user] LIKE '%' + @user + '%')
+	AND (@message is null OR message LIKE '%' + @message + '%')
+	AND (@details is null OR details LIKE '%' + @details + '%')
+	AND (@class is null OR class = @class)
+	AND (@method is null OR method = @method)
+	ORDER BY id DESC
+GO
+
+
+
+-- GUARDAR_STATE_CLIENTE
+ /*  public int idCambio;
+                public Usuario usuario;
+                public TipoCambio tipoCambio;
+                public DateTime fecha;
+ */
+CREATE PROCEDURE GUARDAR_STATE_CLIENTE
+@idCambio INT, 
+@FK_idUsuarioCambio INT = NULL, 
+@tipoCambio VARCHAR(50) = NULL, 
+@fecha DATETIME = NULL,
+
+@id INT, 
+@nombre VARCHAR(50) = NULL, 
+@apellido VARCHAR(50)  = NULL, 
+@dni VARCHAR(50)  = NULL, 
+@telefonoPrincipal VARCHAR(50)  = NULL, 
+@telefonoSecundario VARCHAR(50)  = NULL, 
+@email VARCHAR(50)  = NULL, 
+@FK_id_direccion INT  = NULL, 
+@FK_id_servicio INT  = NULL, 
+@fechaNacimiento DATE  = NULL
+AS
+INSERT INTO StateCliente
+	(idCambio, FK_idUsuarioCambio, tipoCambio, fecha, id, nombre, apellido, dni, telefonoPrincipal, telefonoSecundario, email, FK_id_direccion, FK_id_servicio, fechaNacimiento)
+	VALUES
+	(@idCambio, @FK_idUsuarioCambio, @tipoCambio, @fecha, @id, @nombre, @apellido, @dni, @telefonoPrincipal, @telefonoSecundario, @email, @FK_id_direccion, @FK_id_servicio, @fechaNacimiento)
+	GO
+
+
+
+
+--OBTENER_STATES_CLIENTE
+
+CREATE PROCEDURE OBTENER_STATES_CLIENTE
+@id INT, @nombre VARCHAR(50) = NULL, @apellido VARCHAR(50)  = NULL, @dni VARCHAR(50)  = NULL, @telefonoPrincipal VARCHAR(50)  = NULL, @telefonoSecundario VARCHAR(50)  = NULL, @email VARCHAR(50)  = NULL, @FK_id_direccion INT  = NULL, @FK_id_servicio INT  = NULL, @fechaNacimiento DATE  = NULL
+AS
+SELECT idCambio, FK_idUsuarioCambio, tipoCambio, fecha, id, nombre, apellido, dni, telefonoPrincipal, telefonoSecundario, email, FK_id_direccion, FK_id_servicio, fechaNacimiento
+	FROM StateCliente
+	WHERE id = @id
+	
+	GO
+
+--OBTENER_MAX_ID_STATE_CLIENTE
+
+CREATE PROCEDURE OBTENER_MAX_ID_STATE_CLIENTE
+AS
+SELECT MAX(idCambio) as idCambio
+	FROM StateCliente
+	GO

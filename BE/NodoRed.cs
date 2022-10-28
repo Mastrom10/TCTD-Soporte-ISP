@@ -2,8 +2,8 @@
 {
     public class NodoRed : Entity
     {
-        public string nombre;
-        public EstadoNodo estado;
+        public string nombre { get; set; }
+        public EstadoNodo estado { get; set; }
 
         public override string ToString()
         {

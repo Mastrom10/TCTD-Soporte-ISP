@@ -80,7 +80,46 @@ namespace DAL
             return id + 1;
         }
 
-        private InteraccionTicket mapToInteraccion(DataRow row) {
+        public override SqlParameter[] sqlParameters(InteraccionTicket entity)
+        {
+            /*  @id INT, @accion VARCHAR(200) = NULL, 
+                @motivo VARCHAR(200) = NULL, @observacion VARCHAR(2000) = NULL, 
+                @fecha DATETIME = NULL, @FK_id_empleado INT = NULL, @FK_id_ticket INT = NULL
+            */
+            SqlParameter[] parameters = new SqlParameter[7];
+            parameters[0] = new SqlParameter("@id", entity.Id);
+            parameters[0].DbType = DbType.Int32;
+            parameters[1] = new SqlParameter("@accion", entity.accion);
+            parameters[1].DbType = DbType.String;
+            parameters[2] = new SqlParameter("@motivo", entity.motivo);
+            parameters[2].DbType = DbType.String;
+            parameters[3] = new SqlParameter("@observacion", entity.observacion);
+            parameters[3].DbType = DbType.String;
+            if (entity.fecha != null && entity.fecha != DateTime.MinValue)
+            {
+                parameters[4] = new SqlParameter("@fecha", entity.fecha);
+                parameters[4].DbType = System.Data.DbType.DateTime;
+            }
+            else
+            {
+                parameters[4] = new SqlParameter("@fecha", DBNull.Value);
+            }
+            parameters[5] = new SqlParameter("@FK_id_empleado", entity.empleado.Id);
+            parameters[5].DbType = DbType.Int32;
+            parameters[6] = new SqlParameter("@FK_id_ticket", entity.idTicket);
+            return parameters;
+
+
+        }
+
+        public override void Update(InteraccionTicket entity)
+        {
+            //ACTUALIZAR_INTERACCION
+            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_INTERACCION", sqlParameters(entity));
+        }
+
+        private InteraccionTicket mapToInteraccion(DataRow row)
+        {
             /*  @id INT, @accion VARCHAR(200) = NULL, 
                 @motivo VARCHAR(200) = NULL, @observacion VARCHAR(2000) = NULL, 
                 @fecha DATETIME = NULL, @FK_id_empleado INT = NULL, @FK_id_ticket INT = NULL
@@ -120,38 +159,8 @@ namespace DAL
 
 
 
-        }        
-        public override SqlParameter[] sqlParameters(InteraccionTicket entity)
-        {
-            /*  @id INT, @accion VARCHAR(200) = NULL, 
-                @motivo VARCHAR(200) = NULL, @observacion VARCHAR(2000) = NULL, 
-                @fecha DATETIME = NULL, @FK_id_empleado INT = NULL, @FK_id_ticket INT = NULL
-            */
-            SqlParameter[] parameters = new SqlParameter[7];
-            parameters[0] = new SqlParameter("@id", entity.Id);
-            parameters[0].DbType = DbType.Int32;
-            parameters[1] = new SqlParameter("@accion", entity.accion);
-            parameters[1].DbType = DbType.String;
-            parameters[2] = new SqlParameter("@motivo", entity.motivo);
-            parameters[2].DbType = DbType.String;
-            parameters[3] = new SqlParameter("@observacion", entity.observacion);
-            parameters[3].DbType = DbType.String;
-            if (entity.fecha != null && entity.fecha != DateTime.MinValue)
-            {
-                parameters[4] = new SqlParameter("@fecha", entity.fecha);
-                parameters[4].DbType = System.Data.DbType.DateTime;
-            }
-            else
-            {
-                parameters[4] = new SqlParameter("@fecha", DBNull.Value);
-            }
-            parameters[5] = new SqlParameter("@FK_id_empleado", entity.empleado.Id);
-            parameters[5].DbType = DbType.Int32;
-            parameters[6] = new SqlParameter("@FK_id_ticket", entity.idTicket);
-            return parameters;
-
-
         }
+
 
         public SqlParameter[] sqlParameters(int id)
         {
@@ -183,11 +192,6 @@ namespace DAL
         public List<InteraccionTicket> GetAllByTicket(Ticket ticket)
         {
             return GetAllByTicketID(ticket.Id);
-        }
-        public override void Update(InteraccionTicket entity)
-        {
-            //ACTUALIZAR_INTERACCION
-            SQLConnectionManager.getInstance().ExecuteProcedure("ACTUALIZAR_INTERACCION", sqlParameters(entity));
         }
     }
 }

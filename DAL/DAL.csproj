@@ -44,9 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspectosTecnicos\BitacoraDAL.cs" />
     <Compile Include="AspectosTecnicos\GenericDAL.cs" />
     <Compile Include="AspectosTecnicos\ICrud.cs" />
     <Compile Include="AspectosTecnicos\IdiomaDAL.cs" />
+    <Compile Include="AspectosTecnicos\IState.cs" />
     <Compile Include="AspectosTecnicos\PermisoDAL.cs" />
     <Compile Include="ClienteDAL.cs" />
     <Compile Include="DireccionDAL.cs" />

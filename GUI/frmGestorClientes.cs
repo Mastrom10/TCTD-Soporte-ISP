@@ -27,6 +27,10 @@ namespace GUI
         Cliente clienteSeleccionado;
 
         bool dialogMode = false;
+
+        bool stateMode = false;
+        State<Cliente> stateSeleccionado;
+        
         public frmGestorClientes()
         {
             traduccionBLL = new TraduccionBLL();
@@ -45,6 +49,20 @@ namespace GUI
             InitializeComponent();
             clienteSeleccionado = cliente;
             dialogMode = true;
+
+
+        }
+
+        public frmGestorClientes(State<Cliente> state) {
+            traduccionBLL = new TraduccionBLL();
+            clienteBLL = new ClienteBLL();
+            nodoRedBLL = new NodoRedBLL();
+            servicePlanBLL = new ServicePlanBLL();
+            InitializeComponent();
+            clienteSeleccionado = state.entity;
+            dialogMode = true;
+            stateMode = true;
+            stateSeleccionado = state;
 
 
         }
@@ -86,6 +104,8 @@ namespace GUI
                 buttonGestionarDispositivos.Text = traducciones.Find(x => x.etiqueta.Nombre == "buttonGestionarDispositivos").traduccion;
                 buttonNuevo.Text = traducciones.Find(x => x.etiqueta.Nombre == "buttonNuevo").traduccion;
                 buttonGuadar.Text = traducciones.Find(x => x.etiqueta.Nombre == "buttonGuadar").traduccion;
+                btnRestaurarEstado.Text = traducciones.Find(x => x.etiqueta.Nombre == "btnRestaurarEstado").traduccion;
+
             }
             catch (Exception ex)
             {
@@ -148,6 +168,12 @@ namespace GUI
                 textBoxNroClienteID.Enabled = false;
                 textBoxDNICliente.Enabled = false;
                 CompletarDatosCliente(clienteSeleccionado);
+            }
+
+            if (stateMode)
+            {
+                ConfigurarVerEstado();
+
             }
         }
 
@@ -345,6 +371,51 @@ namespace GUI
             clienteSeleccionado = clienteBLL.GetById(clienteSeleccionado.Id);
             CompletarDatosCliente(clienteSeleccionado);
 
+        }
+
+
+        private void ConfigurarVerEstado() {
+            btnRestaurarEstado.Visible = true;
+            btnRestaurarEstado.Enabled = true;
+
+            lblTituloGestorClientes.Text = Tag("VerStateTitulo") + " " + stateSeleccionado.ToStringList;
+
+            btnBuscar.Enabled = false;
+            btnBuscar.Visible = false;
+            buttonNuevo.Visible = false;
+            buttonNuevo.Enabled = false;
+            buttonGuadar.Enabled = false;
+            buttonGuadar.Visible = false;
+
+            textBoxNombre.Enabled = false;
+            textBoxApellido.Enabled = false;
+            textBoxDNI.Enabled = false;
+            dateTimePickerFechaNacimiento.Enabled = false;
+            textBoxTelPrincipal.Enabled = false;
+            textBoxTelSecundario.Enabled = false;
+            textBoxEmail.Enabled = false;
+            textBoxClienteCalle.Enabled = false;
+            textBoxtextBoxClienteAltura.Enabled = false;
+            textBoxClientePiso.Enabled = false;
+            textBoxClienteDepto.Enabled = false;
+            textBoxClienteLocalidad.Enabled = false;
+            textBoxClienteProvincia.Enabled = false;
+            textBoxClienteCodigoPostal.Enabled = false;
+            comboBoxNodosDeRed.Enabled = false;
+            comboBoxEstadoServicio.Enabled = false;
+            comboBoxServicePlan.Enabled = false;
+            buttonGestionarDispositivos.Enabled = false;
+            buttonGestionarDispositivos.Visible = false;
+            
+        }
+
+        private void btnRestaurarEstado_Click(object sender, EventArgs e)
+        {
+            
+            clienteBLL.Restore(stateSeleccionado);
+            MessageBox.Show(Tag("ClienteRestauradoCorrectamente") + " " + stateSeleccionado.ToStringList, Tag("tagInfoTitleRestore"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

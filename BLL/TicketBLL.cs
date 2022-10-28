@@ -22,7 +22,11 @@ namespace BLL
 
         public override void Create(Ticket ticket)
         {
-           
+            if (!Session.GetSession().TienePermiso(this.permiso))
+            {
+                logger.Log("No tiene permiso para realizar esta accion", LogLevel.Warning, "Permiso Faltante: " + this.permiso.ToString(), this.GetType().ToString());
+                throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + this.permiso.ToString());
+            }
 
             if (ticket.cliente == null || ticket.cliente.Id == 0)
                 throw new Exception("El cliente no puede ser nulo");
@@ -43,32 +47,47 @@ namespace BLL
                 interaccion.accion = "Creacion de ticket";
             ticket.interacciones.Add(interaccion);
             interaccionBLL.Create(interaccion);
-
-
+            logger.Log("Se ha creado el ticket " + ticket.Id, LogLevel.Info, SERV.Serializacion.LogSerializer.Serialize(ticket), this.GetType().ToString());
 
         }
 
 
         public List<Ticket> GetTicketsByCliente(Cliente cliente)
         {
-            TipoPermiso permisoEspecifico = TipoPermiso.CRUDTicket;
-            if (!Session.GetSession().TienePermiso(permisoEspecifico)) throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + permisoEspecifico.ToString());
+            if (!Session.GetSession().TienePermiso(this.permiso))
+            {
+                logger.Log("No tiene permiso para realizar esta accion", LogLevel.Warning, "Permiso Faltante: " + this.permiso.ToString(), this.GetType().ToString());
+                throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + this.permiso.ToString());
+            }
 
-            return ((TicketDAL)dal).GetByCliente(cliente);
+            List<Ticket> tickets = ((TicketDAL)dal).GetByCliente(cliente);
+            logger.Log("Se han obtenido los tickets del cliente " + cliente.Id, LogLevel.Debug, null, this.GetType().ToString());
+            return tickets;
         }
 
         //getTicketsByEstado
         public List<Ticket> GetTicketsByEstado(EstadoTicket estado)
         {
-            TipoPermiso permisoEspecifico = TipoPermiso.CRUDTicket;
-            if (!Session.GetSession().TienePermiso(permisoEspecifico)) throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + permisoEspecifico.ToString());
-           
-            return ((TicketDAL)dal).GetByEstado(estado);
+            if (!Session.GetSession().TienePermiso(this.permiso))
+            {
+                logger.Log("No tiene permiso para realizar esta accion", LogLevel.Warning, "Permiso Faltante: " + this.permiso.ToString(), this.GetType().ToString());
+                throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + this.permiso.ToString());
+            }
+
+
+            //return ((TicketDAL)dal).GetByEstado(estado);
+            List<Ticket> tickets = ((TicketDAL)dal).GetByEstado(estado);
+            logger.Log("Se han obtenido los tickets del estado " + estado.ToString(), LogLevel.Debug, SERV.Serializacion.LogSerializer.Serialize(tickets), this.GetType().ToString());
+            return tickets;
         }
 
         public void Update(Ticket ticketActual, Ticket ticketActualizado)
         {
-            
+            if (!Session.GetSession().TienePermiso(this.permiso))
+            {
+                logger.Log("No tiene permiso para realizar esta accion", LogLevel.Warning, "Permiso Faltante: " + this.permiso.ToString(), this.GetType().ToString());
+                throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + this.permiso.ToString());
+            }
 
 
             if (ticketActual.titulo != ticketActualizado.titulo) {
@@ -118,6 +137,12 @@ namespace BLL
 
         public void RegistrarMostrarTicket(Ticket ticket)
         {
+            if (!Session.GetSession().TienePermiso(this.permiso))
+            {
+                logger.Log("No tiene permiso para realizar esta accion", LogLevel.Warning, "Permiso Faltante: " + this.permiso.ToString(), this.GetType().ToString());
+                throw new Exception("SIN PERMISOS \nCodigo de Operacion: " + this.permiso.ToString());
+            }
+            
             InteraccionTicket interaccion = new InteraccionTicket();
             interaccion.idTicket = ticket.Id;
             interaccion.fecha = DateTime.Now;
@@ -127,6 +152,7 @@ namespace BLL
             interaccion.accion = "Visualizacion Ticket";
             ticket.interacciones.Add(interaccion);
             interaccionBLL.Create(interaccion);
+            logger.Log("Se ha registrado la visualizacion del ticket " + ticket.Id, LogLevel.Debug, SERV.Serializacion.LogSerializer.Serialize(interaccion), this.GetType().ToString());
 
         }
         
